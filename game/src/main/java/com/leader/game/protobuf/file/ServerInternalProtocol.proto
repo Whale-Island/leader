@@ -1,0 +1,15 @@
+package com.cytx.pokemon.server.register;
+option java_package = "com.leader.game.protobuf.protocol";
+option java_outer_classname = "ServerInternal";
+//服务器注册消息
+message ReqRegisterServerMessage{
+	required int32 serverId = 1; //服务器编号
+	required string name = 2;//名字
+	required string ip = 3;//外网ip地址
+	required int32 port = 4;//端口号
+}
+
+//网关服注册心跳消息
+message ReqInternalHeartbeatMessage{
+	required int32 online = 1; //在线人数
+}

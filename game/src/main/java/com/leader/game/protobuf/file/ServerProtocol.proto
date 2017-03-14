@@ -1,0 +1,7 @@
+syntax = "proto3";
+option java_package = "com.leader.game.protobuf.protocol"; 
+option java_outer_classname = "ServerProtocol";
+
+ message ReqHeartbeatMessage{ 
+    int32 uid = 1; 
+  } 

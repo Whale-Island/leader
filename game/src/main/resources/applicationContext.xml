@@ -34,11 +34,20 @@
 	<!-- sigleton -->
 	<bean id="globalManager" class="com.leader.game.server.manager.GlobalManager"
 		factory-method="getInstance" init-method="init" />
+	<bean id="logManager" class="com.leader.game.log.manager.LogManager" factory-method="getInstance" />
+		
 	<bean id="gameServer" class="com.leader.game.server.GameServer"
 		factory-method="getInstance">
 		<property name="listeners">
 			<list>
 				<ref bean="globalManager" />
+				<ref bean="playerManager" />
+			</list>
+		</property>
+	</bean>
+	<bean id="playerManager" class="com.leader.game.player.PlayerManager" factory-method="getInstance" init-method="init">
+		<property name="logoutListeners">
+			<list>
 			</list>
 		</property>
 	</bean>

@@ -11,7 +11,7 @@ import io.netty.util.AttributeKey;
  */
 public interface AttributeKeys {
 	/** 角色id */
-	AttributeKey<Integer> ROLE_ID = AttributeKey.newInstance("ROLE_ID");
+	AttributeKey<Long> UID = AttributeKey.newInstance("UID");
 	/** 玩家角色 */
 	AttributeKey<Player> ROLE = AttributeKey.newInstance("ROLE");
 	/** 服务器id */

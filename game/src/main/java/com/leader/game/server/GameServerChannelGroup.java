@@ -18,7 +18,7 @@ import io.netty.util.concurrent.EventExecutor;
  */
 public class GameServerChannelGroup extends DefaultChannelGroup {
 
-	private ConcurrentHashMap<Integer, Channel> channels = new ConcurrentHashMap<Integer, Channel>();
+	private ConcurrentHashMap<Long, Channel> channels = new ConcurrentHashMap<Long, Channel>();
 
 	public GameServerChannelGroup(EventExecutor executor) {
 		super(executor);
@@ -31,14 +31,14 @@ public class GameServerChannelGroup extends DefaultChannelGroup {
 			return false;
 		}
 		Channel c = (Channel) o;
-		Attribute<Integer> attribute = c.attr(AttributeKeys.ROLE_ID);
-		int roleName = attribute.get();
+		Attribute<Long> attribute = c.attr(AttributeKeys.UID);
+		long roleName = attribute.get();
 		if (roleName == 0) {
 			return false;
 		}
 		Channel channel = channels.remove(roleName);
 		if (channel != null) {
-			channel.attr(AttributeKeys.ROLE_ID).getAndSet(null);
+			channel.attr(AttributeKeys.UID).getAndSet(null);
 			channel.attr(AttributeKeys.ROLE).getAndSet(null);
 		}
 		return true;
@@ -50,17 +50,17 @@ public class GameServerChannelGroup extends DefaultChannelGroup {
 		if (!add) {
 			return false;
 		}
-		Attribute<Integer> attribute = channel.attr(AttributeKeys.ROLE_ID);
-		int roleId = attribute.get();
-		if (roleId == 0) {
+		Attribute<Long> attribute = channel.attr(AttributeKeys.UID);
+		long uid = attribute.get();
+		if (uid == 0) {
 			return false;
 		}
-		channels.put(roleId, channel);
+		channels.put(uid, channel);
 		return true;
 	}
 
 	/** 根据UserId得到 channel */
-	public Channel getChannel(int roleId) {
+	public Channel getChannel(long roleId) {
 		return channels.get(roleId);
 	}
 
@@ -75,9 +75,9 @@ public class GameServerChannelGroup extends DefaultChannelGroup {
 	 * @param builder
 	 */
 	public void broadcast(Builder builder) {
-		Iterator<Entry<Integer, Channel>> iterator = channels.entrySet().iterator();
+		Iterator<Entry<Long, Channel>> iterator = channels.entrySet().iterator();
 		while (iterator.hasNext()) {
-			Entry<Integer, Channel> entry = iterator.next();
+			Entry<Long, Channel> entry = iterator.next();
 			Channel channel = entry.getValue();
 			channel.writeAndFlush(builder);
 		}

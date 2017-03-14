@@ -11,6 +11,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.leader.core.db.GameEntity;
 
@@ -33,14 +34,31 @@ public class Player implements GameEntity {
 	@Id
 	@Column(unique = true, nullable = false)
 	private long id;
-
+	/** 帐号 */
 	private String username;
-
+	/** 密码 */
 	private String password;
-
+	/** 昵称 */
 	private String nickname;
-
+	/** 等级 */
 	private int level;
+	/** 最后一次在线时间 */
+	private long lastOnlineTime;
+	/** 上次登录时间 */
+	private long preLoginTime;
+	/** 平台渠道 */
+	private int gameChannel;
+	/** 状态 */
+	private @Transient volatile int state;
+	/** 1.在线 2.离线 */
+	public static final int ONLINE = 1, OFFLINE = 2, SAVE = 3;
+
+	/**
+	 * @return the isOnline
+	 */
+	public final boolean isOnline() {
+		return state == ONLINE;
+	}
 
 	public long getId() {
 		return id;
@@ -80,6 +98,38 @@ public class Player implements GameEntity {
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+
+	public long getLastOnlineTime() {
+		return lastOnlineTime;
+	}
+
+	public void setLastOnlineTime(long lastOnlineTime) {
+		this.lastOnlineTime = lastOnlineTime;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+
+	public long getPreLoginTime() {
+		return preLoginTime;
+	}
+
+	public void setPreLoginTime(long preLoginTime) {
+		this.preLoginTime = preLoginTime;
+	}
+
+	public int getGameChannel() {
+		return gameChannel;
+	}
+
+	public void setGameChannel(int gameChannel) {
+		this.gameChannel = gameChannel;
 	}
 
 }

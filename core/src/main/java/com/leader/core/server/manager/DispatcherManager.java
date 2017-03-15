@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.leader.core.server.handler.Handler;
 import com.leader.core.server.model.Package;
 import com.leader.core.server.pool.MessagePool;
-import com.leader.core.server.pool.ThreadPool;
+import com.leader.core.server.pool.LogicThreadPool;
 
 import io.netty.channel.ChannelHandlerContext;
 
@@ -38,7 +38,7 @@ public class DispatcherManager {
 	 */
 	public void dispatcher(ChannelHandlerContext ctx, Package pk) {
 		final int descriptor = pk.getDescriptor();
-		ThreadPool.threadpool.execute(new Runnable() {
+		LogicThreadPool.threadpool.execute(new Runnable() {
 			@Override
 			public void run() {
 				Handler handler = null;

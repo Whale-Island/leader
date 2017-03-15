@@ -1,7 +1,7 @@
 eclipse.preferences.version=1
-encoding//serverConfig/game_server.properties=UTF-8
-encoding//serverConfig/jdbc.properties=UTF-8
-encoding//serverConfig/log_jdbc.properties=UTF-8
+encoding//config/game_server.properties=UTF-8
+encoding//config/jdbc.properties=UTF-8
+encoding//config/log_jdbc.properties=UTF-8
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/resources/log4j.properties=UTF-8

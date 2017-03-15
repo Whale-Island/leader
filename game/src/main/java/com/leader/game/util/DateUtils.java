@@ -962,6 +962,28 @@ public class DateUtils {
 	}
 
 	/**
+	 * 与当前时间的分种差
+	 * 
+	 * @param one
+	 * @param two
+	 * @return
+	 */
+	public static int diffMinute(long time) {
+		return (int) ((Calendar.getInstance().getTimeInMillis() - time) / 1000 / 60);
+	}
+
+	/**
+	 * 分种差
+	 * 
+	 * @param one
+	 * @param two
+	 * @return
+	 */
+	public static int diffMinute(long one, long two) {
+		return (int) ((one - two) / 1000 / 60);
+	}
+
+	/**
 	 * 分种差
 	 * 
 	 * @param one

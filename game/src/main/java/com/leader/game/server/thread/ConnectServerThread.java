@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import com.google.protobuf.Message.Builder;
 import com.leader.core.server.TcpClient;
-import com.leader.core.server.pool.ThreadPool;
+import com.leader.core.server.pool.LogicThreadPool;
 import com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage;
 import com.leader.game.server.GameServer;
 
@@ -42,14 +42,13 @@ public class ConnectServerThread extends Thread {
 	private ChannelFutureListener heartbeatListener = new ChannelFutureListener() {
 		@Override
 		public void operationComplete(ChannelFuture future) throws Exception {
-			Channel c = future.channel();
-			channel = c;
-			ThreadPool.threadpool.scheduleAtFixedRate(new Runnable() {
+			channel = future.channel();
+			LogicThreadPool.threadpool.scheduleAtFixedRate(new Runnable() {
 				@Override
 				public void run() {
 					ReqInternalHeartbeatMessage.Builder builder = ReqInternalHeartbeatMessage.newBuilder();
 					builder.setOnline(GameServer.getInstance().getChannelGroup().size());
-					c.writeAndFlush(builder);
+					channel.writeAndFlush(builder);
 				}
 			}, 10 * 1000, 10 * 1000, TimeUnit.MILLISECONDS);
 		}
@@ -134,12 +133,4 @@ public class ConnectServerThread extends Thread {
 			channel.writeAndFlush(builder);
 		}
 	}
-
-	/**
-	 * @return the channel
-	 */
-	public final Channel getChannel() {
-		return channel;
-	}
-
 }

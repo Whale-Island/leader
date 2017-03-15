@@ -17,13 +17,12 @@ public final class ServerProtocol {
   public interface ReqHeartbeatMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ReqHeartbeatMessage)
       com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 uid = 1;</code>
-     */
-    int getUid();
   }
   /**
+   * <pre>
+   * 心跳请求
+   * </pre>
+   *
    * Protobuf type {@code ReqHeartbeatMessage}
    */
   public  static final class ReqHeartbeatMessage extends
@@ -35,7 +34,6 @@ public final class ServerProtocol {
       super(builder);
     }
     private ReqHeartbeatMessage() {
-      uid_ = 0;
     }
 
     @java.lang.Override
@@ -48,7 +46,6 @@ public final class ServerProtocol {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
-      int mutable_bitField0_ = 0;
       try {
         boolean done = false;
         while (!done) {
@@ -61,11 +58,6 @@ public final class ServerProtocol {
               if (!input.skipField(tag)) {
                 done = true;
               }
-              break;
-            }
-            case 8: {
-
-              uid_ = input.readInt32();
               break;
             }
           }
@@ -91,15 +83,6 @@ public final class ServerProtocol {
               com.leader.game.protobuf.protocol.ServerProtocol.ReqHeartbeatMessage.class, com.leader.game.protobuf.protocol.ServerProtocol.ReqHeartbeatMessage.Builder.class);
     }
 
-    public static final int UID_FIELD_NUMBER = 1;
-    private int uid_;
-    /**
-     * <code>int32 uid = 1;</code>
-     */
-    public int getUid() {
-      return uid_;
-    }
-
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -112,9 +95,6 @@ public final class ServerProtocol {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (uid_ != 0) {
-        output.writeInt32(1, uid_);
-      }
     }
 
     public int getSerializedSize() {
@@ -122,10 +102,6 @@ public final class ServerProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (uid_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, uid_);
-      }
       memoizedSize = size;
       return size;
     }
@@ -142,8 +118,6 @@ public final class ServerProtocol {
       com.leader.game.protobuf.protocol.ServerProtocol.ReqHeartbeatMessage other = (com.leader.game.protobuf.protocol.ServerProtocol.ReqHeartbeatMessage) obj;
 
       boolean result = true;
-      result = result && (getUid()
-          == other.getUid());
       return result;
     }
 
@@ -154,8 +128,6 @@ public final class ServerProtocol {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + UID_FIELD_NUMBER;
-      hash = (53 * hash) + getUid();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -239,6 +211,10 @@ public final class ServerProtocol {
       return builder;
     }
     /**
+     * <pre>
+     * 心跳请求
+     * </pre>
+     *
      * Protobuf type {@code ReqHeartbeatMessage}
      */
     public static final class Builder extends
@@ -274,8 +250,6 @@ public final class ServerProtocol {
       }
       public Builder clear() {
         super.clear();
-        uid_ = 0;
-
         return this;
       }
 
@@ -298,7 +272,6 @@ public final class ServerProtocol {
 
       public com.leader.game.protobuf.protocol.ServerProtocol.ReqHeartbeatMessage buildPartial() {
         com.leader.game.protobuf.protocol.ServerProtocol.ReqHeartbeatMessage result = new com.leader.game.protobuf.protocol.ServerProtocol.ReqHeartbeatMessage(this);
-        result.uid_ = uid_;
         onBuilt();
         return result;
       }
@@ -340,9 +313,6 @@ public final class ServerProtocol {
 
       public Builder mergeFrom(com.leader.game.protobuf.protocol.ServerProtocol.ReqHeartbeatMessage other) {
         if (other == com.leader.game.protobuf.protocol.ServerProtocol.ReqHeartbeatMessage.getDefaultInstance()) return this;
-        if (other.getUid() != 0) {
-          setUid(other.getUid());
-        }
         onChanged();
         return this;
       }
@@ -366,32 +336,6 @@ public final class ServerProtocol {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private int uid_ ;
-      /**
-       * <code>int32 uid = 1;</code>
-       */
-      public int getUid() {
-        return uid_;
-      }
-      /**
-       * <code>int32 uid = 1;</code>
-       */
-      public Builder setUid(int value) {
-        
-        uid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 uid = 1;</code>
-       */
-      public Builder clearUid() {
-        
-        uid_ = 0;
-        onChanged();
         return this;
       }
       public final Builder setUnknownFields(
@@ -457,9 +401,9 @@ public final class ServerProtocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024ServerProtocol.proto\"\"\n\023ReqHeartbeatMe" +
-      "ssage\022\013\n\003uid\030\001 \001(\005B3\n!com.leader.game.pr" +
-      "otobuf.protocolB\016ServerProtocolb\006proto3"
+      "\n\024ServerProtocol.proto\"\025\n\023ReqHeartbeatMe" +
+      "ssageB3\n!com.leader.game.protobuf.protoc" +
+      "olB\016ServerProtocolb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -478,7 +422,7 @@ public final class ServerProtocol {
     internal_static_ReqHeartbeatMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReqHeartbeatMessage_descriptor,
-        new java.lang.String[] { "Uid", });
+        new java.lang.String[] { });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

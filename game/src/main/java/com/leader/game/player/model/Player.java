@@ -34,12 +34,12 @@ public class Player implements GameEntity {
 	@Id
 	@Column(unique = true, nullable = false)
 	private long id;
-	/** 帐号 */
+	/** 帐号(冗余字段) */
 	private String username;
-	/** 密码 */
-	private String password;
 	/** 昵称 */
 	private String nickname;
+	/** 性别 */
+	private short sex;
 	/** 等级 */
 	private int level;
 	/** 最后一次在线时间 */
@@ -74,14 +74,6 @@ public class Player implements GameEntity {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getNickname() {
@@ -130,6 +122,14 @@ public class Player implements GameEntity {
 
 	public void setGameChannel(int gameChannel) {
 		this.gameChannel = gameChannel;
+	}
+
+	public short getSex() {
+		return sex;
+	}
+
+	public void setSex(short sex) {
+		this.sex = sex;
 	}
 
 }

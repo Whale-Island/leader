@@ -39,19 +39,19 @@ public class LogManager {
 	 * 添加登录日志
 	 * 
 	 * @param roleId
-	 * @param roleName
-	 * @param userName
+	 * @param nickname
+	 * @param username
 	 * @param channel
 	 * @param type
 	 * @param onlineTime
 	 */
-	public void addLoginLog(long roleId, String roleName, String userName, int channel, int type, int onlineTime,
+	public void addLoginLog(long roleId, String nickname, String username, int channel, int type, int onlineTime,
 			int count) {
 		LoginLog loginLog = new LoginLog();
 		loginLog.setLoginTime(new Date());
 		loginLog.setRoleId(roleId);
-		loginLog.setRoleName(roleName);
-		loginLog.setUserName(userName);
+		loginLog.setRoleName(nickname);
+		loginLog.setUserName(username);
 		loginLog.setChannelId(channel);
 		loginLog.setServerId(serverConfig.getServerId());
 		loginLog.setId(1L);

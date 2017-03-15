@@ -1,26 +1,24 @@
-package com.leader.game.server;
+package com.leader.game.server.model;
 
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.google.protobuf.Message.Builder;
-import com.leader.game.server.model.AttributeKeys;
 
 import io.netty.channel.Channel;
-import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.util.Attribute;
 import io.netty.util.concurrent.EventExecutor;
 
 /**
- * The default {@link ChannelGroup} implementation.
+ * The default {@link PlayerChannelGroup} implementation.
  */
-public class GameServerChannelGroup extends DefaultChannelGroup {
+public class PlayerChannelGroup extends DefaultChannelGroup {
 
 	private ConcurrentHashMap<Long, Channel> channels = new ConcurrentHashMap<Long, Channel>();
 
-	public GameServerChannelGroup(EventExecutor executor) {
+	public PlayerChannelGroup(EventExecutor executor) {
 		super(executor);
 	}
 

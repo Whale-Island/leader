@@ -15,10 +15,12 @@ import com.leader.core.server.TcpServer;
 import com.leader.core.server.http.HttpServerHandler;
 import com.leader.core.server.model.ShutdownListener;
 import com.leader.core.server.model.ThreadAdapter;
-import com.leader.core.server.pool.ThreadPool;
+import com.leader.core.server.pool.LogicThreadPool;
 import com.leader.game.mail.handler.MailHandler;
+import com.leader.game.server.model.PlayerChannelGroup;
 import com.leader.game.server.model.ServerConfig;
 import com.leader.game.server.thread.ConnectServerThread;
+import com.leader.game.server.thread.HttpServerThread;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
@@ -32,7 +34,7 @@ public class GameServer {
 	/** 日志 */
 	private Logger log = LoggerFactory.getLogger(GameServer.class);
 	/** channelgroup */
-	private GameServerChannelGroup channelGroup = new GameServerChannelGroup(GlobalEventExecutor.INSTANCE);
+	private PlayerChannelGroup channelGroup = new PlayerChannelGroup(GlobalEventExecutor.INSTANCE);
 	/** 关服监听列表 */
 	private List<ShutdownListener> listeners;
 	@Autowired
@@ -114,7 +116,7 @@ public class GameServer {
 				} catch (Exception e) {
 					log.error(e.getMessage(), e);
 				}
-				ThreadPool.shutdown();
+				LogicThreadPool.shutdown();
 				applicationContext.close();
 				log.info("Game Server Is Closed.");
 			}
@@ -125,7 +127,7 @@ public class GameServer {
 	/**
 	 * @return the channelGroup
 	 */
-	public GameServerChannelGroup getChannelGroup() {
+	public PlayerChannelGroup getChannelGroup() {
 		return channelGroup;
 	}
 
@@ -134,8 +136,26 @@ public class GameServer {
 	 * 
 	 * @param builder
 	 */
-	public void broadcast(Builder builder) {
+	protected void broadcast(Builder builder) {
 		channelGroup.broadcast(builder);
+	}
+
+	/**
+	 * 给网关服发消息
+	 * 
+	 * @param builder
+	 */
+	protected void send_gateway_message(Builder builder) {
+		gatewayServerThread.sendMessage(builder);
+	}
+
+	/**
+	 * 给充值服发消息
+	 * 
+	 * @param builder
+	 */
+	protected void send_charge_message(Builder builder) {
+		chargeServerThread.sendMessage(builder);
 	}
 
 	/** 停服调用方法 */

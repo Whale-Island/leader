@@ -25,8 +25,8 @@ import com.leader.game.player.model.Player;
 public class PlayerDao extends JpaDaoSupport {
 
 	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED, readOnly = true)
-	public Player findPlayerByUserName(String userName, String sql) {
-		TypedQuery<Player> query = entityManager.createNamedQuery(sql, Player.class);
+	public Player findPlayerByUserName(String userName) {
+		TypedQuery<Player> query = entityManager.createNamedQuery("Player.findPlayerByName", Player.class);
 		query.setParameter("userName", userName);
 		List<Player> players = query.getResultList();
 		if (players == null || players.isEmpty()) {

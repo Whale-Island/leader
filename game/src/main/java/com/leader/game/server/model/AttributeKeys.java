@@ -14,8 +14,6 @@ public interface AttributeKeys {
 	AttributeKey<Long> UID = AttributeKey.newInstance("UID");
 	/** 玩家角色 */
 	AttributeKey<Player> ROLE = AttributeKey.newInstance("ROLE");
-	/** 服务器id */
-	AttributeKey<Integer> SERVER_ID = AttributeKey.newInstance("ServerId");
 	/** 渠道id */
 	AttributeKey<Integer> CHANNEL_ID = AttributeKey.newInstance("ChannelId");
 	/** 密匙 */

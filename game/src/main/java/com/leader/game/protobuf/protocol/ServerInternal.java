@@ -15,7 +15,7 @@ public final class ServerInternal {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface ReqRegisterServerMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.cytx.pokemon.server.register.ReqRegisterServerMessage)
+      // @@protoc_insertion_point(interface_extends:ReqRegisterServerMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -23,15 +23,7 @@ public final class ServerInternal {
      *服务器编号
      * </pre>
      *
-     * <code>required int32 serverId = 1;</code>
-     */
-    boolean hasServerId();
-    /**
-     * <pre>
-     *服务器编号
-     * </pre>
-     *
-     * <code>required int32 serverId = 1;</code>
+     * <code>int32 serverId = 1;</code>
      */
     int getServerId();
 
@@ -40,15 +32,7 @@ public final class ServerInternal {
      *名字
      * </pre>
      *
-     * <code>required string name = 2;</code>
-     */
-    boolean hasName();
-    /**
-     * <pre>
-     *名字
-     * </pre>
-     *
-     * <code>required string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     java.lang.String getName();
     /**
@@ -56,7 +40,7 @@ public final class ServerInternal {
      *名字
      * </pre>
      *
-     * <code>required string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
@@ -66,15 +50,7 @@ public final class ServerInternal {
      *外网ip地址
      * </pre>
      *
-     * <code>required string ip = 3;</code>
-     */
-    boolean hasIp();
-    /**
-     * <pre>
-     *外网ip地址
-     * </pre>
-     *
-     * <code>required string ip = 3;</code>
+     * <code>string ip = 3;</code>
      */
     java.lang.String getIp();
     /**
@@ -82,7 +58,7 @@ public final class ServerInternal {
      *外网ip地址
      * </pre>
      *
-     * <code>required string ip = 3;</code>
+     * <code>string ip = 3;</code>
      */
     com.google.protobuf.ByteString
         getIpBytes();
@@ -92,15 +68,7 @@ public final class ServerInternal {
      *端口号
      * </pre>
      *
-     * <code>required int32 port = 4;</code>
-     */
-    boolean hasPort();
-    /**
-     * <pre>
-     *端口号
-     * </pre>
-     *
-     * <code>required int32 port = 4;</code>
+     * <code>int32 port = 4;</code>
      */
     int getPort();
   }
@@ -109,11 +77,11 @@ public final class ServerInternal {
    *服务器注册消息
    * </pre>
    *
-   * Protobuf type {@code com.cytx.pokemon.server.register.ReqRegisterServerMessage}
+   * Protobuf type {@code ReqRegisterServerMessage}
    */
   public  static final class ReqRegisterServerMessage extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.cytx.pokemon.server.register.ReqRegisterServerMessage)
+      // @@protoc_insertion_point(message_implements:ReqRegisterServerMessage)
       ReqRegisterServerMessageOrBuilder {
     // Use ReqRegisterServerMessage.newBuilder() to construct.
     private ReqRegisterServerMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
@@ -129,7 +97,7 @@ public final class ServerInternal {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private ReqRegisterServerMessage(
         com.google.protobuf.CodedInputStream input,
@@ -137,8 +105,6 @@ public final class ServerInternal {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -148,31 +114,30 @@ public final class ServerInternal {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
+
               serverId_ = input.readInt32();
               break;
             }
             case 18: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000002;
-              name_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
               break;
             }
             case 26: {
-              com.google.protobuf.ByteString bs = input.readBytes();
-              bitField0_ |= 0x00000004;
-              ip_ = bs;
+              java.lang.String s = input.readStringRequireUtf8();
+
+              ip_ = s;
               break;
             }
             case 32: {
-              bitField0_ |= 0x00000008;
+
               port_ = input.readInt32();
               break;
             }
@@ -184,23 +149,21 @@ public final class ServerInternal {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_com_cytx_pokemon_server_register_ReqRegisterServerMessage_descriptor;
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqRegisterServerMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_com_cytx_pokemon_server_register_ReqRegisterServerMessage_fieldAccessorTable
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqRegisterServerMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage.class, com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage.Builder.class);
     }
 
-    private int bitField0_;
     public static final int SERVERID_FIELD_NUMBER = 1;
     private int serverId_;
     /**
@@ -208,17 +171,7 @@ public final class ServerInternal {
      *服务器编号
      * </pre>
      *
-     * <code>required int32 serverId = 1;</code>
-     */
-    public boolean hasServerId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <pre>
-     *服务器编号
-     * </pre>
-     *
-     * <code>required int32 serverId = 1;</code>
+     * <code>int32 serverId = 1;</code>
      */
     public int getServerId() {
       return serverId_;
@@ -231,17 +184,7 @@ public final class ServerInternal {
      *名字
      * </pre>
      *
-     * <code>required string name = 2;</code>
-     */
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <pre>
-     *名字
-     * </pre>
-     *
-     * <code>required string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -251,9 +194,7 @@ public final class ServerInternal {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          name_ = s;
-        }
+        name_ = s;
         return s;
       }
     }
@@ -262,7 +203,7 @@ public final class ServerInternal {
      *名字
      * </pre>
      *
-     * <code>required string name = 2;</code>
+     * <code>string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -285,17 +226,7 @@ public final class ServerInternal {
      *外网ip地址
      * </pre>
      *
-     * <code>required string ip = 3;</code>
-     */
-    public boolean hasIp() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <pre>
-     *外网ip地址
-     * </pre>
-     *
-     * <code>required string ip = 3;</code>
+     * <code>string ip = 3;</code>
      */
     public java.lang.String getIp() {
       java.lang.Object ref = ip_;
@@ -305,9 +236,7 @@ public final class ServerInternal {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          ip_ = s;
-        }
+        ip_ = s;
         return s;
       }
     }
@@ -316,7 +245,7 @@ public final class ServerInternal {
      *外网ip地址
      * </pre>
      *
-     * <code>required string ip = 3;</code>
+     * <code>string ip = 3;</code>
      */
     public com.google.protobuf.ByteString
         getIpBytes() {
@@ -339,17 +268,7 @@ public final class ServerInternal {
      *端口号
      * </pre>
      *
-     * <code>required int32 port = 4;</code>
-     */
-    public boolean hasPort() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <pre>
-     *端口号
-     * </pre>
-     *
-     * <code>required int32 port = 4;</code>
+     * <code>int32 port = 4;</code>
      */
     public int getPort() {
       return port_;
@@ -361,41 +280,24 @@ public final class ServerInternal {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasServerId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasName()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasIp()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasPort()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (serverId_ != 0) {
         output.writeInt32(1, serverId_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (!getIpBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, ip_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (port_ != 0) {
         output.writeInt32(4, port_);
       }
-      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -403,21 +305,20 @@ public final class ServerInternal {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (serverId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, serverId_);
       }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+      if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (!getIpBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, ip_);
       }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+      if (port_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, port_);
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -434,27 +335,14 @@ public final class ServerInternal {
       com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage other = (com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage) obj;
 
       boolean result = true;
-      result = result && (hasServerId() == other.hasServerId());
-      if (hasServerId()) {
-        result = result && (getServerId()
-            == other.getServerId());
-      }
-      result = result && (hasName() == other.hasName());
-      if (hasName()) {
-        result = result && getName()
-            .equals(other.getName());
-      }
-      result = result && (hasIp() == other.hasIp());
-      if (hasIp()) {
-        result = result && getIp()
-            .equals(other.getIp());
-      }
-      result = result && (hasPort() == other.hasPort());
-      if (hasPort()) {
-        result = result && (getPort()
-            == other.getPort());
-      }
-      result = result && unknownFields.equals(other.unknownFields);
+      result = result && (getServerId()
+          == other.getServerId());
+      result = result && getName()
+          .equals(other.getName());
+      result = result && getIp()
+          .equals(other.getIp());
+      result = result && (getPort()
+          == other.getPort());
       return result;
     }
 
@@ -465,22 +353,14 @@ public final class ServerInternal {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasServerId()) {
-        hash = (37 * hash) + SERVERID_FIELD_NUMBER;
-        hash = (53 * hash) + getServerId();
-      }
-      if (hasName()) {
-        hash = (37 * hash) + NAME_FIELD_NUMBER;
-        hash = (53 * hash) + getName().hashCode();
-      }
-      if (hasIp()) {
-        hash = (37 * hash) + IP_FIELD_NUMBER;
-        hash = (53 * hash) + getIp().hashCode();
-      }
-      if (hasPort()) {
-        hash = (37 * hash) + PORT_FIELD_NUMBER;
-        hash = (53 * hash) + getPort();
-      }
+      hash = (37 * hash) + SERVERID_FIELD_NUMBER;
+      hash = (53 * hash) + getServerId();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + IP_FIELD_NUMBER;
+      hash = (53 * hash) + getIp().hashCode();
+      hash = (37 * hash) + PORT_FIELD_NUMBER;
+      hash = (53 * hash) + getPort();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -568,20 +448,20 @@ public final class ServerInternal {
      *服务器注册消息
      * </pre>
      *
-     * Protobuf type {@code com.cytx.pokemon.server.register.ReqRegisterServerMessage}
+     * Protobuf type {@code ReqRegisterServerMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.cytx.pokemon.server.register.ReqRegisterServerMessage)
+        // @@protoc_insertion_point(builder_implements:ReqRegisterServerMessage)
         com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_com_cytx_pokemon_server_register_ReqRegisterServerMessage_descriptor;
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqRegisterServerMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_com_cytx_pokemon_server_register_ReqRegisterServerMessage_fieldAccessorTable
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqRegisterServerMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage.class, com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage.Builder.class);
       }
@@ -604,19 +484,19 @@ public final class ServerInternal {
       public Builder clear() {
         super.clear();
         serverId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
+
         ip_ = "";
-        bitField0_ = (bitField0_ & ~0x00000004);
+
         port_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
+
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_com_cytx_pokemon_server_register_ReqRegisterServerMessage_descriptor;
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqRegisterServerMessage_descriptor;
       }
 
       public com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage getDefaultInstanceForType() {
@@ -633,25 +513,10 @@ public final class ServerInternal {
 
       public com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage buildPartial() {
         com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage result = new com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.serverId_ = serverId_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.name_ = name_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
         result.ip_ = ip_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
         result.port_ = port_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -693,40 +558,25 @@ public final class ServerInternal {
 
       public Builder mergeFrom(com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage other) {
         if (other == com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage.getDefaultInstance()) return this;
-        if (other.hasServerId()) {
+        if (other.getServerId() != 0) {
           setServerId(other.getServerId());
         }
-        if (other.hasName()) {
-          bitField0_ |= 0x00000002;
+        if (!other.getName().isEmpty()) {
           name_ = other.name_;
           onChanged();
         }
-        if (other.hasIp()) {
-          bitField0_ |= 0x00000004;
+        if (!other.getIp().isEmpty()) {
           ip_ = other.ip_;
           onChanged();
         }
-        if (other.hasPort()) {
+        if (other.getPort() != 0) {
           setPort(other.getPort());
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasServerId()) {
-          return false;
-        }
-        if (!hasName()) {
-          return false;
-        }
-        if (!hasIp()) {
-          return false;
-        }
-        if (!hasPort()) {
-          return false;
-        }
         return true;
       }
 
@@ -747,7 +597,6 @@ public final class ServerInternal {
         }
         return this;
       }
-      private int bitField0_;
 
       private int serverId_ ;
       /**
@@ -755,17 +604,7 @@ public final class ServerInternal {
        *服务器编号
        * </pre>
        *
-       * <code>required int32 serverId = 1;</code>
-       */
-      public boolean hasServerId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <pre>
-       *服务器编号
-       * </pre>
-       *
-       * <code>required int32 serverId = 1;</code>
+       * <code>int32 serverId = 1;</code>
        */
       public int getServerId() {
         return serverId_;
@@ -775,10 +614,10 @@ public final class ServerInternal {
        *服务器编号
        * </pre>
        *
-       * <code>required int32 serverId = 1;</code>
+       * <code>int32 serverId = 1;</code>
        */
       public Builder setServerId(int value) {
-        bitField0_ |= 0x00000001;
+        
         serverId_ = value;
         onChanged();
         return this;
@@ -788,10 +627,10 @@ public final class ServerInternal {
        *服务器编号
        * </pre>
        *
-       * <code>required int32 serverId = 1;</code>
+       * <code>int32 serverId = 1;</code>
        */
       public Builder clearServerId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         serverId_ = 0;
         onChanged();
         return this;
@@ -803,17 +642,7 @@ public final class ServerInternal {
        *名字
        * </pre>
        *
-       * <code>required string name = 2;</code>
-       */
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <pre>
-       *名字
-       * </pre>
-       *
-       * <code>required string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -821,9 +650,7 @@ public final class ServerInternal {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            name_ = s;
-          }
+          name_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -834,7 +661,7 @@ public final class ServerInternal {
        *名字
        * </pre>
        *
-       * <code>required string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -854,14 +681,14 @@ public final class ServerInternal {
        *名字
        * </pre>
        *
-       * <code>required string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  
         name_ = value;
         onChanged();
         return this;
@@ -871,10 +698,10 @@ public final class ServerInternal {
        *名字
        * </pre>
        *
-       * <code>required string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        
         name_ = getDefaultInstance().getName();
         onChanged();
         return this;
@@ -884,14 +711,15 @@ public final class ServerInternal {
        *名字
        * </pre>
        *
-       * <code>required string name = 2;</code>
+       * <code>string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000002;
+  checkByteStringIsUtf8(value);
+        
         name_ = value;
         onChanged();
         return this;
@@ -903,17 +731,7 @@ public final class ServerInternal {
        *外网ip地址
        * </pre>
        *
-       * <code>required string ip = 3;</code>
-       */
-      public boolean hasIp() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <pre>
-       *外网ip地址
-       * </pre>
-       *
-       * <code>required string ip = 3;</code>
+       * <code>string ip = 3;</code>
        */
       public java.lang.String getIp() {
         java.lang.Object ref = ip_;
@@ -921,9 +739,7 @@ public final class ServerInternal {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            ip_ = s;
-          }
+          ip_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
@@ -934,7 +750,7 @@ public final class ServerInternal {
        *外网ip地址
        * </pre>
        *
-       * <code>required string ip = 3;</code>
+       * <code>string ip = 3;</code>
        */
       public com.google.protobuf.ByteString
           getIpBytes() {
@@ -954,14 +770,14 @@ public final class ServerInternal {
        *外网ip地址
        * </pre>
        *
-       * <code>required string ip = 3;</code>
+       * <code>string ip = 3;</code>
        */
       public Builder setIp(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  
         ip_ = value;
         onChanged();
         return this;
@@ -971,10 +787,10 @@ public final class ServerInternal {
        *外网ip地址
        * </pre>
        *
-       * <code>required string ip = 3;</code>
+       * <code>string ip = 3;</code>
        */
       public Builder clearIp() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        
         ip_ = getDefaultInstance().getIp();
         onChanged();
         return this;
@@ -984,14 +800,15 @@ public final class ServerInternal {
        *外网ip地址
        * </pre>
        *
-       * <code>required string ip = 3;</code>
+       * <code>string ip = 3;</code>
        */
       public Builder setIpBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000004;
+  checkByteStringIsUtf8(value);
+        
         ip_ = value;
         onChanged();
         return this;
@@ -1003,17 +820,7 @@ public final class ServerInternal {
        *端口号
        * </pre>
        *
-       * <code>required int32 port = 4;</code>
-       */
-      public boolean hasPort() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <pre>
-       *端口号
-       * </pre>
-       *
-       * <code>required int32 port = 4;</code>
+       * <code>int32 port = 4;</code>
        */
       public int getPort() {
         return port_;
@@ -1023,10 +830,10 @@ public final class ServerInternal {
        *端口号
        * </pre>
        *
-       * <code>required int32 port = 4;</code>
+       * <code>int32 port = 4;</code>
        */
       public Builder setPort(int value) {
-        bitField0_ |= 0x00000008;
+        
         port_ = value;
         onChanged();
         return this;
@@ -1036,29 +843,29 @@ public final class ServerInternal {
        *端口号
        * </pre>
        *
-       * <code>required int32 port = 4;</code>
+       * <code>int32 port = 4;</code>
        */
       public Builder clearPort() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        
         port_ = 0;
         onChanged();
         return this;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
+        return this;
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.cytx.pokemon.server.register.ReqRegisterServerMessage)
+      // @@protoc_insertion_point(builder_scope:ReqRegisterServerMessage)
     }
 
-    // @@protoc_insertion_point(class_scope:com.cytx.pokemon.server.register.ReqRegisterServerMessage)
+    // @@protoc_insertion_point(class_scope:ReqRegisterServerMessage)
     private static final com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage();
@@ -1068,7 +875,7 @@ public final class ServerInternal {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ReqRegisterServerMessage>
+    private static final com.google.protobuf.Parser<ReqRegisterServerMessage>
         PARSER = new com.google.protobuf.AbstractParser<ReqRegisterServerMessage>() {
       public ReqRegisterServerMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
@@ -1094,7 +901,7 @@ public final class ServerInternal {
   }
 
   public interface ReqInternalHeartbeatMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.cytx.pokemon.server.register.ReqInternalHeartbeatMessage)
+      // @@protoc_insertion_point(interface_extends:ReqInternalHeartbeatMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -1102,15 +909,7 @@ public final class ServerInternal {
      *在线人数
      * </pre>
      *
-     * <code>required int32 online = 1;</code>
-     */
-    boolean hasOnline();
-    /**
-     * <pre>
-     *在线人数
-     * </pre>
-     *
-     * <code>required int32 online = 1;</code>
+     * <code>int32 online = 1;</code>
      */
     int getOnline();
   }
@@ -1119,11 +918,11 @@ public final class ServerInternal {
    *网关服注册心跳消息
    * </pre>
    *
-   * Protobuf type {@code com.cytx.pokemon.server.register.ReqInternalHeartbeatMessage}
+   * Protobuf type {@code ReqInternalHeartbeatMessage}
    */
   public  static final class ReqInternalHeartbeatMessage extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.cytx.pokemon.server.register.ReqInternalHeartbeatMessage)
+      // @@protoc_insertion_point(message_implements:ReqInternalHeartbeatMessage)
       ReqInternalHeartbeatMessageOrBuilder {
     // Use ReqInternalHeartbeatMessage.newBuilder() to construct.
     private ReqInternalHeartbeatMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
@@ -1136,7 +935,7 @@ public final class ServerInternal {
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
     getUnknownFields() {
-      return this.unknownFields;
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
     }
     private ReqInternalHeartbeatMessage(
         com.google.protobuf.CodedInputStream input,
@@ -1144,8 +943,6 @@ public final class ServerInternal {
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
       int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
         boolean done = false;
         while (!done) {
@@ -1155,14 +952,13 @@ public final class ServerInternal {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!input.skipField(tag)) {
                 done = true;
               }
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
+
               online_ = input.readInt32();
               break;
             }
@@ -1174,23 +970,21 @@ public final class ServerInternal {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_com_cytx_pokemon_server_register_ReqInternalHeartbeatMessage_descriptor;
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqInternalHeartbeatMessage_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_com_cytx_pokemon_server_register_ReqInternalHeartbeatMessage_fieldAccessorTable
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqInternalHeartbeatMessage_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage.class, com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage.Builder.class);
     }
 
-    private int bitField0_;
     public static final int ONLINE_FIELD_NUMBER = 1;
     private int online_;
     /**
@@ -1198,17 +992,7 @@ public final class ServerInternal {
      *在线人数
      * </pre>
      *
-     * <code>required int32 online = 1;</code>
-     */
-    public boolean hasOnline() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <pre>
-     *在线人数
-     * </pre>
-     *
-     * <code>required int32 online = 1;</code>
+     * <code>int32 online = 1;</code>
      */
     public int getOnline() {
       return online_;
@@ -1220,20 +1004,15 @@ public final class ServerInternal {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasOnline()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (online_ != 0) {
         output.writeInt32(1, online_);
       }
-      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -1241,11 +1020,10 @@ public final class ServerInternal {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+      if (online_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, online_);
       }
-      size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
     }
@@ -1262,12 +1040,8 @@ public final class ServerInternal {
       com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage other = (com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage) obj;
 
       boolean result = true;
-      result = result && (hasOnline() == other.hasOnline());
-      if (hasOnline()) {
-        result = result && (getOnline()
-            == other.getOnline());
-      }
-      result = result && unknownFields.equals(other.unknownFields);
+      result = result && (getOnline()
+          == other.getOnline());
       return result;
     }
 
@@ -1278,10 +1052,8 @@ public final class ServerInternal {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasOnline()) {
-        hash = (37 * hash) + ONLINE_FIELD_NUMBER;
-        hash = (53 * hash) + getOnline();
-      }
+      hash = (37 * hash) + ONLINE_FIELD_NUMBER;
+      hash = (53 * hash) + getOnline();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1369,20 +1141,20 @@ public final class ServerInternal {
      *网关服注册心跳消息
      * </pre>
      *
-     * Protobuf type {@code com.cytx.pokemon.server.register.ReqInternalHeartbeatMessage}
+     * Protobuf type {@code ReqInternalHeartbeatMessage}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.cytx.pokemon.server.register.ReqInternalHeartbeatMessage)
+        // @@protoc_insertion_point(builder_implements:ReqInternalHeartbeatMessage)
         com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessageOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_com_cytx_pokemon_server_register_ReqInternalHeartbeatMessage_descriptor;
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqInternalHeartbeatMessage_descriptor;
       }
 
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_com_cytx_pokemon_server_register_ReqInternalHeartbeatMessage_fieldAccessorTable
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqInternalHeartbeatMessage_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage.class, com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage.Builder.class);
       }
@@ -1405,13 +1177,13 @@ public final class ServerInternal {
       public Builder clear() {
         super.clear();
         online_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
+
         return this;
       }
 
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_com_cytx_pokemon_server_register_ReqInternalHeartbeatMessage_descriptor;
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqInternalHeartbeatMessage_descriptor;
       }
 
       public com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage getDefaultInstanceForType() {
@@ -1428,13 +1200,7 @@ public final class ServerInternal {
 
       public com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage buildPartial() {
         com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage result = new com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
         result.online_ = online_;
-        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -1476,18 +1242,14 @@ public final class ServerInternal {
 
       public Builder mergeFrom(com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage other) {
         if (other == com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage.getDefaultInstance()) return this;
-        if (other.hasOnline()) {
+        if (other.getOnline() != 0) {
           setOnline(other.getOnline());
         }
-        this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
       }
 
       public final boolean isInitialized() {
-        if (!hasOnline()) {
-          return false;
-        }
         return true;
       }
 
@@ -1508,7 +1270,6 @@ public final class ServerInternal {
         }
         return this;
       }
-      private int bitField0_;
 
       private int online_ ;
       /**
@@ -1516,17 +1277,7 @@ public final class ServerInternal {
        *在线人数
        * </pre>
        *
-       * <code>required int32 online = 1;</code>
-       */
-      public boolean hasOnline() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <pre>
-       *在线人数
-       * </pre>
-       *
-       * <code>required int32 online = 1;</code>
+       * <code>int32 online = 1;</code>
        */
       public int getOnline() {
         return online_;
@@ -1536,10 +1287,10 @@ public final class ServerInternal {
        *在线人数
        * </pre>
        *
-       * <code>required int32 online = 1;</code>
+       * <code>int32 online = 1;</code>
        */
       public Builder setOnline(int value) {
-        bitField0_ |= 0x00000001;
+        
         online_ = value;
         onChanged();
         return this;
@@ -1549,29 +1300,29 @@ public final class ServerInternal {
        *在线人数
        * </pre>
        *
-       * <code>required int32 online = 1;</code>
+       * <code>int32 online = 1;</code>
        */
       public Builder clearOnline() {
-        bitField0_ = (bitField0_ & ~0x00000001);
+        
         online_ = 0;
         onChanged();
         return this;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
+        return this;
       }
 
       public final Builder mergeUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
+        return this;
       }
 
 
-      // @@protoc_insertion_point(builder_scope:com.cytx.pokemon.server.register.ReqInternalHeartbeatMessage)
+      // @@protoc_insertion_point(builder_scope:ReqInternalHeartbeatMessage)
     }
 
-    // @@protoc_insertion_point(class_scope:com.cytx.pokemon.server.register.ReqInternalHeartbeatMessage)
+    // @@protoc_insertion_point(class_scope:ReqInternalHeartbeatMessage)
     private static final com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage();
@@ -1581,7 +1332,7 @@ public final class ServerInternal {
       return DEFAULT_INSTANCE;
     }
 
-    @java.lang.Deprecated public static final com.google.protobuf.Parser<ReqInternalHeartbeatMessage>
+    private static final com.google.protobuf.Parser<ReqInternalHeartbeatMessage>
         PARSER = new com.google.protobuf.AbstractParser<ReqInternalHeartbeatMessage>() {
       public ReqInternalHeartbeatMessage parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
@@ -1606,16 +1357,3175 @@ public final class ServerInternal {
 
   }
 
+  public interface ReqVerifyLoginTokenMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ReqVerifyLoginTokenMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string token = 1;</code>
+     */
+    java.lang.String getToken();
+    /**
+     * <code>string token = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getTokenBytes();
+
+    /**
+     * <code>int32 serverId = 2;</code>
+     */
+    int getServerId();
+  }
+  /**
+   * <pre>
+   * 验证玩家登录令牌请求
+   * </pre>
+   *
+   * Protobuf type {@code ReqVerifyLoginTokenMessage}
+   */
+  public  static final class ReqVerifyLoginTokenMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ReqVerifyLoginTokenMessage)
+      ReqVerifyLoginTokenMessageOrBuilder {
+    // Use ReqVerifyLoginTokenMessage.newBuilder() to construct.
+    private ReqVerifyLoginTokenMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ReqVerifyLoginTokenMessage() {
+      token_ = "";
+      serverId_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private ReqVerifyLoginTokenMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              token_ = s;
+              break;
+            }
+            case 16: {
+
+              serverId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqVerifyLoginTokenMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqVerifyLoginTokenMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage.class, com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage.Builder.class);
+    }
+
+    public static final int TOKEN_FIELD_NUMBER = 1;
+    private volatile java.lang.Object token_;
+    /**
+     * <code>string token = 1;</code>
+     */
+    public java.lang.String getToken() {
+      java.lang.Object ref = token_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        token_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string token = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTokenBytes() {
+      java.lang.Object ref = token_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        token_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SERVERID_FIELD_NUMBER = 2;
+    private int serverId_;
+    /**
+     * <code>int32 serverId = 2;</code>
+     */
+    public int getServerId() {
+      return serverId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getTokenBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, token_);
+      }
+      if (serverId_ != 0) {
+        output.writeInt32(2, serverId_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getTokenBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, token_);
+      }
+      if (serverId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, serverId_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage)) {
+        return super.equals(obj);
+      }
+      com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage other = (com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage) obj;
+
+      boolean result = true;
+      result = result && getToken()
+          .equals(other.getToken());
+      result = result && (getServerId()
+          == other.getServerId());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getToken().hashCode();
+      hash = (37 * hash) + SERVERID_FIELD_NUMBER;
+      hash = (53 * hash) + getServerId();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 验证玩家登录令牌请求
+     * </pre>
+     *
+     * Protobuf type {@code ReqVerifyLoginTokenMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ReqVerifyLoginTokenMessage)
+        com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqVerifyLoginTokenMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqVerifyLoginTokenMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage.class, com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage.Builder.class);
+      }
+
+      // Construct using com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        token_ = "";
+
+        serverId_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqVerifyLoginTokenMessage_descriptor;
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage getDefaultInstanceForType() {
+        return com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage.getDefaultInstance();
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage build() {
+        com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage buildPartial() {
+        com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage result = new com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage(this);
+        result.token_ = token_;
+        result.serverId_ = serverId_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage) {
+          return mergeFrom((com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage other) {
+        if (other == com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage.getDefaultInstance()) return this;
+        if (!other.getToken().isEmpty()) {
+          token_ = other.token_;
+          onChanged();
+        }
+        if (other.getServerId() != 0) {
+          setServerId(other.getServerId());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object token_ = "";
+      /**
+       * <code>string token = 1;</code>
+       */
+      public java.lang.String getToken() {
+        java.lang.Object ref = token_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          token_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string token = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTokenBytes() {
+        java.lang.Object ref = token_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          token_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string token = 1;</code>
+       */
+      public Builder setToken(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        token_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string token = 1;</code>
+       */
+      public Builder clearToken() {
+        
+        token_ = getDefaultInstance().getToken();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string token = 1;</code>
+       */
+      public Builder setTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        token_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int serverId_ ;
+      /**
+       * <code>int32 serverId = 2;</code>
+       */
+      public int getServerId() {
+        return serverId_;
+      }
+      /**
+       * <code>int32 serverId = 2;</code>
+       */
+      public Builder setServerId(int value) {
+        
+        serverId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 serverId = 2;</code>
+       */
+      public Builder clearServerId() {
+        
+        serverId_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ReqVerifyLoginTokenMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:ReqVerifyLoginTokenMessage)
+    private static final com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage();
+    }
+
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ReqVerifyLoginTokenMessage>
+        PARSER = new com.google.protobuf.AbstractParser<ReqVerifyLoginTokenMessage>() {
+      public ReqVerifyLoginTokenMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ReqVerifyLoginTokenMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ReqVerifyLoginTokenMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ReqVerifyLoginTokenMessage> getParserForType() {
+      return PARSER;
+    }
+
+    public com.leader.game.protobuf.protocol.ServerInternal.ReqVerifyLoginTokenMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ResVerifyLoginTokenMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ResVerifyLoginTokenMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 code = 1;</code>
+     */
+    int getCode();
+
+    /**
+     * <code>int32 int32 = 2;</code>
+     */
+    int getInt32();
+  }
+  /**
+   * <pre>
+   * 验证玩家登录令牌响应
+   * </pre>
+   *
+   * Protobuf type {@code ResVerifyLoginTokenMessage}
+   */
+  public  static final class ResVerifyLoginTokenMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ResVerifyLoginTokenMessage)
+      ResVerifyLoginTokenMessageOrBuilder {
+    // Use ResVerifyLoginTokenMessage.newBuilder() to construct.
+    private ResVerifyLoginTokenMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ResVerifyLoginTokenMessage() {
+      code_ = 0;
+      int32_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private ResVerifyLoginTokenMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              code_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              int32_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ResVerifyLoginTokenMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ResVerifyLoginTokenMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage.class, com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage.Builder.class);
+    }
+
+    public static final int CODE_FIELD_NUMBER = 1;
+    private int code_;
+    /**
+     * <code>int32 code = 1;</code>
+     */
+    public int getCode() {
+      return code_;
+    }
+
+    public static final int INT32_FIELD_NUMBER = 2;
+    private int int32_;
+    /**
+     * <code>int32 int32 = 2;</code>
+     */
+    public int getInt32() {
+      return int32_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (code_ != 0) {
+        output.writeInt32(1, code_);
+      }
+      if (int32_ != 0) {
+        output.writeInt32(2, int32_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, code_);
+      }
+      if (int32_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, int32_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage)) {
+        return super.equals(obj);
+      }
+      com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage other = (com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage) obj;
+
+      boolean result = true;
+      result = result && (getCode()
+          == other.getCode());
+      result = result && (getInt32()
+          == other.getInt32());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode();
+      hash = (37 * hash) + INT32_FIELD_NUMBER;
+      hash = (53 * hash) + getInt32();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 验证玩家登录令牌响应
+     * </pre>
+     *
+     * Protobuf type {@code ResVerifyLoginTokenMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ResVerifyLoginTokenMessage)
+        com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ResVerifyLoginTokenMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ResVerifyLoginTokenMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage.class, com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage.Builder.class);
+      }
+
+      // Construct using com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        code_ = 0;
+
+        int32_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ResVerifyLoginTokenMessage_descriptor;
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage getDefaultInstanceForType() {
+        return com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage.getDefaultInstance();
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage build() {
+        com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage buildPartial() {
+        com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage result = new com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage(this);
+        result.code_ = code_;
+        result.int32_ = int32_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage) {
+          return mergeFrom((com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage other) {
+        if (other == com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage.getDefaultInstance()) return this;
+        if (other.getCode() != 0) {
+          setCode(other.getCode());
+        }
+        if (other.getInt32() != 0) {
+          setInt32(other.getInt32());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int code_ ;
+      /**
+       * <code>int32 code = 1;</code>
+       */
+      public int getCode() {
+        return code_;
+      }
+      /**
+       * <code>int32 code = 1;</code>
+       */
+      public Builder setCode(int value) {
+        
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 code = 1;</code>
+       */
+      public Builder clearCode() {
+        
+        code_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int int32_ ;
+      /**
+       * <code>int32 int32 = 2;</code>
+       */
+      public int getInt32() {
+        return int32_;
+      }
+      /**
+       * <code>int32 int32 = 2;</code>
+       */
+      public Builder setInt32(int value) {
+        
+        int32_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 int32 = 2;</code>
+       */
+      public Builder clearInt32() {
+        
+        int32_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ResVerifyLoginTokenMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:ResVerifyLoginTokenMessage)
+    private static final com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage();
+    }
+
+    public static com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ResVerifyLoginTokenMessage>
+        PARSER = new com.google.protobuf.AbstractParser<ResVerifyLoginTokenMessage>() {
+      public ResVerifyLoginTokenMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ResVerifyLoginTokenMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ResVerifyLoginTokenMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ResVerifyLoginTokenMessage> getParserForType() {
+      return PARSER;
+    }
+
+    public com.leader.game.protobuf.protocol.ServerInternal.ResVerifyLoginTokenMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface int32OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:int32)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string username = 1;</code>
+     */
+    java.lang.String getUsername();
+    /**
+     * <code>string username = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getUsernameBytes();
+  }
+  /**
+   * <pre>
+   * 玩家帐号
+   * </pre>
+   *
+   * Protobuf type {@code int32}
+   */
+  public  static final class int32 extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:int32)
+      int32OrBuilder {
+    // Use int32.newBuilder() to construct.
+    private int32(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private int32() {
+      username_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private int32(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              username_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_int32_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_int32_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.leader.game.protobuf.protocol.ServerInternal.int32.class, com.leader.game.protobuf.protocol.ServerInternal.int32.Builder.class);
+    }
+
+    public static final int USERNAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object username_;
+    /**
+     * <code>string username = 1;</code>
+     */
+    public java.lang.String getUsername() {
+      java.lang.Object ref = username_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        username_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string username = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUsernameBytes() {
+      java.lang.Object ref = username_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        username_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getUsernameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getUsernameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.leader.game.protobuf.protocol.ServerInternal.int32)) {
+        return super.equals(obj);
+      }
+      com.leader.game.protobuf.protocol.ServerInternal.int32 other = (com.leader.game.protobuf.protocol.ServerInternal.int32) obj;
+
+      boolean result = true;
+      result = result && getUsername()
+          .equals(other.getUsername());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getUsername().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.leader.game.protobuf.protocol.ServerInternal.int32 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.int32 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.int32 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.int32 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.int32 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.int32 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.int32 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.int32 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.int32 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.int32 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.leader.game.protobuf.protocol.ServerInternal.int32 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 玩家帐号
+     * </pre>
+     *
+     * Protobuf type {@code int32}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:int32)
+        com.leader.game.protobuf.protocol.ServerInternal.int32OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_int32_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_int32_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.leader.game.protobuf.protocol.ServerInternal.int32.class, com.leader.game.protobuf.protocol.ServerInternal.int32.Builder.class);
+      }
+
+      // Construct using com.leader.game.protobuf.protocol.ServerInternal.int32.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        username_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_int32_descriptor;
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.int32 getDefaultInstanceForType() {
+        return com.leader.game.protobuf.protocol.ServerInternal.int32.getDefaultInstance();
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.int32 build() {
+        com.leader.game.protobuf.protocol.ServerInternal.int32 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.int32 buildPartial() {
+        com.leader.game.protobuf.protocol.ServerInternal.int32 result = new com.leader.game.protobuf.protocol.ServerInternal.int32(this);
+        result.username_ = username_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.leader.game.protobuf.protocol.ServerInternal.int32) {
+          return mergeFrom((com.leader.game.protobuf.protocol.ServerInternal.int32)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.leader.game.protobuf.protocol.ServerInternal.int32 other) {
+        if (other == com.leader.game.protobuf.protocol.ServerInternal.int32.getDefaultInstance()) return this;
+        if (!other.getUsername().isEmpty()) {
+          username_ = other.username_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.leader.game.protobuf.protocol.ServerInternal.int32 parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.leader.game.protobuf.protocol.ServerInternal.int32) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object username_ = "";
+      /**
+       * <code>string username = 1;</code>
+       */
+      public java.lang.String getUsername() {
+        java.lang.Object ref = username_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          username_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string username = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUsernameBytes() {
+        java.lang.Object ref = username_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          username_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string username = 1;</code>
+       */
+      public Builder setUsername(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        username_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string username = 1;</code>
+       */
+      public Builder clearUsername() {
+        
+        username_ = getDefaultInstance().getUsername();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string username = 1;</code>
+       */
+      public Builder setUsernameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        username_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:int32)
+    }
+
+    // @@protoc_insertion_point(class_scope:int32)
+    private static final com.leader.game.protobuf.protocol.ServerInternal.int32 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.leader.game.protobuf.protocol.ServerInternal.int32();
+    }
+
+    public static com.leader.game.protobuf.protocol.ServerInternal.int32 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<int32>
+        PARSER = new com.google.protobuf.AbstractParser<int32>() {
+      public int32 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new int32(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<int32> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<int32> getParserForType() {
+      return PARSER;
+    }
+
+    public com.leader.game.protobuf.protocol.ServerInternal.int32 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ReqRegisterint32MessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ReqRegisterint32Message)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string username = 1;</code>
+     */
+    java.lang.String getUsername();
+    /**
+     * <code>string username = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getUsernameBytes();
+
+    /**
+     * <code>string password = 2;</code>
+     */
+    java.lang.String getPassword();
+    /**
+     * <code>string password = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getPasswordBytes();
+  }
+  /**
+   * <pre>
+   * 注册帐号请求
+   * </pre>
+   *
+   * Protobuf type {@code ReqRegisterint32Message}
+   */
+  public  static final class ReqRegisterint32Message extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ReqRegisterint32Message)
+      ReqRegisterint32MessageOrBuilder {
+    // Use ReqRegisterint32Message.newBuilder() to construct.
+    private ReqRegisterint32Message(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ReqRegisterint32Message() {
+      username_ = "";
+      password_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private ReqRegisterint32Message(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              username_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              password_ = s;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqRegisterint32Message_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqRegisterint32Message_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message.class, com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message.Builder.class);
+    }
+
+    public static final int USERNAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object username_;
+    /**
+     * <code>string username = 1;</code>
+     */
+    public java.lang.String getUsername() {
+      java.lang.Object ref = username_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        username_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string username = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUsernameBytes() {
+      java.lang.Object ref = username_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        username_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int PASSWORD_FIELD_NUMBER = 2;
+    private volatile java.lang.Object password_;
+    /**
+     * <code>string password = 2;</code>
+     */
+    public java.lang.String getPassword() {
+      java.lang.Object ref = password_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        password_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string password = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getPasswordBytes() {
+      java.lang.Object ref = password_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        password_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getUsernameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
+      }
+      if (!getPasswordBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getUsernameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
+      }
+      if (!getPasswordBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message)) {
+        return super.equals(obj);
+      }
+      com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message other = (com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message) obj;
+
+      boolean result = true;
+      result = result && getUsername()
+          .equals(other.getUsername());
+      result = result && getPassword()
+          .equals(other.getPassword());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getUsername().hashCode();
+      hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
+      hash = (53 * hash) + getPassword().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 注册帐号请求
+     * </pre>
+     *
+     * Protobuf type {@code ReqRegisterint32Message}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ReqRegisterint32Message)
+        com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32MessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqRegisterint32Message_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqRegisterint32Message_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message.class, com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message.Builder.class);
+      }
+
+      // Construct using com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        username_ = "";
+
+        password_ = "";
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqRegisterint32Message_descriptor;
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message getDefaultInstanceForType() {
+        return com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message.getDefaultInstance();
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message build() {
+        com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message buildPartial() {
+        com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message result = new com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message(this);
+        result.username_ = username_;
+        result.password_ = password_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message) {
+          return mergeFrom((com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message other) {
+        if (other == com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message.getDefaultInstance()) return this;
+        if (!other.getUsername().isEmpty()) {
+          username_ = other.username_;
+          onChanged();
+        }
+        if (!other.getPassword().isEmpty()) {
+          password_ = other.password_;
+          onChanged();
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object username_ = "";
+      /**
+       * <code>string username = 1;</code>
+       */
+      public java.lang.String getUsername() {
+        java.lang.Object ref = username_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          username_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string username = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUsernameBytes() {
+        java.lang.Object ref = username_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          username_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string username = 1;</code>
+       */
+      public Builder setUsername(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        username_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string username = 1;</code>
+       */
+      public Builder clearUsername() {
+        
+        username_ = getDefaultInstance().getUsername();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string username = 1;</code>
+       */
+      public Builder setUsernameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        username_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object password_ = "";
+      /**
+       * <code>string password = 2;</code>
+       */
+      public java.lang.String getPassword() {
+        java.lang.Object ref = password_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          password_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string password = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getPasswordBytes() {
+        java.lang.Object ref = password_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          password_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string password = 2;</code>
+       */
+      public Builder setPassword(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        password_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string password = 2;</code>
+       */
+      public Builder clearPassword() {
+        
+        password_ = getDefaultInstance().getPassword();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string password = 2;</code>
+       */
+      public Builder setPasswordBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        password_ = value;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ReqRegisterint32Message)
+    }
+
+    // @@protoc_insertion_point(class_scope:ReqRegisterint32Message)
+    private static final com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message();
+    }
+
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ReqRegisterint32Message>
+        PARSER = new com.google.protobuf.AbstractParser<ReqRegisterint32Message>() {
+      public ReqRegisterint32Message parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ReqRegisterint32Message(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ReqRegisterint32Message> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ReqRegisterint32Message> getParserForType() {
+      return PARSER;
+    }
+
+    public com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterint32Message getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ReqUpdatePlayerMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ReqUpdatePlayerMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string username = 1;</code>
+     */
+    java.lang.String getUsername();
+    /**
+     * <code>string username = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getUsernameBytes();
+
+    /**
+     * <code>int32 serverId = 2;</code>
+     */
+    int getServerId();
+
+    /**
+     * <code>int64 uid = 3;</code>
+     */
+    long getUid();
+
+    /**
+     * <code>string nickname = 4;</code>
+     */
+    java.lang.String getNickname();
+    /**
+     * <code>string nickname = 4;</code>
+     */
+    com.google.protobuf.ByteString
+        getNicknameBytes();
+
+    /**
+     * <code>int32 level = 5;</code>
+     */
+    int getLevel();
+
+    /**
+     * <code>int32 sex = 6;</code>
+     */
+    int getSex();
+  }
+  /**
+   * <pre>
+   * 更新玩家角色请求
+   * </pre>
+   *
+   * Protobuf type {@code ReqUpdatePlayerMessage}
+   */
+  public  static final class ReqUpdatePlayerMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ReqUpdatePlayerMessage)
+      ReqUpdatePlayerMessageOrBuilder {
+    // Use ReqUpdatePlayerMessage.newBuilder() to construct.
+    private ReqUpdatePlayerMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ReqUpdatePlayerMessage() {
+      username_ = "";
+      serverId_ = 0;
+      uid_ = 0L;
+      nickname_ = "";
+      level_ = 0;
+      sex_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private ReqUpdatePlayerMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              username_ = s;
+              break;
+            }
+            case 16: {
+
+              serverId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+
+              uid_ = input.readInt64();
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              nickname_ = s;
+              break;
+            }
+            case 40: {
+
+              level_ = input.readInt32();
+              break;
+            }
+            case 48: {
+
+              sex_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqUpdatePlayerMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqUpdatePlayerMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage.class, com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage.Builder.class);
+    }
+
+    public static final int USERNAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object username_;
+    /**
+     * <code>string username = 1;</code>
+     */
+    public java.lang.String getUsername() {
+      java.lang.Object ref = username_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        username_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string username = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUsernameBytes() {
+      java.lang.Object ref = username_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        username_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SERVERID_FIELD_NUMBER = 2;
+    private int serverId_;
+    /**
+     * <code>int32 serverId = 2;</code>
+     */
+    public int getServerId() {
+      return serverId_;
+    }
+
+    public static final int UID_FIELD_NUMBER = 3;
+    private long uid_;
+    /**
+     * <code>int64 uid = 3;</code>
+     */
+    public long getUid() {
+      return uid_;
+    }
+
+    public static final int NICKNAME_FIELD_NUMBER = 4;
+    private volatile java.lang.Object nickname_;
+    /**
+     * <code>string nickname = 4;</code>
+     */
+    public java.lang.String getNickname() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nickname_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string nickname = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNicknameBytes() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nickname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int LEVEL_FIELD_NUMBER = 5;
+    private int level_;
+    /**
+     * <code>int32 level = 5;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
+    public static final int SEX_FIELD_NUMBER = 6;
+    private int sex_;
+    /**
+     * <code>int32 sex = 6;</code>
+     */
+    public int getSex() {
+      return sex_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!getUsernameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
+      }
+      if (serverId_ != 0) {
+        output.writeInt32(2, serverId_);
+      }
+      if (uid_ != 0L) {
+        output.writeInt64(3, uid_);
+      }
+      if (!getNicknameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, nickname_);
+      }
+      if (level_ != 0) {
+        output.writeInt32(5, level_);
+      }
+      if (sex_ != 0) {
+        output.writeInt32(6, sex_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!getUsernameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
+      }
+      if (serverId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, serverId_);
+      }
+      if (uid_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, uid_);
+      }
+      if (!getNicknameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, nickname_);
+      }
+      if (level_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, level_);
+      }
+      if (sex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, sex_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage)) {
+        return super.equals(obj);
+      }
+      com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage other = (com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage) obj;
+
+      boolean result = true;
+      result = result && getUsername()
+          .equals(other.getUsername());
+      result = result && (getServerId()
+          == other.getServerId());
+      result = result && (getUid()
+          == other.getUid());
+      result = result && getNickname()
+          .equals(other.getNickname());
+      result = result && (getLevel()
+          == other.getLevel());
+      result = result && (getSex()
+          == other.getSex());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getUsername().hashCode();
+      hash = (37 * hash) + SERVERID_FIELD_NUMBER;
+      hash = (53 * hash) + getServerId();
+      hash = (37 * hash) + UID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUid());
+      hash = (37 * hash) + NICKNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getNickname().hashCode();
+      hash = (37 * hash) + LEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + getLevel();
+      hash = (37 * hash) + SEX_FIELD_NUMBER;
+      hash = (53 * hash) + getSex();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 更新玩家角色请求
+     * </pre>
+     *
+     * Protobuf type {@code ReqUpdatePlayerMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ReqUpdatePlayerMessage)
+        com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqUpdatePlayerMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqUpdatePlayerMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage.class, com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage.Builder.class);
+      }
+
+      // Construct using com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        username_ = "";
+
+        serverId_ = 0;
+
+        uid_ = 0L;
+
+        nickname_ = "";
+
+        level_ = 0;
+
+        sex_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.leader.game.protobuf.protocol.ServerInternal.internal_static_ReqUpdatePlayerMessage_descriptor;
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage getDefaultInstanceForType() {
+        return com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage.getDefaultInstance();
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage build() {
+        com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage buildPartial() {
+        com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage result = new com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage(this);
+        result.username_ = username_;
+        result.serverId_ = serverId_;
+        result.uid_ = uid_;
+        result.nickname_ = nickname_;
+        result.level_ = level_;
+        result.sex_ = sex_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage) {
+          return mergeFrom((com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage other) {
+        if (other == com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage.getDefaultInstance()) return this;
+        if (!other.getUsername().isEmpty()) {
+          username_ = other.username_;
+          onChanged();
+        }
+        if (other.getServerId() != 0) {
+          setServerId(other.getServerId());
+        }
+        if (other.getUid() != 0L) {
+          setUid(other.getUid());
+        }
+        if (!other.getNickname().isEmpty()) {
+          nickname_ = other.nickname_;
+          onChanged();
+        }
+        if (other.getLevel() != 0) {
+          setLevel(other.getLevel());
+        }
+        if (other.getSex() != 0) {
+          setSex(other.getSex());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object username_ = "";
+      /**
+       * <code>string username = 1;</code>
+       */
+      public java.lang.String getUsername() {
+        java.lang.Object ref = username_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          username_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string username = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getUsernameBytes() {
+        java.lang.Object ref = username_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          username_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string username = 1;</code>
+       */
+      public Builder setUsername(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        username_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string username = 1;</code>
+       */
+      public Builder clearUsername() {
+        
+        username_ = getDefaultInstance().getUsername();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string username = 1;</code>
+       */
+      public Builder setUsernameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        username_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int serverId_ ;
+      /**
+       * <code>int32 serverId = 2;</code>
+       */
+      public int getServerId() {
+        return serverId_;
+      }
+      /**
+       * <code>int32 serverId = 2;</code>
+       */
+      public Builder setServerId(int value) {
+        
+        serverId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 serverId = 2;</code>
+       */
+      public Builder clearServerId() {
+        
+        serverId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long uid_ ;
+      /**
+       * <code>int64 uid = 3;</code>
+       */
+      public long getUid() {
+        return uid_;
+      }
+      /**
+       * <code>int64 uid = 3;</code>
+       */
+      public Builder setUid(long value) {
+        
+        uid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 uid = 3;</code>
+       */
+      public Builder clearUid() {
+        
+        uid_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object nickname_ = "";
+      /**
+       * <code>string nickname = 4;</code>
+       */
+      public java.lang.String getNickname() {
+        java.lang.Object ref = nickname_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nickname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string nickname = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNicknameBytes() {
+        java.lang.Object ref = nickname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nickname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string nickname = 4;</code>
+       */
+      public Builder setNickname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string nickname = 4;</code>
+       */
+      public Builder clearNickname() {
+        
+        nickname_ = getDefaultInstance().getNickname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string nickname = 4;</code>
+       */
+      public Builder setNicknameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int level_ ;
+      /**
+       * <code>int32 level = 5;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>int32 level = 5;</code>
+       */
+      public Builder setLevel(int value) {
+        
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 level = 5;</code>
+       */
+      public Builder clearLevel() {
+        
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int sex_ ;
+      /**
+       * <code>int32 sex = 6;</code>
+       */
+      public int getSex() {
+        return sex_;
+      }
+      /**
+       * <code>int32 sex = 6;</code>
+       */
+      public Builder setSex(int value) {
+        
+        sex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 sex = 6;</code>
+       */
+      public Builder clearSex() {
+        
+        sex_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ReqUpdatePlayerMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:ReqUpdatePlayerMessage)
+    private static final com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage();
+    }
+
+    public static com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ReqUpdatePlayerMessage>
+        PARSER = new com.google.protobuf.AbstractParser<ReqUpdatePlayerMessage>() {
+      public ReqUpdatePlayerMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ReqUpdatePlayerMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ReqUpdatePlayerMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ReqUpdatePlayerMessage> getParserForType() {
+      return PARSER;
+    }
+
+    public com.leader.game.protobuf.protocol.ServerInternal.ReqUpdatePlayerMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_cytx_pokemon_server_register_ReqRegisterServerMessage_descriptor;
+    internal_static_ReqRegisterServerMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_cytx_pokemon_server_register_ReqRegisterServerMessage_fieldAccessorTable;
+      internal_static_ReqRegisterServerMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_cytx_pokemon_server_register_ReqInternalHeartbeatMessage_descriptor;
+    internal_static_ReqInternalHeartbeatMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_cytx_pokemon_server_register_ReqInternalHeartbeatMessage_fieldAccessorTable;
+      internal_static_ReqInternalHeartbeatMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ReqVerifyLoginTokenMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ReqVerifyLoginTokenMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ResVerifyLoginTokenMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ResVerifyLoginTokenMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_int32_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_int32_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ReqRegisterint32Message_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ReqRegisterint32Message_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ReqUpdatePlayerMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ReqUpdatePlayerMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1625,13 +4535,20 @@ public final class ServerInternal {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\034ServerInternalProtocol.proto\022 com.cytx" +
-      ".pokemon.server.register\"T\n\030ReqRegisterS" +
-      "erverMessage\022\020\n\010serverId\030\001 \002(\005\022\014\n\004name\030\002" +
-      " \002(\t\022\n\n\002ip\030\003 \002(\t\022\014\n\004port\030\004 \002(\005\"-\n\033ReqInt" +
-      "ernalHeartbeatMessage\022\016\n\006online\030\001 \002(\005B3\n" +
-      "!com.leader.game.protobuf.protocolB\016Serv" +
-      "erInternal"
+      "\n\034ServerInternalProtocol.proto\"T\n\030ReqReg" +
+      "isterServerMessage\022\020\n\010serverId\030\001 \001(\005\022\014\n\004" +
+      "name\030\002 \001(\t\022\n\n\002ip\030\003 \001(\t\022\014\n\004port\030\004 \001(\005\"-\n\033" +
+      "ReqInternalHeartbeatMessage\022\016\n\006online\030\001 " +
+      "\001(\005\"=\n\032ReqVerifyLoginTokenMessage\022\r\n\005tok" +
+      "en\030\001 \001(\t\022\020\n\010serverId\030\002 \001(\005\"9\n\032ResVerifyL" +
+      "oginTokenMessage\022\014\n\004code\030\001 \001(\005\022\r\n\005int32\030" +
+      "\002 \001(\005\"\031\n\005int32\022\020\n\010username\030\001 \001(\t\"=\n\027ReqR" +
+      "egisterint32Message\022\020\n\010username\030\001 \001(\t\022\020\n" +
+      "\010password\030\002 \001(\t\"w\n\026ReqUpdatePlayerMessag",
+      "e\022\020\n\010username\030\001 \001(\t\022\020\n\010serverId\030\002 \001(\005\022\013\n" +
+      "\003uid\030\003 \001(\003\022\020\n\010nickname\030\004 \001(\t\022\r\n\005level\030\005 " +
+      "\001(\005\022\013\n\003sex\030\006 \001(\005B3\n!com.leader.game.prot" +
+      "obuf.protocolB\016ServerInternalb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1645,18 +4562,48 @@ public final class ServerInternal {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_com_cytx_pokemon_server_register_ReqRegisterServerMessage_descriptor =
+    internal_static_ReqRegisterServerMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_com_cytx_pokemon_server_register_ReqRegisterServerMessage_fieldAccessorTable = new
+    internal_static_ReqRegisterServerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_cytx_pokemon_server_register_ReqRegisterServerMessage_descriptor,
+        internal_static_ReqRegisterServerMessage_descriptor,
         new java.lang.String[] { "ServerId", "Name", "Ip", "Port", });
-    internal_static_com_cytx_pokemon_server_register_ReqInternalHeartbeatMessage_descriptor =
+    internal_static_ReqInternalHeartbeatMessage_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_com_cytx_pokemon_server_register_ReqInternalHeartbeatMessage_fieldAccessorTable = new
+    internal_static_ReqInternalHeartbeatMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_cytx_pokemon_server_register_ReqInternalHeartbeatMessage_descriptor,
+        internal_static_ReqInternalHeartbeatMessage_descriptor,
         new java.lang.String[] { "Online", });
+    internal_static_ReqVerifyLoginTokenMessage_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_ReqVerifyLoginTokenMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ReqVerifyLoginTokenMessage_descriptor,
+        new java.lang.String[] { "Token", "ServerId", });
+    internal_static_ResVerifyLoginTokenMessage_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_ResVerifyLoginTokenMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ResVerifyLoginTokenMessage_descriptor,
+        new java.lang.String[] { "Code", "Int32", });
+    internal_static_int32_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_int32_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_int32_descriptor,
+        new java.lang.String[] { "Username", });
+    internal_static_ReqRegisterint32Message_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_ReqRegisterint32Message_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ReqRegisterint32Message_descriptor,
+        new java.lang.String[] { "Username", "Password", });
+    internal_static_ReqUpdatePlayerMessage_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_ReqUpdatePlayerMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ReqUpdatePlayerMessage_descriptor,
+        new java.lang.String[] { "Username", "ServerId", "Uid", "Nickname", "Level", "Sex", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

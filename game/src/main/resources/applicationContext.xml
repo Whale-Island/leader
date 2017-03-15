@@ -11,9 +11,9 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>file:./serverConfig/jdbc.properties</value>
-				<value>file:./serverConfig/game_server.properties</value>
-				<value>file:./serverConfig/log_jdbc.properties</value>
+				<value>file:./config/jdbc.properties</value>
+				<value>file:./config/game_server.properties</value>
+				<value>file:./config/log_jdbc.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -32,6 +32,7 @@
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
 	<!-- sigleton -->
+	<bean id="dispatcherManager" class="com.leader.core.server.manager.DispatcherManager" factory-method="getInstance" />
 	<bean id="globalManager" class="com.leader.game.server.manager.GlobalManager"
 		factory-method="getInstance" init-method="init" />
 	<bean id="logManager" class="com.leader.game.log.manager.LogManager" factory-method="getInstance" />

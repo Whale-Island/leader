@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.leader.game.server;
+package com.leader.game.server.thread;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

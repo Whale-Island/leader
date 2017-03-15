@@ -6,8 +6,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ThreadPool {
-	private static Logger log = LoggerFactory.getLogger(ThreadPool.class);
+public class LogicThreadPool {
+	private static Logger log = LoggerFactory.getLogger(LogicThreadPool.class);
 
 	/** 游戏逻辑处理线程池 */
 	public static final ScheduledExecutorService threadpool = Executors.newScheduledThreadPool(4);

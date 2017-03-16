@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import com.google.protobuf.Message.Builder;
 import com.leader.core.server.TcpClient;
 import com.leader.core.server.pool.LogicThreadPool;
-import com.leader.game.protobuf.protocol.ServerInternal.ReqInternalHeartbeatMessage;
+import com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqInternalHeartbeatMessage;
 import com.leader.game.server.GameServer;
 
 import io.netty.channel.Channel;

@@ -1,0 +1,47 @@
+syntax = "proto3";
+option java_package = "com.leader.game.protobuf.protocol"; 
+option java_outer_classname = "PlayerProtocol";
+
+// 登录请求
+message ReqLoginMessage{ 
+		string token = 1;//登录令牌
+}
+
+// 登录失败响应
+message ResLoginFailMessage{
+		int32 code = 1;//失败码
+}
+
+// 玩家数据响应
+message ResPlayerInfoMessage{
+		PlayerInfo playerInfo = 1;//玩家数据
+}
+
+//玩家数据
+message PlayerInfo{
+		int64 uid = 1;//玩家编号
+		string nickname = 2;//昵称
+		int32 sex = 3;//性别
+		int32 level = 4;//等级
+}
+
+//注册角色请求
+message ReqRegisterPlayerMessage{
+		string nickname = 1;
+		int32 sex = 2;
+}
+
+//验证昵称请求
+message ReqVerifyNicknameMessage{
+		string nickname = 1;
+}
+
+//验证昵称响应
+message ResVerifyNicknameMessage{
+		int32 code = 1;
+}
+
+//属性变化通知响应
+message ResPropertyChangeMessage{
+		
+}

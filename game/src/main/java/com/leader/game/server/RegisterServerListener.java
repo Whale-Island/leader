@@ -3,7 +3,7 @@ package com.leader.game.server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.leader.game.protobuf.protocol.ServerInternal.ReqRegisterServerMessage;
+import com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterServerMessage;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;

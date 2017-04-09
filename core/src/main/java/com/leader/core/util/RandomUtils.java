@@ -1,4 +1,4 @@
-package com.leader.game.util;
+package com.leader.core.util;
 
 import java.util.Collection;
 import java.util.Iterator;

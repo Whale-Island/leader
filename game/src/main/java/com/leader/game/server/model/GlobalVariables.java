@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import com.leader.core.db.GameEntity;
 
 @Entity
-@Table(name = "GLOBAL_VARIABLES")
+@Table(name = "global_variables")
 @NamedQueries({ // start
 		@NamedQuery(name = "GlobalVariables.findAll", query = "SELECT r FROM GlobalVariables r") // \n
 })

@@ -11,29 +11,20 @@ import com.leader.game.server.GameServer;
 import com.leader.game.server.model.ServerConfig;
 import com.leader.game.server.thread.LogProcessThread;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * 日志
- * 
- * @author
- *
  */
-public class LogManager {
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public enum LogManager {
+	Intstance;
 
 	@Autowired
 	LogProcessThread logProcessThread;
 	@Autowired
 	ServerConfig serverConfig;
-
-	private LogManager() {
-	}
-
-	private static class SigletonHolder {
-		private static final LogManager INSTANCE = new LogManager();
-	}
-
-	public static LogManager getInstance() {
-		return SigletonHolder.INSTANCE;
-	}
 
 	/**
 	 * 添加登录日志
@@ -43,21 +34,19 @@ public class LogManager {
 	 * @param username
 	 * @param channel
 	 * @param type
+	 *            1登录 2下线
 	 * @param onlineTime
 	 */
-	public void addLoginLog(long roleId, String nickname, String username, int channel, int type, int onlineTime,
-			int count) {
+	public void addLoginLog(long roleId, String nickname, String username, int channel, int type, int onlineTime) {
 		LoginLog loginLog = new LoginLog();
 		loginLog.setLoginTime(new Date());
-		loginLog.setRoleId(roleId);
-		loginLog.setRoleName(nickname);
-		loginLog.setUserName(username);
-		loginLog.setChannelId(channel);
 		loginLog.setServerId(serverConfig.getServerId());
-		loginLog.setId(1L);
+		loginLog.setChannelId(channel);
+		loginLog.setRoleId(roleId);
+		loginLog.setNickname(nickname);
+		loginLog.setUsername(username);
 		loginLog.setType(type);
 		loginLog.setOnlineTime(onlineTime);
-		loginLog.setCount(count);
 		logProcessThread.put(loginLog);
 	}
 
@@ -66,17 +55,16 @@ public class LogManager {
 	 * 
 	 * @param roleId
 	 * @param deviceId
-	 * @param roleName
-	 * @param userName
+	 * @param nickname
+	 * @param username
 	 * @param channel
 	 */
-	public void addRegisterLog(long roleId, String deviceId, String roleName, String userName, int channel) {
+	public void addRegisterLog(long roleId, String deviceId, String nickname, String username, int channel) {
 		RegisterLog log = new RegisterLog();
-		log.setId(roleId);
 		log.setDeviceId(deviceId);
 		log.setRegisterTime(new Date());
-		log.setRoleName(roleName);
-		log.setUserName(userName);
+		log.setNickname(nickname);
+		log.setUsername(username);
 		log.setChannelId(channel);
 		log.setServerId(serverConfig.getServerId());
 		logProcessThread.put(log);
@@ -90,7 +78,7 @@ public class LogManager {
 	public void addOnlineNumberLog(int hour) {
 		OnlineNumberLog numberLog = new OnlineNumberLog();
 		numberLog.setHour(hour);
-		numberLog.setNum(GameServer.getInstance().getChannelGroup().size());
+		numberLog.setNum(GameServer.Intstance.getChannelGroup().size());
 		numberLog.setServerId(serverConfig.getServerId());
 		numberLog.setTodayTime(new Date());
 		numberLog.setId(1L);

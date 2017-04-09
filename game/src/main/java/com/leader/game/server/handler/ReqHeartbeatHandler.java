@@ -10,7 +10,7 @@ import com.leader.core.server.model.Protocol;
 import io.netty.channel.Channel;
 
 @Controller
-@Protocol("ServerProtocol")
+@Protocol("PlayerProtocol")
 public class ReqHeartbeatHandler implements Handler {
 
 	@Override

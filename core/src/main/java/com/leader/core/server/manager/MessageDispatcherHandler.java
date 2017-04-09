@@ -31,7 +31,7 @@ public class MessageDispatcherHandler extends SimpleChannelInboundHandler<Packag
 	 */
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, Package pk) throws Exception {
-		DispatcherManager.getInstance().dispatcher(ctx, pk);
+		DispatcherManager.Intstance.dispatcher(ctx, pk);
 	}
 
 	@Override

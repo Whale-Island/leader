@@ -11,14 +11,16 @@ import com.leader.core.server.model.ShutdownListener;
 import com.leader.game.server.model.GlobalKey;
 import com.leader.game.server.model.GlobalVariables;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
+/** 全局变量管理 */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class GlobalManager implements ShutdownListener {
 
 	@Autowired
 	private CommonDao commonDao;
 	private ConcurrentMap<GlobalKey, GlobalVariables> globalVariablesMap = new ConcurrentHashMap<GlobalKey, GlobalVariables>();
-
-	private GlobalManager() {
-	}
 
 	private static class SigletonHolder {
 		static final GlobalManager INSTANCE = new GlobalManager();

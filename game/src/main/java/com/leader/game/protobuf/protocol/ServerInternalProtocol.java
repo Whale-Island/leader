@@ -23,7 +23,7 @@ public final class ServerInternalProtocol {
      *服务器编号
      * </pre>
      *
-     * <code>int32 serverId = 1;</code>
+     * <code>optional int32 serverId = 1;</code>
      */
     int getServerId();
 
@@ -32,7 +32,7 @@ public final class ServerInternalProtocol {
      *名字
      * </pre>
      *
-     * <code>string name = 2;</code>
+     * <code>optional string name = 2;</code>
      */
     java.lang.String getName();
     /**
@@ -40,7 +40,7 @@ public final class ServerInternalProtocol {
      *名字
      * </pre>
      *
-     * <code>string name = 2;</code>
+     * <code>optional string name = 2;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
@@ -50,7 +50,7 @@ public final class ServerInternalProtocol {
      *外网ip地址
      * </pre>
      *
-     * <code>string ip = 3;</code>
+     * <code>optional string ip = 3;</code>
      */
     java.lang.String getIp();
     /**
@@ -58,7 +58,7 @@ public final class ServerInternalProtocol {
      *外网ip地址
      * </pre>
      *
-     * <code>string ip = 3;</code>
+     * <code>optional string ip = 3;</code>
      */
     com.google.protobuf.ByteString
         getIpBytes();
@@ -68,7 +68,7 @@ public final class ServerInternalProtocol {
      *端口号
      * </pre>
      *
-     * <code>int32 port = 4;</code>
+     * <code>optional int32 port = 4;</code>
      */
     int getPort();
   }
@@ -171,7 +171,7 @@ public final class ServerInternalProtocol {
      *服务器编号
      * </pre>
      *
-     * <code>int32 serverId = 1;</code>
+     * <code>optional int32 serverId = 1;</code>
      */
     public int getServerId() {
       return serverId_;
@@ -184,7 +184,7 @@ public final class ServerInternalProtocol {
      *名字
      * </pre>
      *
-     * <code>string name = 2;</code>
+     * <code>optional string name = 2;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -203,7 +203,7 @@ public final class ServerInternalProtocol {
      *名字
      * </pre>
      *
-     * <code>string name = 2;</code>
+     * <code>optional string name = 2;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -226,7 +226,7 @@ public final class ServerInternalProtocol {
      *外网ip地址
      * </pre>
      *
-     * <code>string ip = 3;</code>
+     * <code>optional string ip = 3;</code>
      */
     public java.lang.String getIp() {
       java.lang.Object ref = ip_;
@@ -245,7 +245,7 @@ public final class ServerInternalProtocol {
      *外网ip地址
      * </pre>
      *
-     * <code>string ip = 3;</code>
+     * <code>optional string ip = 3;</code>
      */
     public com.google.protobuf.ByteString
         getIpBytes() {
@@ -268,7 +268,7 @@ public final class ServerInternalProtocol {
      *端口号
      * </pre>
      *
-     * <code>int32 port = 4;</code>
+     * <code>optional int32 port = 4;</code>
      */
     public int getPort() {
       return port_;
@@ -352,7 +352,7 @@ public final class ServerInternalProtocol {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + SERVERID_FIELD_NUMBER;
       hash = (53 * hash) + getServerId();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -604,7 +604,7 @@ public final class ServerInternalProtocol {
        *服务器编号
        * </pre>
        *
-       * <code>int32 serverId = 1;</code>
+       * <code>optional int32 serverId = 1;</code>
        */
       public int getServerId() {
         return serverId_;
@@ -614,7 +614,7 @@ public final class ServerInternalProtocol {
        *服务器编号
        * </pre>
        *
-       * <code>int32 serverId = 1;</code>
+       * <code>optional int32 serverId = 1;</code>
        */
       public Builder setServerId(int value) {
         
@@ -627,7 +627,7 @@ public final class ServerInternalProtocol {
        *服务器编号
        * </pre>
        *
-       * <code>int32 serverId = 1;</code>
+       * <code>optional int32 serverId = 1;</code>
        */
       public Builder clearServerId() {
         
@@ -642,7 +642,7 @@ public final class ServerInternalProtocol {
        *名字
        * </pre>
        *
-       * <code>string name = 2;</code>
+       * <code>optional string name = 2;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -661,7 +661,7 @@ public final class ServerInternalProtocol {
        *名字
        * </pre>
        *
-       * <code>string name = 2;</code>
+       * <code>optional string name = 2;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -681,7 +681,7 @@ public final class ServerInternalProtocol {
        *名字
        * </pre>
        *
-       * <code>string name = 2;</code>
+       * <code>optional string name = 2;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -698,7 +698,7 @@ public final class ServerInternalProtocol {
        *名字
        * </pre>
        *
-       * <code>string name = 2;</code>
+       * <code>optional string name = 2;</code>
        */
       public Builder clearName() {
         
@@ -711,7 +711,7 @@ public final class ServerInternalProtocol {
        *名字
        * </pre>
        *
-       * <code>string name = 2;</code>
+       * <code>optional string name = 2;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -731,7 +731,7 @@ public final class ServerInternalProtocol {
        *外网ip地址
        * </pre>
        *
-       * <code>string ip = 3;</code>
+       * <code>optional string ip = 3;</code>
        */
       public java.lang.String getIp() {
         java.lang.Object ref = ip_;
@@ -750,7 +750,7 @@ public final class ServerInternalProtocol {
        *外网ip地址
        * </pre>
        *
-       * <code>string ip = 3;</code>
+       * <code>optional string ip = 3;</code>
        */
       public com.google.protobuf.ByteString
           getIpBytes() {
@@ -770,7 +770,7 @@ public final class ServerInternalProtocol {
        *外网ip地址
        * </pre>
        *
-       * <code>string ip = 3;</code>
+       * <code>optional string ip = 3;</code>
        */
       public Builder setIp(
           java.lang.String value) {
@@ -787,7 +787,7 @@ public final class ServerInternalProtocol {
        *外网ip地址
        * </pre>
        *
-       * <code>string ip = 3;</code>
+       * <code>optional string ip = 3;</code>
        */
       public Builder clearIp() {
         
@@ -800,7 +800,7 @@ public final class ServerInternalProtocol {
        *外网ip地址
        * </pre>
        *
-       * <code>string ip = 3;</code>
+       * <code>optional string ip = 3;</code>
        */
       public Builder setIpBytes(
           com.google.protobuf.ByteString value) {
@@ -820,7 +820,7 @@ public final class ServerInternalProtocol {
        *端口号
        * </pre>
        *
-       * <code>int32 port = 4;</code>
+       * <code>optional int32 port = 4;</code>
        */
       public int getPort() {
         return port_;
@@ -830,7 +830,7 @@ public final class ServerInternalProtocol {
        *端口号
        * </pre>
        *
-       * <code>int32 port = 4;</code>
+       * <code>optional int32 port = 4;</code>
        */
       public Builder setPort(int value) {
         
@@ -843,7 +843,7 @@ public final class ServerInternalProtocol {
        *端口号
        * </pre>
        *
-       * <code>int32 port = 4;</code>
+       * <code>optional int32 port = 4;</code>
        */
       public Builder clearPort() {
         
@@ -909,7 +909,7 @@ public final class ServerInternalProtocol {
      *响应码
      * </pre>
      *
-     * <code>int32 code = 1;</code>
+     * <code>optional int32 code = 1;</code>
      */
     int getCode();
 
@@ -918,7 +918,7 @@ public final class ServerInternalProtocol {
      *服务器名字
      * </pre>
      *
-     * <code>string serverName = 2;</code>
+     * <code>optional string serverName = 2;</code>
      */
     java.lang.String getServerName();
     /**
@@ -926,7 +926,7 @@ public final class ServerInternalProtocol {
      *服务器名字
      * </pre>
      *
-     * <code>string serverName = 2;</code>
+     * <code>optional string serverName = 2;</code>
      */
     com.google.protobuf.ByteString
         getServerNameBytes();
@@ -1017,7 +1017,7 @@ public final class ServerInternalProtocol {
      *响应码
      * </pre>
      *
-     * <code>int32 code = 1;</code>
+     * <code>optional int32 code = 1;</code>
      */
     public int getCode() {
       return code_;
@@ -1030,7 +1030,7 @@ public final class ServerInternalProtocol {
      *服务器名字
      * </pre>
      *
-     * <code>string serverName = 2;</code>
+     * <code>optional string serverName = 2;</code>
      */
     public java.lang.String getServerName() {
       java.lang.Object ref = serverName_;
@@ -1049,7 +1049,7 @@ public final class ServerInternalProtocol {
      *服务器名字
      * </pre>
      *
-     * <code>string serverName = 2;</code>
+     * <code>optional string serverName = 2;</code>
      */
     public com.google.protobuf.ByteString
         getServerNameBytes() {
@@ -1126,7 +1126,7 @@ public final class ServerInternalProtocol {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + CODE_FIELD_NUMBER;
       hash = (53 * hash) + getCode();
       hash = (37 * hash) + SERVERNAME_FIELD_NUMBER;
@@ -1361,7 +1361,7 @@ public final class ServerInternalProtocol {
        *响应码
        * </pre>
        *
-       * <code>int32 code = 1;</code>
+       * <code>optional int32 code = 1;</code>
        */
       public int getCode() {
         return code_;
@@ -1371,7 +1371,7 @@ public final class ServerInternalProtocol {
        *响应码
        * </pre>
        *
-       * <code>int32 code = 1;</code>
+       * <code>optional int32 code = 1;</code>
        */
       public Builder setCode(int value) {
         
@@ -1384,7 +1384,7 @@ public final class ServerInternalProtocol {
        *响应码
        * </pre>
        *
-       * <code>int32 code = 1;</code>
+       * <code>optional int32 code = 1;</code>
        */
       public Builder clearCode() {
         
@@ -1399,7 +1399,7 @@ public final class ServerInternalProtocol {
        *服务器名字
        * </pre>
        *
-       * <code>string serverName = 2;</code>
+       * <code>optional string serverName = 2;</code>
        */
       public java.lang.String getServerName() {
         java.lang.Object ref = serverName_;
@@ -1418,7 +1418,7 @@ public final class ServerInternalProtocol {
        *服务器名字
        * </pre>
        *
-       * <code>string serverName = 2;</code>
+       * <code>optional string serverName = 2;</code>
        */
       public com.google.protobuf.ByteString
           getServerNameBytes() {
@@ -1438,7 +1438,7 @@ public final class ServerInternalProtocol {
        *服务器名字
        * </pre>
        *
-       * <code>string serverName = 2;</code>
+       * <code>optional string serverName = 2;</code>
        */
       public Builder setServerName(
           java.lang.String value) {
@@ -1455,7 +1455,7 @@ public final class ServerInternalProtocol {
        *服务器名字
        * </pre>
        *
-       * <code>string serverName = 2;</code>
+       * <code>optional string serverName = 2;</code>
        */
       public Builder clearServerName() {
         
@@ -1468,7 +1468,7 @@ public final class ServerInternalProtocol {
        *服务器名字
        * </pre>
        *
-       * <code>string serverName = 2;</code>
+       * <code>optional string serverName = 2;</code>
        */
       public Builder setServerNameBytes(
           com.google.protobuf.ByteString value) {
@@ -1539,7 +1539,7 @@ public final class ServerInternalProtocol {
      *在线人数
      * </pre>
      *
-     * <code>int32 online = 1;</code>
+     * <code>optional int32 online = 1;</code>
      */
     int getOnline();
   }
@@ -1622,7 +1622,7 @@ public final class ServerInternalProtocol {
      *在线人数
      * </pre>
      *
-     * <code>int32 online = 1;</code>
+     * <code>optional int32 online = 1;</code>
      */
     public int getOnline() {
       return online_;
@@ -1681,7 +1681,7 @@ public final class ServerInternalProtocol {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + ONLINE_FIELD_NUMBER;
       hash = (53 * hash) + getOnline();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -1907,7 +1907,7 @@ public final class ServerInternalProtocol {
        *在线人数
        * </pre>
        *
-       * <code>int32 online = 1;</code>
+       * <code>optional int32 online = 1;</code>
        */
       public int getOnline() {
         return online_;
@@ -1917,7 +1917,7 @@ public final class ServerInternalProtocol {
        *在线人数
        * </pre>
        *
-       * <code>int32 online = 1;</code>
+       * <code>optional int32 online = 1;</code>
        */
       public Builder setOnline(int value) {
         
@@ -1930,7 +1930,7 @@ public final class ServerInternalProtocol {
        *在线人数
        * </pre>
        *
-       * <code>int32 online = 1;</code>
+       * <code>optional int32 online = 1;</code>
        */
       public Builder clearOnline() {
         
@@ -1987,2411 +1987,42 @@ public final class ServerInternalProtocol {
 
   }
 
-  public interface ReqVerifyLoginTokenMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ReqVerifyLoginTokenMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string token = 1;</code>
-     */
-    java.lang.String getToken();
-    /**
-     * <code>string token = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getTokenBytes();
-
-    /**
-     * <code>int32 serverId = 2;</code>
-     */
-    int getServerId();
-  }
-  /**
-   * <pre>
-   * 验证玩家登录令牌请求
-   * </pre>
-   *
-   * Protobuf type {@code ReqVerifyLoginTokenMessage}
-   */
-  public  static final class ReqVerifyLoginTokenMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ReqVerifyLoginTokenMessage)
-      ReqVerifyLoginTokenMessageOrBuilder {
-    // Use ReqVerifyLoginTokenMessage.newBuilder() to construct.
-    private ReqVerifyLoginTokenMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ReqVerifyLoginTokenMessage() {
-      token_ = "";
-      serverId_ = 0;
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private ReqVerifyLoginTokenMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              token_ = s;
-              break;
-            }
-            case 16: {
-
-              serverId_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ReqVerifyLoginTokenMessage_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ReqVerifyLoginTokenMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage.class, com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage.Builder.class);
-    }
-
-    public static final int TOKEN_FIELD_NUMBER = 1;
-    private volatile java.lang.Object token_;
-    /**
-     * <code>string token = 1;</code>
-     */
-    public java.lang.String getToken() {
-      java.lang.Object ref = token_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        token_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string token = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getTokenBytes() {
-      java.lang.Object ref = token_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        token_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int SERVERID_FIELD_NUMBER = 2;
-    private int serverId_;
-    /**
-     * <code>int32 serverId = 2;</code>
-     */
-    public int getServerId() {
-      return serverId_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getTokenBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, token_);
-      }
-      if (serverId_ != 0) {
-        output.writeInt32(2, serverId_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getTokenBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, token_);
-      }
-      if (serverId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, serverId_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage)) {
-        return super.equals(obj);
-      }
-      com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage other = (com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage) obj;
-
-      boolean result = true;
-      result = result && getToken()
-          .equals(other.getToken());
-      result = result && (getServerId()
-          == other.getServerId());
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + TOKEN_FIELD_NUMBER;
-      hash = (53 * hash) + getToken().hashCode();
-      hash = (37 * hash) + SERVERID_FIELD_NUMBER;
-      hash = (53 * hash) + getServerId();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * 验证玩家登录令牌请求
-     * </pre>
-     *
-     * Protobuf type {@code ReqVerifyLoginTokenMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ReqVerifyLoginTokenMessage)
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ReqVerifyLoginTokenMessage_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ReqVerifyLoginTokenMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage.class, com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage.Builder.class);
-      }
-
-      // Construct using com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        token_ = "";
-
-        serverId_ = 0;
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ReqVerifyLoginTokenMessage_descriptor;
-      }
-
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage getDefaultInstanceForType() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage.getDefaultInstance();
-      }
-
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage build() {
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage buildPartial() {
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage result = new com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage(this);
-        result.token_ = token_;
-        result.serverId_ = serverId_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage) {
-          return mergeFrom((com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage other) {
-        if (other == com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage.getDefaultInstance()) return this;
-        if (!other.getToken().isEmpty()) {
-          token_ = other.token_;
-          onChanged();
-        }
-        if (other.getServerId() != 0) {
-          setServerId(other.getServerId());
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object token_ = "";
-      /**
-       * <code>string token = 1;</code>
-       */
-      public java.lang.String getToken() {
-        java.lang.Object ref = token_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          token_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string token = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getTokenBytes() {
-        java.lang.Object ref = token_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          token_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string token = 1;</code>
-       */
-      public Builder setToken(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        token_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string token = 1;</code>
-       */
-      public Builder clearToken() {
-        
-        token_ = getDefaultInstance().getToken();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string token = 1;</code>
-       */
-      public Builder setTokenBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        token_ = value;
-        onChanged();
-        return this;
-      }
-
-      private int serverId_ ;
-      /**
-       * <code>int32 serverId = 2;</code>
-       */
-      public int getServerId() {
-        return serverId_;
-      }
-      /**
-       * <code>int32 serverId = 2;</code>
-       */
-      public Builder setServerId(int value) {
-        
-        serverId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 serverId = 2;</code>
-       */
-      public Builder clearServerId() {
-        
-        serverId_ = 0;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ReqVerifyLoginTokenMessage)
-    }
-
-    // @@protoc_insertion_point(class_scope:ReqVerifyLoginTokenMessage)
-    private static final com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage();
-    }
-
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ReqVerifyLoginTokenMessage>
-        PARSER = new com.google.protobuf.AbstractParser<ReqVerifyLoginTokenMessage>() {
-      public ReqVerifyLoginTokenMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ReqVerifyLoginTokenMessage(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ReqVerifyLoginTokenMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ReqVerifyLoginTokenMessage> getParserForType() {
-      return PARSER;
-    }
-
-    public com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqVerifyLoginTokenMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ResVerifyLoginTokenMessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ResVerifyLoginTokenMessage)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>int32 code = 1;</code>
-     */
-    int getCode();
-
-    /**
-     * <code>.User user = 2;</code>
-     */
-    boolean hasUser();
-    /**
-     * <code>.User user = 2;</code>
-     */
-    com.leader.game.protobuf.protocol.ServerInternalProtocol.User getUser();
-    /**
-     * <code>.User user = 2;</code>
-     */
-    com.leader.game.protobuf.protocol.ServerInternalProtocol.UserOrBuilder getUserOrBuilder();
-  }
-  /**
-   * <pre>
-   * 验证玩家登录令牌响应
-   * </pre>
-   *
-   * Protobuf type {@code ResVerifyLoginTokenMessage}
-   */
-  public  static final class ResVerifyLoginTokenMessage extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ResVerifyLoginTokenMessage)
-      ResVerifyLoginTokenMessageOrBuilder {
-    // Use ResVerifyLoginTokenMessage.newBuilder() to construct.
-    private ResVerifyLoginTokenMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ResVerifyLoginTokenMessage() {
-      code_ = 0;
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private ResVerifyLoginTokenMessage(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-
-              code_ = input.readInt32();
-              break;
-            }
-            case 18: {
-              com.leader.game.protobuf.protocol.ServerInternalProtocol.User.Builder subBuilder = null;
-              if (user_ != null) {
-                subBuilder = user_.toBuilder();
-              }
-              user_ = input.readMessage(com.leader.game.protobuf.protocol.ServerInternalProtocol.User.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(user_);
-                user_ = subBuilder.buildPartial();
-              }
-
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ResVerifyLoginTokenMessage_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ResVerifyLoginTokenMessage_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage.class, com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage.Builder.class);
-    }
-
-    public static final int CODE_FIELD_NUMBER = 1;
-    private int code_;
-    /**
-     * <code>int32 code = 1;</code>
-     */
-    public int getCode() {
-      return code_;
-    }
-
-    public static final int USER_FIELD_NUMBER = 2;
-    private com.leader.game.protobuf.protocol.ServerInternalProtocol.User user_;
-    /**
-     * <code>.User user = 2;</code>
-     */
-    public boolean hasUser() {
-      return user_ != null;
-    }
-    /**
-     * <code>.User user = 2;</code>
-     */
-    public com.leader.game.protobuf.protocol.ServerInternalProtocol.User getUser() {
-      return user_ == null ? com.leader.game.protobuf.protocol.ServerInternalProtocol.User.getDefaultInstance() : user_;
-    }
-    /**
-     * <code>.User user = 2;</code>
-     */
-    public com.leader.game.protobuf.protocol.ServerInternalProtocol.UserOrBuilder getUserOrBuilder() {
-      return getUser();
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (code_ != 0) {
-        output.writeInt32(1, code_);
-      }
-      if (user_ != null) {
-        output.writeMessage(2, getUser());
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (code_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, code_);
-      }
-      if (user_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getUser());
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage)) {
-        return super.equals(obj);
-      }
-      com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage other = (com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage) obj;
-
-      boolean result = true;
-      result = result && (getCode()
-          == other.getCode());
-      result = result && (hasUser() == other.hasUser());
-      if (hasUser()) {
-        result = result && getUser()
-            .equals(other.getUser());
-      }
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getCode();
-      if (hasUser()) {
-        hash = (37 * hash) + USER_FIELD_NUMBER;
-        hash = (53 * hash) + getUser().hashCode();
-      }
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * 验证玩家登录令牌响应
-     * </pre>
-     *
-     * Protobuf type {@code ResVerifyLoginTokenMessage}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ResVerifyLoginTokenMessage)
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ResVerifyLoginTokenMessage_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ResVerifyLoginTokenMessage_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage.class, com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage.Builder.class);
-      }
-
-      // Construct using com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        code_ = 0;
-
-        if (userBuilder_ == null) {
-          user_ = null;
-        } else {
-          user_ = null;
-          userBuilder_ = null;
-        }
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ResVerifyLoginTokenMessage_descriptor;
-      }
-
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage getDefaultInstanceForType() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage.getDefaultInstance();
-      }
-
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage build() {
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage buildPartial() {
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage result = new com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage(this);
-        result.code_ = code_;
-        if (userBuilder_ == null) {
-          result.user_ = user_;
-        } else {
-          result.user_ = userBuilder_.build();
-        }
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage) {
-          return mergeFrom((com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage other) {
-        if (other == com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage.getDefaultInstance()) return this;
-        if (other.getCode() != 0) {
-          setCode(other.getCode());
-        }
-        if (other.hasUser()) {
-          mergeUser(other.getUser());
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int code_ ;
-      /**
-       * <code>int32 code = 1;</code>
-       */
-      public int getCode() {
-        return code_;
-      }
-      /**
-       * <code>int32 code = 1;</code>
-       */
-      public Builder setCode(int value) {
-        
-        code_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 code = 1;</code>
-       */
-      public Builder clearCode() {
-        
-        code_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private com.leader.game.protobuf.protocol.ServerInternalProtocol.User user_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.leader.game.protobuf.protocol.ServerInternalProtocol.User, com.leader.game.protobuf.protocol.ServerInternalProtocol.User.Builder, com.leader.game.protobuf.protocol.ServerInternalProtocol.UserOrBuilder> userBuilder_;
-      /**
-       * <code>.User user = 2;</code>
-       */
-      public boolean hasUser() {
-        return userBuilder_ != null || user_ != null;
-      }
-      /**
-       * <code>.User user = 2;</code>
-       */
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.User getUser() {
-        if (userBuilder_ == null) {
-          return user_ == null ? com.leader.game.protobuf.protocol.ServerInternalProtocol.User.getDefaultInstance() : user_;
-        } else {
-          return userBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.User user = 2;</code>
-       */
-      public Builder setUser(com.leader.game.protobuf.protocol.ServerInternalProtocol.User value) {
-        if (userBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          user_ = value;
-          onChanged();
-        } else {
-          userBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.User user = 2;</code>
-       */
-      public Builder setUser(
-          com.leader.game.protobuf.protocol.ServerInternalProtocol.User.Builder builderForValue) {
-        if (userBuilder_ == null) {
-          user_ = builderForValue.build();
-          onChanged();
-        } else {
-          userBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.User user = 2;</code>
-       */
-      public Builder mergeUser(com.leader.game.protobuf.protocol.ServerInternalProtocol.User value) {
-        if (userBuilder_ == null) {
-          if (user_ != null) {
-            user_ =
-              com.leader.game.protobuf.protocol.ServerInternalProtocol.User.newBuilder(user_).mergeFrom(value).buildPartial();
-          } else {
-            user_ = value;
-          }
-          onChanged();
-        } else {
-          userBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.User user = 2;</code>
-       */
-      public Builder clearUser() {
-        if (userBuilder_ == null) {
-          user_ = null;
-          onChanged();
-        } else {
-          user_ = null;
-          userBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.User user = 2;</code>
-       */
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.User.Builder getUserBuilder() {
-        
-        onChanged();
-        return getUserFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.User user = 2;</code>
-       */
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.UserOrBuilder getUserOrBuilder() {
-        if (userBuilder_ != null) {
-          return userBuilder_.getMessageOrBuilder();
-        } else {
-          return user_ == null ?
-              com.leader.game.protobuf.protocol.ServerInternalProtocol.User.getDefaultInstance() : user_;
-        }
-      }
-      /**
-       * <code>.User user = 2;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.leader.game.protobuf.protocol.ServerInternalProtocol.User, com.leader.game.protobuf.protocol.ServerInternalProtocol.User.Builder, com.leader.game.protobuf.protocol.ServerInternalProtocol.UserOrBuilder> 
-          getUserFieldBuilder() {
-        if (userBuilder_ == null) {
-          userBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.leader.game.protobuf.protocol.ServerInternalProtocol.User, com.leader.game.protobuf.protocol.ServerInternalProtocol.User.Builder, com.leader.game.protobuf.protocol.ServerInternalProtocol.UserOrBuilder>(
-                  getUser(),
-                  getParentForChildren(),
-                  isClean());
-          user_ = null;
-        }
-        return userBuilder_;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ResVerifyLoginTokenMessage)
-    }
-
-    // @@protoc_insertion_point(class_scope:ResVerifyLoginTokenMessage)
-    private static final com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage();
-    }
-
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ResVerifyLoginTokenMessage>
-        PARSER = new com.google.protobuf.AbstractParser<ResVerifyLoginTokenMessage>() {
-      public ResVerifyLoginTokenMessage parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ResVerifyLoginTokenMessage(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ResVerifyLoginTokenMessage> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ResVerifyLoginTokenMessage> getParserForType() {
-      return PARSER;
-    }
-
-    public com.leader.game.protobuf.protocol.ServerInternalProtocol.ResVerifyLoginTokenMessage getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface UserOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:User)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string username = 1;</code>
-     */
-    java.lang.String getUsername();
-    /**
-     * <code>string username = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getUsernameBytes();
-  }
-  /**
-   * <pre>
-   * 玩家帐号
-   * </pre>
-   *
-   * Protobuf type {@code User}
-   */
-  public  static final class User extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:User)
-      UserOrBuilder {
-    // Use User.newBuilder() to construct.
-    private User(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private User() {
-      username_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private User(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              username_ = s;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_User_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_User_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.leader.game.protobuf.protocol.ServerInternalProtocol.User.class, com.leader.game.protobuf.protocol.ServerInternalProtocol.User.Builder.class);
-    }
-
-    public static final int USERNAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object username_;
-    /**
-     * <code>string username = 1;</code>
-     */
-    public java.lang.String getUsername() {
-      java.lang.Object ref = username_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        username_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string username = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getUsernameBytes() {
-      java.lang.Object ref = username_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        username_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getUsernameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getUsernameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.leader.game.protobuf.protocol.ServerInternalProtocol.User)) {
-        return super.equals(obj);
-      }
-      com.leader.game.protobuf.protocol.ServerInternalProtocol.User other = (com.leader.game.protobuf.protocol.ServerInternalProtocol.User) obj;
-
-      boolean result = true;
-      result = result && getUsername()
-          .equals(other.getUsername());
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getUsername().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.User parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.User parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.User parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.User parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.User parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.User parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.User parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.User parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.User parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.User parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.leader.game.protobuf.protocol.ServerInternalProtocol.User prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * 玩家帐号
-     * </pre>
-     *
-     * Protobuf type {@code User}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:User)
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.UserOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_User_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_User_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.leader.game.protobuf.protocol.ServerInternalProtocol.User.class, com.leader.game.protobuf.protocol.ServerInternalProtocol.User.Builder.class);
-      }
-
-      // Construct using com.leader.game.protobuf.protocol.ServerInternalProtocol.User.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        username_ = "";
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_User_descriptor;
-      }
-
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.User getDefaultInstanceForType() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.User.getDefaultInstance();
-      }
-
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.User build() {
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.User result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.User buildPartial() {
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.User result = new com.leader.game.protobuf.protocol.ServerInternalProtocol.User(this);
-        result.username_ = username_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.leader.game.protobuf.protocol.ServerInternalProtocol.User) {
-          return mergeFrom((com.leader.game.protobuf.protocol.ServerInternalProtocol.User)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.leader.game.protobuf.protocol.ServerInternalProtocol.User other) {
-        if (other == com.leader.game.protobuf.protocol.ServerInternalProtocol.User.getDefaultInstance()) return this;
-        if (!other.getUsername().isEmpty()) {
-          username_ = other.username_;
-          onChanged();
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.User parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.leader.game.protobuf.protocol.ServerInternalProtocol.User) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object username_ = "";
-      /**
-       * <code>string username = 1;</code>
-       */
-      public java.lang.String getUsername() {
-        java.lang.Object ref = username_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          username_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string username = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getUsernameBytes() {
-        java.lang.Object ref = username_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          username_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string username = 1;</code>
-       */
-      public Builder setUsername(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        username_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string username = 1;</code>
-       */
-      public Builder clearUsername() {
-        
-        username_ = getDefaultInstance().getUsername();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string username = 1;</code>
-       */
-      public Builder setUsernameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        username_ = value;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:User)
-    }
-
-    // @@protoc_insertion_point(class_scope:User)
-    private static final com.leader.game.protobuf.protocol.ServerInternalProtocol.User DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.leader.game.protobuf.protocol.ServerInternalProtocol.User();
-    }
-
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.User getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<User>
-        PARSER = new com.google.protobuf.AbstractParser<User>() {
-      public User parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new User(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<User> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<User> getParserForType() {
-      return PARSER;
-    }
-
-    public com.leader.game.protobuf.protocol.ServerInternalProtocol.User getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
-  public interface ReqRegisterint32MessageOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ReqRegisterint32Message)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>string username = 1;</code>
-     */
-    java.lang.String getUsername();
-    /**
-     * <code>string username = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getUsernameBytes();
-
-    /**
-     * <code>string password = 2;</code>
-     */
-    java.lang.String getPassword();
-    /**
-     * <code>string password = 2;</code>
-     */
-    com.google.protobuf.ByteString
-        getPasswordBytes();
-  }
-  /**
-   * <pre>
-   * 注册帐号请求
-   * </pre>
-   *
-   * Protobuf type {@code ReqRegisterint32Message}
-   */
-  public  static final class ReqRegisterint32Message extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:ReqRegisterint32Message)
-      ReqRegisterint32MessageOrBuilder {
-    // Use ReqRegisterint32Message.newBuilder() to construct.
-    private ReqRegisterint32Message(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private ReqRegisterint32Message() {
-      username_ = "";
-      password_ = "";
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
-    }
-    private ReqRegisterint32Message(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      int mutable_bitField0_ = 0;
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!input.skipField(tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              username_ = s;
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              password_ = s;
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ReqRegisterint32Message_descriptor;
-    }
-
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ReqRegisterint32Message_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message.class, com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message.Builder.class);
-    }
-
-    public static final int USERNAME_FIELD_NUMBER = 1;
-    private volatile java.lang.Object username_;
-    /**
-     * <code>string username = 1;</code>
-     */
-    public java.lang.String getUsername() {
-      java.lang.Object ref = username_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        username_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string username = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getUsernameBytes() {
-      java.lang.Object ref = username_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        username_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int PASSWORD_FIELD_NUMBER = 2;
-    private volatile java.lang.Object password_;
-    /**
-     * <code>string password = 2;</code>
-     */
-    public java.lang.String getPassword() {
-      java.lang.Object ref = password_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        password_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string password = 2;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPasswordBytes() {
-      java.lang.Object ref = password_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        password_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (!getUsernameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
-      }
-      if (!getPasswordBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
-      }
-    }
-
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (!getUsernameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
-      }
-      if (!getPasswordBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
-      }
-      memoizedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message)) {
-        return super.equals(obj);
-      }
-      com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message other = (com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message) obj;
-
-      boolean result = true;
-      result = result && getUsername()
-          .equals(other.getUsername());
-      result = result && getPassword()
-          .equals(other.getPassword());
-      return result;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + USERNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getUsername().hashCode();
-      hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
-      hash = (53 * hash) + getPassword().hashCode();
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * <pre>
-     * 注册帐号请求
-     * </pre>
-     *
-     * Protobuf type {@code ReqRegisterint32Message}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ReqRegisterint32Message)
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32MessageOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ReqRegisterint32Message_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ReqRegisterint32Message_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message.class, com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message.Builder.class);
-      }
-
-      // Construct using com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      public Builder clear() {
-        super.clear();
-        username_ = "";
-
-        password_ = "";
-
-        return this;
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.internal_static_ReqRegisterint32Message_descriptor;
-      }
-
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message getDefaultInstanceForType() {
-        return com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message.getDefaultInstance();
-      }
-
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message build() {
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      public com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message buildPartial() {
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message result = new com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message(this);
-        result.username_ = username_;
-        result.password_ = password_;
-        onBuilt();
-        return result;
-      }
-
-      public Builder clone() {
-        return (Builder) super.clone();
-      }
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.setField(field, value);
-      }
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return (Builder) super.clearField(field);
-      }
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return (Builder) super.clearOneof(oneof);
-      }
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, Object value) {
-        return (Builder) super.setRepeatedField(field, index, value);
-      }
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          Object value) {
-        return (Builder) super.addRepeatedField(field, value);
-      }
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message) {
-          return mergeFrom((com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message other) {
-        if (other == com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message.getDefaultInstance()) return this;
-        if (!other.getUsername().isEmpty()) {
-          username_ = other.username_;
-          onChanged();
-        }
-        if (!other.getPassword().isEmpty()) {
-          password_ = other.password_;
-          onChanged();
-        }
-        onChanged();
-        return this;
-      }
-
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private java.lang.Object username_ = "";
-      /**
-       * <code>string username = 1;</code>
-       */
-      public java.lang.String getUsername() {
-        java.lang.Object ref = username_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          username_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string username = 1;</code>
-       */
-      public com.google.protobuf.ByteString
-          getUsernameBytes() {
-        java.lang.Object ref = username_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          username_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string username = 1;</code>
-       */
-      public Builder setUsername(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        username_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string username = 1;</code>
-       */
-      public Builder clearUsername() {
-        
-        username_ = getDefaultInstance().getUsername();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string username = 1;</code>
-       */
-      public Builder setUsernameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        username_ = value;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object password_ = "";
-      /**
-       * <code>string password = 2;</code>
-       */
-      public java.lang.String getPassword() {
-        java.lang.Object ref = password_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          password_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string password = 2;</code>
-       */
-      public com.google.protobuf.ByteString
-          getPasswordBytes() {
-        java.lang.Object ref = password_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          password_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string password = 2;</code>
-       */
-      public Builder setPassword(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        password_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string password = 2;</code>
-       */
-      public Builder clearPassword() {
-        
-        password_ = getDefaultInstance().getPassword();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string password = 2;</code>
-       */
-      public Builder setPasswordBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        password_ = value;
-        onChanged();
-        return this;
-      }
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return this;
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:ReqRegisterint32Message)
-    }
-
-    // @@protoc_insertion_point(class_scope:ReqRegisterint32Message)
-    private static final com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message();
-    }
-
-    public static com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<ReqRegisterint32Message>
-        PARSER = new com.google.protobuf.AbstractParser<ReqRegisterint32Message>() {
-      public ReqRegisterint32Message parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-          return new ReqRegisterint32Message(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<ReqRegisterint32Message> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<ReqRegisterint32Message> getParserForType() {
-      return PARSER;
-    }
-
-    public com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqRegisterint32Message getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface ReqUpdatePlayerMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ReqUpdatePlayerMessage)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string username = 1;</code>
+     * <code>optional string username = 1;</code>
      */
     java.lang.String getUsername();
     /**
-     * <code>string username = 1;</code>
+     * <code>optional string username = 1;</code>
      */
     com.google.protobuf.ByteString
         getUsernameBytes();
 
     /**
-     * <code>int32 serverId = 2;</code>
+     * <code>optional int32 serverId = 2;</code>
      */
     int getServerId();
 
     /**
-     * <code>int64 uid = 3;</code>
-     */
-    long getUid();
-
-    /**
-     * <code>string nickname = 4;</code>
+     * <code>optional string nickname = 3;</code>
      */
     java.lang.String getNickname();
     /**
-     * <code>string nickname = 4;</code>
+     * <code>optional string nickname = 3;</code>
      */
     com.google.protobuf.ByteString
         getNicknameBytes();
 
     /**
-     * <code>int32 level = 5;</code>
+     * <code>optional int32 level = 4;</code>
      */
     int getLevel();
 
     /**
-     * <code>int32 sex = 6;</code>
+     * <code>optional int32 sex = 5;</code>
      */
     int getSex();
   }
@@ -4413,7 +2044,6 @@ public final class ServerInternalProtocol {
     private ReqUpdatePlayerMessage() {
       username_ = "";
       serverId_ = 0;
-      uid_ = 0L;
       nickname_ = "";
       level_ = 0;
       sex_ = 0;
@@ -4455,23 +2085,18 @@ public final class ServerInternalProtocol {
               serverId_ = input.readInt32();
               break;
             }
-            case 24: {
-
-              uid_ = input.readInt64();
-              break;
-            }
-            case 34: {
+            case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
               nickname_ = s;
               break;
             }
-            case 40: {
+            case 32: {
 
               level_ = input.readInt32();
               break;
             }
-            case 48: {
+            case 40: {
 
               sex_ = input.readInt32();
               break;
@@ -4502,7 +2127,7 @@ public final class ServerInternalProtocol {
     public static final int USERNAME_FIELD_NUMBER = 1;
     private volatile java.lang.Object username_;
     /**
-     * <code>string username = 1;</code>
+     * <code>optional string username = 1;</code>
      */
     public java.lang.String getUsername() {
       java.lang.Object ref = username_;
@@ -4517,7 +2142,7 @@ public final class ServerInternalProtocol {
       }
     }
     /**
-     * <code>string username = 1;</code>
+     * <code>optional string username = 1;</code>
      */
     public com.google.protobuf.ByteString
         getUsernameBytes() {
@@ -4536,25 +2161,16 @@ public final class ServerInternalProtocol {
     public static final int SERVERID_FIELD_NUMBER = 2;
     private int serverId_;
     /**
-     * <code>int32 serverId = 2;</code>
+     * <code>optional int32 serverId = 2;</code>
      */
     public int getServerId() {
       return serverId_;
     }
 
-    public static final int UID_FIELD_NUMBER = 3;
-    private long uid_;
-    /**
-     * <code>int64 uid = 3;</code>
-     */
-    public long getUid() {
-      return uid_;
-    }
-
-    public static final int NICKNAME_FIELD_NUMBER = 4;
+    public static final int NICKNAME_FIELD_NUMBER = 3;
     private volatile java.lang.Object nickname_;
     /**
-     * <code>string nickname = 4;</code>
+     * <code>optional string nickname = 3;</code>
      */
     public java.lang.String getNickname() {
       java.lang.Object ref = nickname_;
@@ -4569,7 +2185,7 @@ public final class ServerInternalProtocol {
       }
     }
     /**
-     * <code>string nickname = 4;</code>
+     * <code>optional string nickname = 3;</code>
      */
     public com.google.protobuf.ByteString
         getNicknameBytes() {
@@ -4585,19 +2201,19 @@ public final class ServerInternalProtocol {
       }
     }
 
-    public static final int LEVEL_FIELD_NUMBER = 5;
+    public static final int LEVEL_FIELD_NUMBER = 4;
     private int level_;
     /**
-     * <code>int32 level = 5;</code>
+     * <code>optional int32 level = 4;</code>
      */
     public int getLevel() {
       return level_;
     }
 
-    public static final int SEX_FIELD_NUMBER = 6;
+    public static final int SEX_FIELD_NUMBER = 5;
     private int sex_;
     /**
-     * <code>int32 sex = 6;</code>
+     * <code>optional int32 sex = 5;</code>
      */
     public int getSex() {
       return sex_;
@@ -4621,17 +2237,14 @@ public final class ServerInternalProtocol {
       if (serverId_ != 0) {
         output.writeInt32(2, serverId_);
       }
-      if (uid_ != 0L) {
-        output.writeInt64(3, uid_);
-      }
       if (!getNicknameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, nickname_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, nickname_);
       }
       if (level_ != 0) {
-        output.writeInt32(5, level_);
+        output.writeInt32(4, level_);
       }
       if (sex_ != 0) {
-        output.writeInt32(6, sex_);
+        output.writeInt32(5, sex_);
       }
     }
 
@@ -4647,20 +2260,16 @@ public final class ServerInternalProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, serverId_);
       }
-      if (uid_ != 0L) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(3, uid_);
-      }
       if (!getNicknameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, nickname_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, nickname_);
       }
       if (level_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, level_);
+          .computeInt32Size(4, level_);
       }
       if (sex_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, sex_);
+          .computeInt32Size(5, sex_);
       }
       memoizedSize = size;
       return size;
@@ -4682,8 +2291,6 @@ public final class ServerInternalProtocol {
           .equals(other.getUsername());
       result = result && (getServerId()
           == other.getServerId());
-      result = result && (getUid()
-          == other.getUid());
       result = result && getNickname()
           .equals(other.getNickname());
       result = result && (getLevel()
@@ -4699,14 +2306,11 @@ public final class ServerInternalProtocol {
         return memoizedHashCode;
       }
       int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + USERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getUsername().hashCode();
       hash = (37 * hash) + SERVERID_FIELD_NUMBER;
       hash = (53 * hash) + getServerId();
-      hash = (37 * hash) + UID_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          getUid());
       hash = (37 * hash) + NICKNAME_FIELD_NUMBER;
       hash = (53 * hash) + getNickname().hashCode();
       hash = (37 * hash) + LEVEL_FIELD_NUMBER;
@@ -4839,8 +2443,6 @@ public final class ServerInternalProtocol {
 
         serverId_ = 0;
 
-        uid_ = 0L;
-
         nickname_ = "";
 
         level_ = 0;
@@ -4871,7 +2473,6 @@ public final class ServerInternalProtocol {
         com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqUpdatePlayerMessage result = new com.leader.game.protobuf.protocol.ServerInternalProtocol.ReqUpdatePlayerMessage(this);
         result.username_ = username_;
         result.serverId_ = serverId_;
-        result.uid_ = uid_;
         result.nickname_ = nickname_;
         result.level_ = level_;
         result.sex_ = sex_;
@@ -4923,9 +2524,6 @@ public final class ServerInternalProtocol {
         if (other.getServerId() != 0) {
           setServerId(other.getServerId());
         }
-        if (other.getUid() != 0L) {
-          setUid(other.getUid());
-        }
         if (!other.getNickname().isEmpty()) {
           nickname_ = other.nickname_;
           onChanged();
@@ -4964,7 +2562,7 @@ public final class ServerInternalProtocol {
 
       private java.lang.Object username_ = "";
       /**
-       * <code>string username = 1;</code>
+       * <code>optional string username = 1;</code>
        */
       public java.lang.String getUsername() {
         java.lang.Object ref = username_;
@@ -4979,7 +2577,7 @@ public final class ServerInternalProtocol {
         }
       }
       /**
-       * <code>string username = 1;</code>
+       * <code>optional string username = 1;</code>
        */
       public com.google.protobuf.ByteString
           getUsernameBytes() {
@@ -4995,7 +2593,7 @@ public final class ServerInternalProtocol {
         }
       }
       /**
-       * <code>string username = 1;</code>
+       * <code>optional string username = 1;</code>
        */
       public Builder setUsername(
           java.lang.String value) {
@@ -5008,7 +2606,7 @@ public final class ServerInternalProtocol {
         return this;
       }
       /**
-       * <code>string username = 1;</code>
+       * <code>optional string username = 1;</code>
        */
       public Builder clearUsername() {
         
@@ -5017,7 +2615,7 @@ public final class ServerInternalProtocol {
         return this;
       }
       /**
-       * <code>string username = 1;</code>
+       * <code>optional string username = 1;</code>
        */
       public Builder setUsernameBytes(
           com.google.protobuf.ByteString value) {
@@ -5033,13 +2631,13 @@ public final class ServerInternalProtocol {
 
       private int serverId_ ;
       /**
-       * <code>int32 serverId = 2;</code>
+       * <code>optional int32 serverId = 2;</code>
        */
       public int getServerId() {
         return serverId_;
       }
       /**
-       * <code>int32 serverId = 2;</code>
+       * <code>optional int32 serverId = 2;</code>
        */
       public Builder setServerId(int value) {
         
@@ -5048,7 +2646,7 @@ public final class ServerInternalProtocol {
         return this;
       }
       /**
-       * <code>int32 serverId = 2;</code>
+       * <code>optional int32 serverId = 2;</code>
        */
       public Builder clearServerId() {
         
@@ -5057,35 +2655,9 @@ public final class ServerInternalProtocol {
         return this;
       }
 
-      private long uid_ ;
-      /**
-       * <code>int64 uid = 3;</code>
-       */
-      public long getUid() {
-        return uid_;
-      }
-      /**
-       * <code>int64 uid = 3;</code>
-       */
-      public Builder setUid(long value) {
-        
-        uid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int64 uid = 3;</code>
-       */
-      public Builder clearUid() {
-        
-        uid_ = 0L;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object nickname_ = "";
       /**
-       * <code>string nickname = 4;</code>
+       * <code>optional string nickname = 3;</code>
        */
       public java.lang.String getNickname() {
         java.lang.Object ref = nickname_;
@@ -5100,7 +2672,7 @@ public final class ServerInternalProtocol {
         }
       }
       /**
-       * <code>string nickname = 4;</code>
+       * <code>optional string nickname = 3;</code>
        */
       public com.google.protobuf.ByteString
           getNicknameBytes() {
@@ -5116,7 +2688,7 @@ public final class ServerInternalProtocol {
         }
       }
       /**
-       * <code>string nickname = 4;</code>
+       * <code>optional string nickname = 3;</code>
        */
       public Builder setNickname(
           java.lang.String value) {
@@ -5129,7 +2701,7 @@ public final class ServerInternalProtocol {
         return this;
       }
       /**
-       * <code>string nickname = 4;</code>
+       * <code>optional string nickname = 3;</code>
        */
       public Builder clearNickname() {
         
@@ -5138,7 +2710,7 @@ public final class ServerInternalProtocol {
         return this;
       }
       /**
-       * <code>string nickname = 4;</code>
+       * <code>optional string nickname = 3;</code>
        */
       public Builder setNicknameBytes(
           com.google.protobuf.ByteString value) {
@@ -5154,13 +2726,13 @@ public final class ServerInternalProtocol {
 
       private int level_ ;
       /**
-       * <code>int32 level = 5;</code>
+       * <code>optional int32 level = 4;</code>
        */
       public int getLevel() {
         return level_;
       }
       /**
-       * <code>int32 level = 5;</code>
+       * <code>optional int32 level = 4;</code>
        */
       public Builder setLevel(int value) {
         
@@ -5169,7 +2741,7 @@ public final class ServerInternalProtocol {
         return this;
       }
       /**
-       * <code>int32 level = 5;</code>
+       * <code>optional int32 level = 4;</code>
        */
       public Builder clearLevel() {
         
@@ -5180,13 +2752,13 @@ public final class ServerInternalProtocol {
 
       private int sex_ ;
       /**
-       * <code>int32 sex = 6;</code>
+       * <code>optional int32 sex = 5;</code>
        */
       public int getSex() {
         return sex_;
       }
       /**
-       * <code>int32 sex = 6;</code>
+       * <code>optional int32 sex = 5;</code>
        */
       public Builder setSex(int value) {
         
@@ -5195,7 +2767,7 @@ public final class ServerInternalProtocol {
         return this;
       }
       /**
-       * <code>int32 sex = 6;</code>
+       * <code>optional int32 sex = 5;</code>
        */
       public Builder clearSex() {
         
@@ -5268,26 +2840,6 @@ public final class ServerInternalProtocol {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ReqInternalHeartbeatMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ReqVerifyLoginTokenMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ReqVerifyLoginTokenMessage_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ResVerifyLoginTokenMessage_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ResVerifyLoginTokenMessage_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_User_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_User_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ReqRegisterint32Message_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ReqRegisterint32Message_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ReqUpdatePlayerMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -5306,17 +2858,12 @@ public final class ServerInternalProtocol {
       "name\030\002 \001(\t\022\n\n\002ip\030\003 \001(\t\022\014\n\004port\030\004 \001(\005\"<\n\030" +
       "ResRegisterServerMessage\022\014\n\004code\030\001 \001(\005\022\022" +
       "\n\nserverName\030\002 \001(\t\"-\n\033ReqInternalHeartbe" +
-      "atMessage\022\016\n\006online\030\001 \001(\005\"=\n\032ReqVerifyLo" +
-      "ginTokenMessage\022\r\n\005token\030\001 \001(\t\022\020\n\010server" +
-      "Id\030\002 \001(\005\"?\n\032ResVerifyLoginTokenMessage\022\014" +
-      "\n\004code\030\001 \001(\005\022\023\n\004user\030\002 \001(\0132\005.User\"\030\n\004Use" +
-      "r\022\020\n\010username\030\001 \001(\t\"=\n\027ReqRegisterint32M",
-      "essage\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001" +
-      "(\t\"w\n\026ReqUpdatePlayerMessage\022\020\n\010username" +
-      "\030\001 \001(\t\022\020\n\010serverId\030\002 \001(\005\022\013\n\003uid\030\003 \001(\003\022\020\n" +
-      "\010nickname\030\004 \001(\t\022\r\n\005level\030\005 \001(\005\022\013\n\003sex\030\006 " +
-      "\001(\005B;\n!com.leader.game.protobuf.protocol" +
-      "B\026ServerInternalProtocolb\006proto3"
+      "atMessage\022\016\n\006online\030\001 \001(\005\"j\n\026ReqUpdatePl" +
+      "ayerMessage\022\020\n\010username\030\001 \001(\t\022\020\n\010serverI" +
+      "d\030\002 \001(\005\022\020\n\010nickname\030\003 \001(\t\022\r\n\005level\030\004 \001(\005" +
+      "\022\013\n\003sex\030\005 \001(\005B;\n!com.leader.game.protobu" +
+      "f.protocolB\026ServerInternalProtocolb\006prot",
+      "o3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5348,36 +2895,12 @@ public final class ServerInternalProtocol {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReqInternalHeartbeatMessage_descriptor,
         new java.lang.String[] { "Online", });
-    internal_static_ReqVerifyLoginTokenMessage_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_ReqVerifyLoginTokenMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ReqVerifyLoginTokenMessage_descriptor,
-        new java.lang.String[] { "Token", "ServerId", });
-    internal_static_ResVerifyLoginTokenMessage_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_ResVerifyLoginTokenMessage_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ResVerifyLoginTokenMessage_descriptor,
-        new java.lang.String[] { "Code", "User", });
-    internal_static_User_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_User_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_User_descriptor,
-        new java.lang.String[] { "Username", });
-    internal_static_ReqRegisterint32Message_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_ReqRegisterint32Message_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ReqRegisterint32Message_descriptor,
-        new java.lang.String[] { "Username", "Password", });
     internal_static_ReqUpdatePlayerMessage_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_ReqUpdatePlayerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReqUpdatePlayerMessage_descriptor,
-        new java.lang.String[] { "Username", "ServerId", "Uid", "Nickname", "Level", "Sex", });
+        new java.lang.String[] { "Username", "ServerId", "Nickname", "Level", "Sex", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

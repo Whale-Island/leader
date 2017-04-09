@@ -25,9 +25,9 @@ import com.leader.game.player.model.Player;
 public class PlayerDao extends JpaDaoSupport {
 
 	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED, readOnly = true)
-	public Player findPlayerByUserName(String userName) {
+	public Player findPlayerByUsername(String username) {
 		TypedQuery<Player> query = entityManager.createNamedQuery("Player.findPlayerByName", Player.class);
-		query.setParameter("userName", userName);
+		query.setParameter("username", username);
 		List<Player> players = query.getResultList();
 		if (players == null || players.isEmpty()) {
 			return null;
@@ -37,8 +37,8 @@ public class PlayerDao extends JpaDaoSupport {
 
 	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED, readOnly = true)
 	@SuppressWarnings("unchecked")
-	public List<String> loadNickname(String sql) {
-		Query query = entityManager.createNamedQuery(sql);
+	public List<String> loadNickname() {
+		Query query = entityManager.createNamedQuery("Player.getAllNickname");
 		List<String> names = query.getResultList();
 		if (names == null || names.isEmpty()) {
 			return null;

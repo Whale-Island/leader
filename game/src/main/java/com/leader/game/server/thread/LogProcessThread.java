@@ -10,8 +10,6 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,10 +17,13 @@ import com.leader.core.server.model.ThreadAdapter;
 import com.leader.game.log.LogDaoSupport;
 import com.leader.game.log.LogEntity;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * @author
  *
  */
+@Slf4j
 @Component
 public class LogProcessThread extends ThreadAdapter {
 
@@ -33,7 +34,6 @@ public class LogProcessThread extends ThreadAdapter {
 	private final LogEntity[] items = new LogEntity[10000];
 	private int putptr, takeptr;
 	private final AtomicInteger count = new AtomicInteger();
-	private Logger log = LoggerFactory.getLogger(getClass());
 	private volatile boolean stop = false;
 	@Autowired
 	private LogDaoSupport dao;
@@ -106,6 +106,7 @@ public class LogProcessThread extends ThreadAdapter {
 				drainTo(entities, 200);
 				dao.batchInsert(entities);
 			} catch (Exception e) {
+				log.error(e.getMessage(), e);
 			} finally {
 				entities.clear();
 			}

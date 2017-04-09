@@ -10,7 +10,7 @@ public class ClearLoginTokenJob {
 
 	@Scheduled(cron = "0 */1 * * * ?")
 	public void execute() {
-		PlayerManager.getInstance().clearToken();
+		PlayerManager.Intstance.clearToken();
 	}
 
 }

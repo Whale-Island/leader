@@ -1,6 +1,7 @@
 package com.leader.game.player;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -12,8 +13,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.leader.core.db.CommonDao;
@@ -26,64 +25,80 @@ import com.leader.game.player.listener.LogoutListener;
 import com.leader.game.player.model.LoginToken;
 import com.leader.game.player.model.Player;
 import com.leader.game.player.model.RandomName;
+import com.leader.game.protobuf.protocol.PlayerProtocol.ResLoginMessage;
+import com.leader.game.protobuf.protocol.PlayerProtocol.ResRegisterMessage.Builder;
+import com.leader.game.protobuf.protocol.SyncProtocol.ReqVerifyTokenMessage;
+import com.leader.game.protobuf.protocol.SyncProtocol.ResVerifyTokenMessage;
+import com.leader.game.sect.SectManager;
+import com.leader.game.sect.model.Sect;
+import com.leader.game.server.GameServer;
 import com.leader.game.server.model.AttributeKeys;
+import com.leader.game.server.model.PlayerChannelGroup;
+import com.leader.game.server.sync.SyncFutureUtils;
 import com.leader.game.util.DateUtils;
 import com.leader.game.util.WordFilter;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
+import io.netty.util.internal.StringUtil;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
-public class PlayerManager implements ShutdownListener {
-	private Logger log = LoggerFactory.getLogger(PlayerManager.class);
+@Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public enum PlayerManager implements ShutdownListener {
+	Intstance;
+
 	/** 角色名表达式 */
 	private static final String regEx = "^[\u4e00-\u9fa5_a-zA-Z0-9]+$";
 	private static final Pattern pattern = Pattern.compile(regEx);
 	/** 所有玩家 */
+	private ConcurrentHashMap<String, Player> roles = new ConcurrentHashMap<String, Player>();
+	/** 所有玩家 */
 	private ConcurrentHashMap<Long, Player> players = new ConcurrentHashMap<Long, Player>();
 	/** 所有角色名 */
-	private Set<String> roleNames = new HashSet<String>();
+	private Set<String> roleNames = Collections.synchronizedSet(new HashSet<String>());
+	/** 所有门派名 */
+	private Set<String> sectNames = Collections.synchronizedSet(new HashSet<String>());
 	/** 所有随机名字保存类 */
-	private RandomName randomName;
+	private RandomName roleRandom;
+	/** 门派随机名 */
+	private RandomName scetRandom;
 	/** 退出游戏Listener */
-	private List<LogoutListener> logoutListeners;
+	private @Getter @Setter List<LogoutListener> logoutListeners;
 	/** 登录令牌map */
 	private Map<String, LoginToken> tokenMap = new ConcurrentHashMap<String, LoginToken>();
 
+	private static final int NUMBER_LIMIT = 2000;
 	@Autowired
 	PlayerDao playerDao;
 	@Autowired
 	CommonDao commonDao;
 
+	/** 离线后token保存时间 */
 	private static final int TOKEN_INDATE = 15;
-
-	private PlayerManager() {
-	}
-
-	private static class SigletonHolder {
-		static final PlayerManager INSTANCE = new PlayerManager();
-	}
-
-	public static PlayerManager getInstance() {
-		return SigletonHolder.INSTANCE;
-	}
 
 	/** 初始化调用 */
 	public void init() {
-		List<String> strings = playerDao.loadNickname("Player.getAllNickname");
+		List<String> strings = playerDao.loadNickname();
 		if (strings != null && !strings.isEmpty()) {
 			roleNames.addAll(strings);
 		}
-		// TODO
-		randomName = new RandomName();
+		// TODO 初始化随机姓名库
+		roleRandom = new RandomName();
+		scetRandom = new RandomName();
 	}
 
 	/** 网络连接关闭监听器 */
-	private final ChannelFutureListener futureListener = new ChannelFutureListener() {
+	private @Getter final ChannelFutureListener futureListener = new ChannelFutureListener() {
 		@Override
 		public void operationComplete(ChannelFuture future) throws Exception {
 			Channel channel = future.channel();
-			Player player = channel.attr(AttributeKeys.ROLE).get();
+			Player player = channel.attr(AttributeKeys.PLAYER).get();
 			if (player != null) {
 				logout(player);
 			}
@@ -91,22 +106,138 @@ public class PlayerManager implements ShutdownListener {
 		}
 	};
 
-	/** 登录 */
-	public void login(String username, String token) {
-		LoginToken loginToken = tokenMap.get(username);
-		if (loginToken == null || loginToken.getToken().equals(token)) {
+	/**
+	 * 注册
+	 * 
+	 * @param channel2
+	 * 
+	 * @param nickname
+	 * @param icon
+	 * @param sex
+	 *            性别 1男 2女
+	 * @param sectName
+	 *            门派名称
+	 * @param gameChannel
+	 *            游戏渠道
+	 * @param deviceId
+	 *            设备号
+	 * @param response
+	 * @return
+	 */
+	public Player register(Channel channel, String nickname, String icon, int sex, String sectName, int gameChannel,
+			String deviceId, Builder response) {
+		try {
+			String username = channel.attr(AttributeKeys.USERNAME).get();
+			if (StringUtil.isNullOrEmpty(username)) {
+				log.info("非法操作！未登录注册！ip-->{}", channel.remoteAddress());
+				response.setCode(-1);// 未登录
+				return null;
+			}
+
+			Player player = playerDao.findPlayerByUsername(username);
+			if (player != null) {
+				log.info("非法操作！重复注册，帐号-->", username);
+				response.setCode(-2);// 已注册
+				return null;
+			}
+
+			if (!StringUtil.isNullOrEmpty(nickname) && nameIsAvailable(nickname) != 2) {
+				response.setCode(1);// 昵称非法或已被占用
+				return null;
+			}
+			if (!StringUtil.isNullOrEmpty(sectName) && nameIsAvailable(sectName) != 3) {
+				response.setCode(2);// 门派名称非法或已被占用
+				return null;
+			}
+			player = new Player();
+			player.setUsername(username);
+			player.setNickname(nickname);
+			player.setSectName(sectName);
+			player.setState(Player.ONLINE);
+			player.setLastOnlineTime(System.currentTimeMillis());
+			player.setChannel(gameChannel);
+			player.setDeviceId(deviceId);
+			commonDao.store(player);
+
+			Sect sect = SectManager.Intstance.creatSect(sectName);
+			player.setSect(sect);
+
+			roleNames.add(nickname);
+			sectNames.add(sectName);
+			roles.put(username, player);
+			players.put(player.getId(), player);
+			return player;
+		} catch (Exception e) {
+			response.setCode(3);// 创建失败
+			log.error(e.getMessage(), e);
 		}
-		Player player = playerDao.findPlayerByUserName(loginToken.getUsername());
-		player.setPreLoginTime(System.currentTimeMillis());
+		return null;
 	}
 
-	/** 添加玩家登录token */
-	public void addToken(String token, String username) {
-		LoginToken loginToken = new LoginToken();
-		loginToken.setUsername(username);
-		loginToken.setToken(token);
-		loginToken.setTime(System.currentTimeMillis());
-		tokenMap.put(username, loginToken);
+	/**
+	 * 登录
+	 * 
+	 * @param channel
+	 */
+	public Player login(String username, String token, Channel channel, ResLoginMessage.Builder respone) {
+		LoginToken loginToken = tokenMap.get(username);
+		if (loginToken == null || !loginToken.getToken().equals(token)) {
+			// 如果未找到token或者token不匹配，就去网关请求
+			ReqVerifyTokenMessage.Builder builder = ReqVerifyTokenMessage.newBuilder();
+			builder.setToken(token);
+			builder.setUsername(username);
+			ResVerifyTokenMessage message = (ResVerifyTokenMessage) SyncFutureUtils.Intstance.request(builder);
+			// 如果token再次匹配正确，就正常登录
+			if (message.getCode() != 0 || !token.equals(message.getToken())) {
+				respone.setCode(1);// token失效，请重新登录
+				return null;
+			}
+			loginToken = new LoginToken();
+			loginToken.setTime(System.currentTimeMillis());
+			loginToken.setToken(token);
+			loginToken.setUsername(username);
+			tokenMap.put(username, loginToken);
+		}
+		channel.attr(AttributeKeys.USERNAME).set(username);
+		Player player = roles.get(loginToken.getUsername());
+		if (player != null) {
+			int state = player.getState();
+			if (state == Player.SAVE) {
+				respone.setCode(2);// 玩家数据保存中
+				return null;
+			}
+		} else {
+			player = playerDao.findPlayerByUsername(loginToken.getUsername());
+			if (player == null) {
+				respone.setCode(3);// 未找到角色
+				return null;
+			}
+		}
+
+		PlayerChannelGroup channelGroup = GameServer.Intstance.getChannelGroup();
+		Channel oldChannel = channelGroup.getChannel(player.getId());
+		if (oldChannel != null) {
+			log.info("玩家:" + player.getId() + "被挤下线！原ip:" + oldChannel.remoteAddress() + " ---> 新ip:"
+					+ channel.remoteAddress());
+
+			channelGroup.remove(oldChannel);
+			oldChannel.close();
+		} else if (channelGroup.size() >= NUMBER_LIMIT) {
+			log.debug("在线玩家数量已达上限！");
+		}
+		// 绑定player与channel
+		channel.attr(AttributeKeys.PLAYER).set(player);
+		channel.attr(AttributeKeys.UID).set(player.getId());
+		channelGroup.add(channel);
+
+		players.put(player.getId(), player);
+		roles.put(player.getUsername(), player);
+
+		player.setPreLoginTime(System.currentTimeMillis());
+		Sect sect = SectManager.Intstance.loadSect(player.getId());
+		player.setSect(sect);
+
+		return player;
 	}
 
 	/** 定时销毁令牌 */
@@ -127,10 +258,12 @@ public class PlayerManager implements ShutdownListener {
 	}
 
 	/** 随机一个名字 */
-	public String randomName() {
+	public String randomName(int type) {
+		RandomName random = type == 1 ? roleRandom : scetRandom;
+		Set<String> names = type == 1 ? roleNames : sectNames;
 		for (int i = 0; i < 20; i++) {
-			String name = randomName.getName();
-			if (!roleNames.contains(name)) {
+			String name = random.getName();
+			if (!names.contains(name)) {
 				return name;
 			}
 		}
@@ -155,17 +288,25 @@ public class PlayerManager implements ShutdownListener {
 		return players.get(uid);
 	}
 
-	/** 昵称是否合法 */
-	public int nicknameIsAvailable(String nickname) {
-		if (WordFilter.getInstance().hashBadWords(nickname)) {
+	/**
+	 * 昵称是否合法
+	 * 
+	 * @param name
+	 * @return 1不合法 2昵称重复 3门派名重复
+	 */
+	private int nameIsAvailable(String name) {
+		if (WordFilter.getInstance().hashBadWords(name)) {
 			return 1;
 		}
-		Matcher m = pattern.matcher(nickname);
+		Matcher m = pattern.matcher(name);
 		if (!m.matches()) {
 			return 1;
 		}
-		if (roleNames.contains(nickname)) {
+		if (roleNames.contains(name)) {
 			return 2;
+		}
+		if (sectNames.contains(name)) {
+			return 3;
 		}
 		return 0;
 	}
@@ -189,7 +330,7 @@ public class PlayerManager implements ShutdownListener {
 						log.error(e.getMessage(), e);
 					}
 				}
-				entities.add(player);
+				entities.add(player.getSect());
 				commonDao.batchUpdate(entities);
 				entities.clear();
 				iterator.remove();
@@ -205,12 +346,15 @@ public class PlayerManager implements ShutdownListener {
 		long preLoginTime = player.getPreLoginTime();
 		long now = System.currentTimeMillis();
 		int onlineTime = (int) (now - preLoginTime);
-		LogManager.getInstance().addLoginLog(player.getId(), player.getNickname(), player.getUsername(), 0, 2,
-				onlineTime, 0);
-	}
 
-	public ChannelFutureListener getFutureListener() {
-		return futureListener;
+		PlayerChannelGroup channelGroup = GameServer.Intstance.getChannelGroup();
+		Channel oldChannel = channelGroup.getChannel(player.getId());
+		if (oldChannel != null) {
+			channelGroup.remove(oldChannel);
+		}
+
+		LogManager.Intstance.addLoginLog(player.getId(), player.getNickname(), player.getUsername(),
+				player.getChannel(), 2, onlineTime);
 	}
 
 	/**
@@ -235,11 +379,4 @@ public class PlayerManager implements ShutdownListener {
 		commonDao.batchUpdateCollection(players.values());
 	}
 
-	public List<LogoutListener> getLogoutListeners() {
-		return logoutListeners;
-	}
-
-	public void setLogoutListeners(List<LogoutListener> logoutListeners) {
-		this.logoutListeners = logoutListeners;
-	}
 }

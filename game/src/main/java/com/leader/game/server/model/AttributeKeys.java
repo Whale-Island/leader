@@ -12,10 +12,10 @@ import io.netty.util.AttributeKey;
 public interface AttributeKeys {
 	/** 角色id */
 	AttributeKey<Long> UID = AttributeKey.newInstance("UID");
+	/** 帐号 */
+	AttributeKey<String> USERNAME = AttributeKey.newInstance("USERNAME");
 	/** 玩家角色 */
-	AttributeKey<Player> ROLE = AttributeKey.newInstance("ROLE");
-	/** 渠道id */
-	AttributeKey<Integer> CHANNEL_ID = AttributeKey.newInstance("ChannelId");
+	AttributeKey<Player> PLAYER = AttributeKey.newInstance("PLAYER");
 	/** 密匙 */
 	AttributeKey<String> PRIAVTE_KEY = AttributeKey.newInstance("PRIAVTE_KEY");
 }

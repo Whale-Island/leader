@@ -3,6 +3,8 @@ package com.leader.game.util;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.leader.core.util.IdWorker;
+
 public class IdWorkerTest {
 
 	static class IdWorkThread implements Runnable {

@@ -10,5 +10,5 @@ import io.netty.channel.Channel;
  * 
  */
 public interface Handler {
-	public void action(Channel channel, Message message) throws InvalidProtocolBufferException;
+	public void action(Channel channel, Message m) throws InvalidProtocolBufferException;
 }

@@ -37,7 +37,7 @@ public class PlayerChannelGroup extends DefaultChannelGroup {
 		Channel channel = channels.remove(roleName);
 		if (channel != null) {
 			channel.attr(AttributeKeys.UID).getAndSet(null);
-			channel.attr(AttributeKeys.ROLE).getAndSet(null);
+			channel.attr(AttributeKeys.PLAYER).getAndSet(null);
 		}
 		return true;
 	}

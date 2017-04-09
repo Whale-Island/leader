@@ -18,7 +18,9 @@
 		</property>
 	</bean>
 
-	<bean id="messagePool" class="com.leader.core.server.pool.MessagePool" />
+	<bean id="messagePool" class="com.leader.core.server.pool.MessagePool" >
+		<property name="packagepath" value="com.leader.game.protobuf.protocol"></property>
+	</bean>
 	<bean id="messageType" class="com.leader.game.server.model.IMessageType" />
 
 	<task:annotation-driven scheduler="TaskScheduler" />

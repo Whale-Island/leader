@@ -10,7 +10,7 @@ public class SavePlayerDataJob {
 
 	@Scheduled(cron = "0 0/15 * * * ?")
 	public void execute() {
-		PlayerManager.getInstance().save();
+		PlayerManager.Intstance.save();
 	}
 
 }

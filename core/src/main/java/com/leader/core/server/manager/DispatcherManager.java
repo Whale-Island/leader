@@ -1,34 +1,21 @@
 package com.leader.core.server.manager;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.leader.core.server.handler.Handler;
 import com.leader.core.server.model.Package;
-import com.leader.core.server.pool.MessagePool;
 import com.leader.core.server.pool.LogicThreadPool;
+import com.leader.core.server.pool.MessagePool;
 
 import io.netty.channel.ChannelHandlerContext;
+import lombok.extern.slf4j.Slf4j;
 
-public class DispatcherManager {
-
+@Slf4j
+public enum DispatcherManager {
+	Intstance;
 	/** handler_pool */
 	@Autowired
 	private MessagePool messagePool;
-	/** 日志 */
-	private Logger log = LoggerFactory.getLogger(DispatcherManager.class);
-
-	private DispatcherManager() {
-	}
-
-	private static class SigletonHolder {
-		static final DispatcherManager INSTANCE = new DispatcherManager();
-	}
-
-	public static DispatcherManager getInstance() {
-		return SigletonHolder.INSTANCE;
-	}
 
 	/**
 	 * 消息分发

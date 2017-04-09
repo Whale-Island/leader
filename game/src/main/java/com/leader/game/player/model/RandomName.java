@@ -1,6 +1,6 @@
 package com.leader.game.player.model;
 
-import com.leader.game.util.RandomUtils;
+import com.leader.core.util.RandomUtils;
 
 public class RandomName {
 	/** 姓 */

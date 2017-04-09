@@ -15,7 +15,7 @@ public class MessageUtils {
 	 *            消息
 	 */
 	public static void send_player_message(Player player, Builder message) {
-		Channel channel = GameServer.getInstance().getChannelGroup().getChannel(player.getId());
+		Channel channel = GameServer.Intstance.getChannelGroup().getChannel(player.getId());
 		if (channel == null || !channel.isActive()) {
 			return;
 		}
@@ -28,7 +28,7 @@ public class MessageUtils {
 	 * @param message
 	 */
 	public static void send_all_message(Builder message) {
-		GameServer.getInstance().broadcast(message);
+		GameServer.Intstance.broadcast(message);
 	}
 
 	/***
@@ -37,7 +37,7 @@ public class MessageUtils {
 	 * @param message
 	 */
 	public static void send_gateway_message(Builder message) {
-		GameServer.getInstance().send_gateway_message(message);
+		GameServer.Intstance.send_gateway_message(message);
 	}
 
 	/**
@@ -46,6 +46,6 @@ public class MessageUtils {
 	 * @param builder
 	 */
 	public void send_charge_message(Builder message) {
-		GameServer.getInstance().send_charge_message(message);
+		GameServer.Intstance.send_charge_message(message);
 	}
 }

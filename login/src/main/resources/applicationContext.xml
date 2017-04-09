@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>file:./config/server_config.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- sigleton -->
+	<bean id="dispatcherManager" class="com.leader.core.server.manager.DispatcherManager"
+		factory-method="getInstance" />
+	<bean id="messagePool" class="com.leader.core.server.pool.MessagePool">
+		<property name="packagepath" value="com.leader.gateway.protobuf.protocol"></property>
+	</bean>
+	<bean id="messageType" class="com.leader.gateway.server.model.IMessageType" />
+	
+	<bean id="server" class="com.leader.gateway.server.GateWayServer"
+		factory-method="getInstance">
+		<property name="listeners">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Scan for all of Spring components such as Spring Service -->
+	<context:component-scan base-package="com.leader.gateway" />
+
+</beans>

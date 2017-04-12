@@ -14,6 +14,17 @@ import com.leader.game.sect.model.Sect;
 public class SectDao extends JpaDaoSupport {
 
 	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED, readOnly = true)
+	public Sect findByID(long id) {
+		TypedQuery<Sect> query = entityManager.createNamedQuery("Sect.findById", Sect.class);
+		query.setParameter("id", id);
+		List<Sect> sects = query.getResultList();
+		if (sects == null || sects.isEmpty()) {
+			return null;
+		}
+		return sects.get(0);
+	}
+
+	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED, readOnly = true)
 	public Sect findByPlayerID(long id) {
 		TypedQuery<Sect> query = entityManager.createNamedQuery("Sect.findById", Sect.class);
 		query.setParameter("id", id);
@@ -25,7 +36,7 @@ public class SectDao extends JpaDaoSupport {
 	}
 
 	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED, readOnly = true)
-	public Sect findByUserName(String name) {
+	public Sect findByName(String name) {
 		TypedQuery<Sect> query = entityManager.createNamedQuery("Sect.findByName", Sect.class);
 		query.setParameter("name", name);
 		List<Sect> sects = query.getResultList();

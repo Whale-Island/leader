@@ -29,8 +29,6 @@ import com.leader.game.protobuf.protocol.PlayerProtocol.ResLoginMessage;
 import com.leader.game.protobuf.protocol.PlayerProtocol.ResRegisterMessage.Builder;
 import com.leader.game.protobuf.protocol.SyncProtocol.ReqVerifyTokenMessage;
 import com.leader.game.protobuf.protocol.SyncProtocol.ResVerifyTokenMessage;
-import com.leader.game.sect.SectManager;
-import com.leader.game.sect.model.Sect;
 import com.leader.game.server.GameServer;
 import com.leader.game.server.model.AttributeKeys;
 import com.leader.game.server.model.PlayerChannelGroup;
@@ -62,12 +60,8 @@ public enum PlayerManager implements ShutdownListener {
 	private ConcurrentHashMap<Long, Player> players = new ConcurrentHashMap<Long, Player>();
 	/** 所有角色名 */
 	private Set<String> roleNames = Collections.synchronizedSet(new HashSet<String>());
-	/** 所有门派名 */
-	private Set<String> sectNames = Collections.synchronizedSet(new HashSet<String>());
 	/** 所有随机名字保存类 */
 	private RandomName roleRandom;
-	/** 门派随机名 */
-	private RandomName scetRandom;
 	/** 退出游戏Listener */
 	private @Getter @Setter List<LogoutListener> logoutListeners;
 	/** 登录令牌map */
@@ -90,7 +84,6 @@ public enum PlayerManager implements ShutdownListener {
 		}
 		// TODO 初始化随机姓名库
 		roleRandom = new RandomName();
-		scetRandom = new RandomName();
 	}
 
 	/** 网络连接关闭监听器 */
@@ -115,8 +108,6 @@ public enum PlayerManager implements ShutdownListener {
 	 * @param icon
 	 * @param sex
 	 *            性别 1男 2女
-	 * @param sectName
-	 *            门派名称
 	 * @param gameChannel
 	 *            游戏渠道
 	 * @param deviceId
@@ -124,8 +115,8 @@ public enum PlayerManager implements ShutdownListener {
 	 * @param response
 	 * @return
 	 */
-	public Player register(Channel channel, String nickname, String icon, int sex, String sectName, int gameChannel,
-			String deviceId, Builder response) {
+	public Player register(Channel channel, String nickname, String icon, int sex, int gameChannel, String deviceId,
+			Builder response) {
 		try {
 			String username = channel.attr(AttributeKeys.USERNAME).get();
 			if (StringUtil.isNullOrEmpty(username)) {
@@ -141,29 +132,25 @@ public enum PlayerManager implements ShutdownListener {
 				return null;
 			}
 
-			if (!StringUtil.isNullOrEmpty(nickname) && nameIsAvailable(nickname) != 2) {
+			if (!StringUtil.isNullOrEmpty(nickname) && nameIsAvailable(nickname)) {
 				response.setCode(1);// 昵称非法或已被占用
-				return null;
-			}
-			if (!StringUtil.isNullOrEmpty(sectName) && nameIsAvailable(sectName) != 3) {
-				response.setCode(2);// 门派名称非法或已被占用
 				return null;
 			}
 			player = new Player();
 			player.setUsername(username);
 			player.setNickname(nickname);
-			player.setSectName(sectName);
 			player.setState(Player.ONLINE);
+			player.setIcon(icon);
+			player.setSex((short) sex);
 			player.setLastOnlineTime(System.currentTimeMillis());
 			player.setChannel(gameChannel);
 			player.setDeviceId(deviceId);
+			// 保存
 			commonDao.store(player);
 
-			Sect sect = SectManager.Intstance.creatSect(sectName);
-			player.setSect(sect);
-
+			// 关联
+			channel.attr(AttributeKeys.PLAYER).set(player);
 			roleNames.add(nickname);
-			sectNames.add(sectName);
 			roles.put(username, player);
 			players.put(player.getId(), player);
 			return player;
@@ -174,12 +161,9 @@ public enum PlayerManager implements ShutdownListener {
 		return null;
 	}
 
-	/**
-	 * 登录
-	 * 
-	 * @param channel
-	 */
+	/** 登录 */
 	public Player login(String username, String token, Channel channel, ResLoginMessage.Builder respone) {
+
 		LoginToken loginToken = tokenMap.get(username);
 		if (loginToken == null || !loginToken.getToken().equals(token)) {
 			// 如果未找到token或者token不匹配，就去网关请求
@@ -198,12 +182,17 @@ public enum PlayerManager implements ShutdownListener {
 			loginToken.setUsername(username);
 			tokenMap.put(username, loginToken);
 		}
+		// 验证通过
 		channel.attr(AttributeKeys.USERNAME).set(username);
+
 		Player player = roles.get(loginToken.getUsername());
 		if (player != null) {
 			int state = player.getState();
 			if (state == Player.SAVE) {
 				respone.setCode(2);// 玩家数据保存中
+				return null;
+			} else if (player.getSectId() == 0) {
+				respone.setCode(4);// 未建立门派
 				return null;
 			}
 		} else {
@@ -234,8 +223,6 @@ public enum PlayerManager implements ShutdownListener {
 		roles.put(player.getUsername(), player);
 
 		player.setPreLoginTime(System.currentTimeMillis());
-		Sect sect = SectManager.Intstance.loadSect(player.getId());
-		player.setSect(sect);
 
 		return player;
 	}
@@ -258,12 +245,10 @@ public enum PlayerManager implements ShutdownListener {
 	}
 
 	/** 随机一个名字 */
-	public String randomName(int type) {
-		RandomName random = type == 1 ? roleRandom : scetRandom;
-		Set<String> names = type == 1 ? roleNames : sectNames;
+	public String randomName() {
 		for (int i = 0; i < 20; i++) {
-			String name = random.getName();
-			if (!names.contains(name)) {
+			String name = roleRandom.getName();
+			if (!roleNames.contains(name)) {
 				return name;
 			}
 		}
@@ -294,21 +279,18 @@ public enum PlayerManager implements ShutdownListener {
 	 * @param name
 	 * @return 1不合法 2昵称重复 3门派名重复
 	 */
-	private int nameIsAvailable(String name) {
+	private boolean nameIsAvailable(String name) {
 		if (WordFilter.getInstance().hashBadWords(name)) {
-			return 1;
+			return true;
 		}
 		Matcher m = pattern.matcher(name);
 		if (!m.matches()) {
-			return 1;
+			return true;
 		}
 		if (roleNames.contains(name)) {
-			return 2;
+			return true;
 		}
-		if (sectNames.contains(name)) {
-			return 3;
-		}
-		return 0;
+		return false;
 	}
 
 	/**

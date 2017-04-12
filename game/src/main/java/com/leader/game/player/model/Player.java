@@ -15,6 +15,7 @@ import javax.persistence.Transient;
 
 import com.leader.core.db.GameEntity;
 import com.leader.game.role.model.Role;
+import com.leader.game.sect.SectManager;
 import com.leader.game.sect.model.Sect;
 
 import lombok.Getter;
@@ -45,13 +46,17 @@ public class Player implements GameEntity {
 	private @Getter @Setter String username;
 	/** 角色id */
 	private @Getter @Setter long roleId;
+	/** 头像 */
+	private @Getter @Setter String icon;
+	/** 性别 1男2女 */
+	private @Getter @Setter short sex;
 	/** 昵称 */
 	@Column(unique = true, nullable = false)
 	private @Getter @Setter String nickname;
 	/** 挂载的角色 */
 	private @Getter @Setter @Transient Role role;
 	/** 门派id */
-	private @Getter @Setter int sectId;
+	private @Getter @Setter long sectId;
 	/** 门派名 */
 	@Column(unique = true, nullable = false)
 	private @Getter @Setter String sectName;
@@ -69,6 +74,10 @@ public class Player implements GameEntity {
 	private @Getter @Setter @Transient volatile int state;
 	/** 1.在线 2.离线 */
 	public static final int ONLINE = 1, OFFLINE = 2, SAVE = 3;
+
+	public Player() {
+		sect = SectManager.Intstance.findSect(sectId);
+	}
 
 	public final boolean isOnline() {
 		return state == ONLINE;

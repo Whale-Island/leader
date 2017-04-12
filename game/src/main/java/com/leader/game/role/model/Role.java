@@ -22,8 +22,8 @@ import lombok.ToString;
 @Entity
 @Table(name = "role")
 @NamedQueries({ // [start]
-		@NamedQuery(name = "Disciple.findPlayerByRoleId", query = "SELECT r FROM Disciple r WHERE r.roleId = ?1"),
-		@NamedQuery(name = "Disciple.findPlayerById", query = "SELECT r FROM Disciple r WHERE r.id = ?1") // [end]
+		@NamedQuery(name = "Role.findBySectId", query = "SELECT r FROM Role r WHERE r.sectId = ?1"),
+		@NamedQuery(name = "Role.findById", query = "SELECT r FROM Role r WHERE r.id = ?1") // [end]
 })
 @ToString
 public class Role implements GameEntity {
@@ -33,14 +33,12 @@ public class Role implements GameEntity {
 	private @Getter @Setter long id;
 	/** 玩家id */
 	private @Getter @Setter long playerId;
+	/** 门派id */
+	private @Getter @Setter long sectId;
 	/** 模版id */
 	private @Getter @Setter int modelId;
 	/** 昵称 */
 	private @Getter @Setter String name;
-	/** 头像 */
-	private @Getter @Setter String icon;
-	/** 性别 */
-	private @Getter @Setter short sex;
 	/** 等级 */
 	private @Getter @Setter int level;
 	/** 阶层 */

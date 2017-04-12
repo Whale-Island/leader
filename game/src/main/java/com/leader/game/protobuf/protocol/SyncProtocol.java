@@ -34,6 +34,10 @@ public final class SyncProtocol {
     com.google.protobuf.ByteString getData();
   }
   /**
+   * <pre>
+   * 同步请求
+   * </pre>
+   *
    * Protobuf type {@code ReqSyncMessage}
    */
   public  static final class ReqSyncMessage extends
@@ -301,6 +305,10 @@ public final class SyncProtocol {
       return builder;
     }
     /**
+     * <pre>
+     * 同步请求
+     * </pre>
+     *
      * Protobuf type {@code ReqSyncMessage}
      */
     public static final class Builder extends

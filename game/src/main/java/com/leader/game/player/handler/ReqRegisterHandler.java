@@ -25,27 +25,27 @@ public class ReqRegisterHandler implements Handler {
 		String nickname = message.getNickname();
 		String icon = message.getIcon();
 		int sex = message.getSex();
-		String sectName = message.getSectName();
 		int gameChannel = message.getChannel();
 		String deviceId = message.getDeviceId();
 
 		ResRegisterMessage.Builder response = ResRegisterMessage.newBuilder();
 
-		Player player = PlayerManager.Intstance.register(channel, nickname, icon, sex, sectName, gameChannel, deviceId,
-				response);
+		Player player = PlayerManager.Intstance.register(channel, nickname, icon, sex, gameChannel, deviceId, response);
 
 		if (player != null) {
 			PlayerInfo.Builder info = response.getPlayerInfoBuilder();
 			info.setUid(player.getId());
 			info.setNickname(player.getNickname());
-			info.setSectName(player.getSectName());
+			info.setIcon(player.getIcon());
+			info.setSex(player.getSex());
 
 			response.setPlayerInfo(info);
 		}
 		channel.writeAndFlush(response);
 
-		LogManager.Intstance.addRegisterLog(player.getId(), player.getDeviceId(), player.getNickname(),
-				player.getNickname(), player.getChannel());
+		if (player != null)
+			LogManager.Intstance.addRegisterLog(player.getId(), player.getDeviceId(), player.getNickname(),
+					player.getNickname(), player.getChannel());
 	}
 
 }

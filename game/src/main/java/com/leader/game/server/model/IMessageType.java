@@ -23,7 +23,7 @@ public class IMessageType implements MessageType {
 	public static final int ReqSync = 101;
 	// [end]
 
-	// [start] player
+	// [start] Player
 	/** 心跳请求 */
 	public static final int ReqHeartbeat = 10000;
 	/** 登录请求 */
@@ -43,4 +43,13 @@ public class IMessageType implements MessageType {
 	public static final int ResPropertyChange = 21004;
 	// [end]
 
+	// [start] Sect
+	/** 创建门派请求 */
+	public static final int ReqCreatSect = 12000;
+	public static final int ReqRandomSectName = 12001;
+
+	/** 创建门派响应 */
+	public static final int ResCreatSect = 22000;
+	public static final int ResRandomSectName = 22001;
+	// [end]
 }

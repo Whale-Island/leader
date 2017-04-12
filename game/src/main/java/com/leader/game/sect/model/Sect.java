@@ -1,5 +1,7 @@
 package com.leader.game.sect.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -14,8 +16,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SqlResultSetMapping;
 import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.leader.core.db.GameEntity;
+import com.leader.game.role.RoleManager;
+import com.leader.game.role.model.Role;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,8 +29,8 @@ import lombok.ToString;
 @Entity
 @Table(name = "sect")
 @NamedQueries({ // [start]
-		@NamedQuery(name = "Sect.findAll", query = "SELECT r FROM Sect r"),
 		@NamedQuery(name = "Sect.findById", query = "SELECT r FROM Sect r WHERE r.id = ?1"),
+		@NamedQuery(name = "Sect.findByPlayerId", query = "SELECT r FROM Sect r WHERE r.playerId = ?1"),
 		@NamedQuery(name = "Sect.findByName", query = "SELECT r FROM Sect r WHERE r.name = :name") // [end]
 })
 @NamedNativeQueries({ // [start] BriefInfo
@@ -40,21 +45,31 @@ public class Sect implements GameEntity {
 
 	@Id
 	@Column(unique = true, nullable = false)
-	private @Getter @Setter int id;
+	private @Getter @Setter long id;
+	/** 玩家id */
+	private @Getter @Setter long playerId;
+	/** 玩家帐号 */
+	private @Getter @Setter String username;
 	/** 门派名称 */
+	@Column(unique = true, nullable = false)
 	private @Getter @Setter String name;
 	/** 等级 */
 	private @Getter @Setter int level;
 	/** 经验 */
 	private @Getter @Setter long exp;
-	/** 人数 */
-	private @Getter @Setter int num;
 	/** 威望 */
 	private @Getter @Setter int prestige;
 	/** 金币 */
 	private AtomicLong gold;
 	/** 钻石 */
 	private AtomicInteger diamond;
+	/** 弟子们 */
+	private @Getter @Setter @Transient List<Role> roles = new ArrayList<>();
+
+	public Sect() {
+		if (id != 0)
+			roles.addAll(RoleManager.Intstance.findRoles(id));
+	}
 
 	/** 增加金币 */
 	public long incrGold(long num) {

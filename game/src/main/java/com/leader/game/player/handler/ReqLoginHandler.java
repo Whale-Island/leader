@@ -12,6 +12,9 @@ import com.leader.game.player.model.Player;
 import com.leader.game.protobuf.protocol.PlayerProtocol.PlayerInfo;
 import com.leader.game.protobuf.protocol.PlayerProtocol.ReqLoginMessage;
 import com.leader.game.protobuf.protocol.PlayerProtocol.ResLoginMessage;
+import com.leader.game.protobuf.protocol.SectProtocol.SectInfo;
+import com.leader.game.sect.SectManager;
+import com.leader.game.sect.model.Sect;
 
 import io.netty.channel.Channel;
 
@@ -23,17 +26,23 @@ public class ReqLoginHandler implements Handler {
 	public void action(Channel channel, Message m) throws InvalidProtocolBufferException {
 		ReqLoginMessage message = (ReqLoginMessage) m;
 		String username = message.getUsername();
+		ResLoginMessage.Builder response = ResLoginMessage.newBuilder();
 		String token = message.getToken();
-		ResLoginMessage.Builder respone = ResLoginMessage.newBuilder();
-		Player player = PlayerManager.Intstance.login(username, token, channel, respone);
+		Player player = PlayerManager.Intstance.login(username, token, channel, response);
 		if (player != null) {
-			PlayerInfo.Builder info = respone.getPlayerInfoBuilder();
+			PlayerInfo.Builder info = response.getPlayerInfoBuilder();
 			info.setUid(player.getId());
 			info.setNickname(player.getNickname());
+			info.setIcon(player.getIcon());
+			info.setSex(player.getSex());
+			// 门派
+			Sect sect = player.getSect();
+			SectInfo.Builder sectInfo = SectManager.Intstance.packSect(sect);
+			info.setSectInfo(sectInfo);
+			response.setPlayerInfo(info);
 
-			respone.setPlayerInfo(info);
 		}
-		channel.writeAndFlush(respone);
+		channel.writeAndFlush(response);
 
 		if (player != null)
 			LogManager.Intstance.addLoginLog(player.getId(), player.getNickname(), player.getUsername(),

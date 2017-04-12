@@ -2107,10 +2107,19 @@ public final class PlayerProtocol {
 
     /**
      * <pre>
+     *性别
+     * </pre>
+     *
+     * <code>optional int32 sex = 3;</code>
+     */
+    int getSex();
+
+    /**
+     * <pre>
      *头像
      * </pre>
      *
-     * <code>optional string icon = 3;</code>
+     * <code>optional string icon = 4;</code>
      */
     java.lang.String getIcon();
     /**
@@ -2118,46 +2127,35 @@ public final class PlayerProtocol {
      *头像
      * </pre>
      *
-     * <code>optional string icon = 3;</code>
+     * <code>optional string icon = 4;</code>
      */
     com.google.protobuf.ByteString
         getIconBytes();
 
     /**
      * <pre>
-     *性别
+     *门派
      * </pre>
      *
-     * <code>optional int32 sex = 4;</code>
+     * <code>optional .SectInfo sectInfo = 5;</code>
      */
-    int getSex();
-
+    boolean hasSectInfo();
     /**
      * <pre>
-     *等级
+     *门派
      * </pre>
      *
-     * <code>optional int32 level = 5;</code>
+     * <code>optional .SectInfo sectInfo = 5;</code>
      */
-    int getLevel();
-
+    com.leader.game.protobuf.protocol.SectProtocol.SectInfo getSectInfo();
     /**
      * <pre>
-     *门派名称
+     *门派
      * </pre>
      *
-     * <code>optional string sectName = 6;</code>
+     * <code>optional .SectInfo sectInfo = 5;</code>
      */
-    java.lang.String getSectName();
-    /**
-     * <pre>
-     *门派名称
-     * </pre>
-     *
-     * <code>optional string sectName = 6;</code>
-     */
-    com.google.protobuf.ByteString
-        getSectNameBytes();
+    com.leader.game.protobuf.protocol.SectProtocol.SectInfoOrBuilder getSectInfoOrBuilder();
   }
   /**
    * <pre>
@@ -2177,10 +2175,8 @@ public final class PlayerProtocol {
     private PlayerInfo() {
       uid_ = 0L;
       nickname_ = "";
-      icon_ = "";
       sex_ = 0;
-      level_ = 0;
-      sectName_ = "";
+      icon_ = "";
     }
 
     @java.lang.Override
@@ -2219,26 +2215,28 @@ public final class PlayerProtocol {
               nickname_ = s;
               break;
             }
-            case 26: {
+            case 24: {
+
+              sex_ = input.readInt32();
+              break;
+            }
+            case 34: {
               java.lang.String s = input.readStringRequireUtf8();
 
               icon_ = s;
               break;
             }
-            case 32: {
+            case 42: {
+              com.leader.game.protobuf.protocol.SectProtocol.SectInfo.Builder subBuilder = null;
+              if (sectInfo_ != null) {
+                subBuilder = sectInfo_.toBuilder();
+              }
+              sectInfo_ = input.readMessage(com.leader.game.protobuf.protocol.SectProtocol.SectInfo.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(sectInfo_);
+                sectInfo_ = subBuilder.buildPartial();
+              }
 
-              sex_ = input.readInt32();
-              break;
-            }
-            case 40: {
-
-              level_ = input.readInt32();
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              sectName_ = s;
               break;
             }
           }
@@ -2319,14 +2317,27 @@ public final class PlayerProtocol {
       }
     }
 
-    public static final int ICON_FIELD_NUMBER = 3;
+    public static final int SEX_FIELD_NUMBER = 3;
+    private int sex_;
+    /**
+     * <pre>
+     *性别
+     * </pre>
+     *
+     * <code>optional int32 sex = 3;</code>
+     */
+    public int getSex() {
+      return sex_;
+    }
+
+    public static final int ICON_FIELD_NUMBER = 4;
     private volatile java.lang.Object icon_;
     /**
      * <pre>
      *头像
      * </pre>
      *
-     * <code>optional string icon = 3;</code>
+     * <code>optional string icon = 4;</code>
      */
     public java.lang.String getIcon() {
       java.lang.Object ref = icon_;
@@ -2345,7 +2356,7 @@ public final class PlayerProtocol {
      *头像
      * </pre>
      *
-     * <code>optional string icon = 3;</code>
+     * <code>optional string icon = 4;</code>
      */
     public com.google.protobuf.ByteString
         getIconBytes() {
@@ -2361,72 +2372,37 @@ public final class PlayerProtocol {
       }
     }
 
-    public static final int SEX_FIELD_NUMBER = 4;
-    private int sex_;
+    public static final int SECTINFO_FIELD_NUMBER = 5;
+    private com.leader.game.protobuf.protocol.SectProtocol.SectInfo sectInfo_;
     /**
      * <pre>
-     *性别
+     *门派
      * </pre>
      *
-     * <code>optional int32 sex = 4;</code>
+     * <code>optional .SectInfo sectInfo = 5;</code>
      */
-    public int getSex() {
-      return sex_;
-    }
-
-    public static final int LEVEL_FIELD_NUMBER = 5;
-    private int level_;
-    /**
-     * <pre>
-     *等级
-     * </pre>
-     *
-     * <code>optional int32 level = 5;</code>
-     */
-    public int getLevel() {
-      return level_;
-    }
-
-    public static final int SECTNAME_FIELD_NUMBER = 6;
-    private volatile java.lang.Object sectName_;
-    /**
-     * <pre>
-     *门派名称
-     * </pre>
-     *
-     * <code>optional string sectName = 6;</code>
-     */
-    public java.lang.String getSectName() {
-      java.lang.Object ref = sectName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        sectName_ = s;
-        return s;
-      }
+    public boolean hasSectInfo() {
+      return sectInfo_ != null;
     }
     /**
      * <pre>
-     *门派名称
+     *门派
      * </pre>
      *
-     * <code>optional string sectName = 6;</code>
+     * <code>optional .SectInfo sectInfo = 5;</code>
      */
-    public com.google.protobuf.ByteString
-        getSectNameBytes() {
-      java.lang.Object ref = sectName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        sectName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.leader.game.protobuf.protocol.SectProtocol.SectInfo getSectInfo() {
+      return sectInfo_ == null ? com.leader.game.protobuf.protocol.SectProtocol.SectInfo.getDefaultInstance() : sectInfo_;
+    }
+    /**
+     * <pre>
+     *门派
+     * </pre>
+     *
+     * <code>optional .SectInfo sectInfo = 5;</code>
+     */
+    public com.leader.game.protobuf.protocol.SectProtocol.SectInfoOrBuilder getSectInfoOrBuilder() {
+      return getSectInfo();
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2447,17 +2423,14 @@ public final class PlayerProtocol {
       if (!getNicknameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, nickname_);
       }
-      if (!getIconBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, icon_);
-      }
       if (sex_ != 0) {
-        output.writeInt32(4, sex_);
+        output.writeInt32(3, sex_);
       }
-      if (level_ != 0) {
-        output.writeInt32(5, level_);
+      if (!getIconBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, icon_);
       }
-      if (!getSectNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, sectName_);
+      if (sectInfo_ != null) {
+        output.writeMessage(5, getSectInfo());
       }
     }
 
@@ -2473,19 +2446,16 @@ public final class PlayerProtocol {
       if (!getNicknameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, nickname_);
       }
-      if (!getIconBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, icon_);
-      }
       if (sex_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, sex_);
+          .computeInt32Size(3, sex_);
       }
-      if (level_ != 0) {
+      if (!getIconBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, icon_);
+      }
+      if (sectInfo_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, level_);
-      }
-      if (!getSectNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, sectName_);
+          .computeMessageSize(5, getSectInfo());
       }
       memoizedSize = size;
       return size;
@@ -2507,14 +2477,15 @@ public final class PlayerProtocol {
           == other.getUid());
       result = result && getNickname()
           .equals(other.getNickname());
-      result = result && getIcon()
-          .equals(other.getIcon());
       result = result && (getSex()
           == other.getSex());
-      result = result && (getLevel()
-          == other.getLevel());
-      result = result && getSectName()
-          .equals(other.getSectName());
+      result = result && getIcon()
+          .equals(other.getIcon());
+      result = result && (hasSectInfo() == other.hasSectInfo());
+      if (hasSectInfo()) {
+        result = result && getSectInfo()
+            .equals(other.getSectInfo());
+      }
       return result;
     }
 
@@ -2530,14 +2501,14 @@ public final class PlayerProtocol {
           getUid());
       hash = (37 * hash) + NICKNAME_FIELD_NUMBER;
       hash = (53 * hash) + getNickname().hashCode();
-      hash = (37 * hash) + ICON_FIELD_NUMBER;
-      hash = (53 * hash) + getIcon().hashCode();
       hash = (37 * hash) + SEX_FIELD_NUMBER;
       hash = (53 * hash) + getSex();
-      hash = (37 * hash) + LEVEL_FIELD_NUMBER;
-      hash = (53 * hash) + getLevel();
-      hash = (37 * hash) + SECTNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getSectName().hashCode();
+      hash = (37 * hash) + ICON_FIELD_NUMBER;
+      hash = (53 * hash) + getIcon().hashCode();
+      if (hasSectInfo()) {
+        hash = (37 * hash) + SECTINFO_FIELD_NUMBER;
+        hash = (53 * hash) + getSectInfo().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2664,14 +2635,16 @@ public final class PlayerProtocol {
 
         nickname_ = "";
 
-        icon_ = "";
-
         sex_ = 0;
 
-        level_ = 0;
+        icon_ = "";
 
-        sectName_ = "";
-
+        if (sectInfoBuilder_ == null) {
+          sectInfo_ = null;
+        } else {
+          sectInfo_ = null;
+          sectInfoBuilder_ = null;
+        }
         return this;
       }
 
@@ -2696,10 +2669,13 @@ public final class PlayerProtocol {
         com.leader.game.protobuf.protocol.PlayerProtocol.PlayerInfo result = new com.leader.game.protobuf.protocol.PlayerProtocol.PlayerInfo(this);
         result.uid_ = uid_;
         result.nickname_ = nickname_;
-        result.icon_ = icon_;
         result.sex_ = sex_;
-        result.level_ = level_;
-        result.sectName_ = sectName_;
+        result.icon_ = icon_;
+        if (sectInfoBuilder_ == null) {
+          result.sectInfo_ = sectInfo_;
+        } else {
+          result.sectInfo_ = sectInfoBuilder_.build();
+        }
         onBuilt();
         return result;
       }
@@ -2748,19 +2724,15 @@ public final class PlayerProtocol {
           nickname_ = other.nickname_;
           onChanged();
         }
+        if (other.getSex() != 0) {
+          setSex(other.getSex());
+        }
         if (!other.getIcon().isEmpty()) {
           icon_ = other.icon_;
           onChanged();
         }
-        if (other.getSex() != 0) {
-          setSex(other.getSex());
-        }
-        if (other.getLevel() != 0) {
-          setLevel(other.getLevel());
-        }
-        if (!other.getSectName().isEmpty()) {
-          sectName_ = other.sectName_;
-          onChanged();
+        if (other.hasSectInfo()) {
+          mergeSectInfo(other.getSectInfo());
         }
         onChanged();
         return this;
@@ -2915,13 +2887,51 @@ public final class PlayerProtocol {
         return this;
       }
 
+      private int sex_ ;
+      /**
+       * <pre>
+       *性别
+       * </pre>
+       *
+       * <code>optional int32 sex = 3;</code>
+       */
+      public int getSex() {
+        return sex_;
+      }
+      /**
+       * <pre>
+       *性别
+       * </pre>
+       *
+       * <code>optional int32 sex = 3;</code>
+       */
+      public Builder setSex(int value) {
+        
+        sex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *性别
+       * </pre>
+       *
+       * <code>optional int32 sex = 3;</code>
+       */
+      public Builder clearSex() {
+        
+        sex_ = 0;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object icon_ = "";
       /**
        * <pre>
        *头像
        * </pre>
        *
-       * <code>optional string icon = 3;</code>
+       * <code>optional string icon = 4;</code>
        */
       public java.lang.String getIcon() {
         java.lang.Object ref = icon_;
@@ -2940,7 +2950,7 @@ public final class PlayerProtocol {
        *头像
        * </pre>
        *
-       * <code>optional string icon = 3;</code>
+       * <code>optional string icon = 4;</code>
        */
       public com.google.protobuf.ByteString
           getIconBytes() {
@@ -2960,7 +2970,7 @@ public final class PlayerProtocol {
        *头像
        * </pre>
        *
-       * <code>optional string icon = 3;</code>
+       * <code>optional string icon = 4;</code>
        */
       public Builder setIcon(
           java.lang.String value) {
@@ -2977,7 +2987,7 @@ public final class PlayerProtocol {
        *头像
        * </pre>
        *
-       * <code>optional string icon = 3;</code>
+       * <code>optional string icon = 4;</code>
        */
       public Builder clearIcon() {
         
@@ -2990,7 +3000,7 @@ public final class PlayerProtocol {
        *头像
        * </pre>
        *
-       * <code>optional string icon = 3;</code>
+       * <code>optional string icon = 4;</code>
        */
       public Builder setIconBytes(
           com.google.protobuf.ByteString value) {
@@ -3004,169 +3014,157 @@ public final class PlayerProtocol {
         return this;
       }
 
-      private int sex_ ;
+      private com.leader.game.protobuf.protocol.SectProtocol.SectInfo sectInfo_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.leader.game.protobuf.protocol.SectProtocol.SectInfo, com.leader.game.protobuf.protocol.SectProtocol.SectInfo.Builder, com.leader.game.protobuf.protocol.SectProtocol.SectInfoOrBuilder> sectInfoBuilder_;
       /**
        * <pre>
-       *性别
+       *门派
        * </pre>
        *
-       * <code>optional int32 sex = 4;</code>
+       * <code>optional .SectInfo sectInfo = 5;</code>
        */
-      public int getSex() {
-        return sex_;
+      public boolean hasSectInfo() {
+        return sectInfoBuilder_ != null || sectInfo_ != null;
       }
       /**
        * <pre>
-       *性别
+       *门派
        * </pre>
        *
-       * <code>optional int32 sex = 4;</code>
+       * <code>optional .SectInfo sectInfo = 5;</code>
        */
-      public Builder setSex(int value) {
-        
-        sex_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *性别
-       * </pre>
-       *
-       * <code>optional int32 sex = 4;</code>
-       */
-      public Builder clearSex() {
-        
-        sex_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int level_ ;
-      /**
-       * <pre>
-       *等级
-       * </pre>
-       *
-       * <code>optional int32 level = 5;</code>
-       */
-      public int getLevel() {
-        return level_;
-      }
-      /**
-       * <pre>
-       *等级
-       * </pre>
-       *
-       * <code>optional int32 level = 5;</code>
-       */
-      public Builder setLevel(int value) {
-        
-        level_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *等级
-       * </pre>
-       *
-       * <code>optional int32 level = 5;</code>
-       */
-      public Builder clearLevel() {
-        
-        level_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object sectName_ = "";
-      /**
-       * <pre>
-       *门派名称
-       * </pre>
-       *
-       * <code>optional string sectName = 6;</code>
-       */
-      public java.lang.String getSectName() {
-        java.lang.Object ref = sectName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          sectName_ = s;
-          return s;
+      public com.leader.game.protobuf.protocol.SectProtocol.SectInfo getSectInfo() {
+        if (sectInfoBuilder_ == null) {
+          return sectInfo_ == null ? com.leader.game.protobuf.protocol.SectProtocol.SectInfo.getDefaultInstance() : sectInfo_;
         } else {
-          return (java.lang.String) ref;
+          return sectInfoBuilder_.getMessage();
         }
       }
       /**
        * <pre>
-       *门派名称
+       *门派
        * </pre>
        *
-       * <code>optional string sectName = 6;</code>
+       * <code>optional .SectInfo sectInfo = 5;</code>
        */
-      public com.google.protobuf.ByteString
-          getSectNameBytes() {
-        java.lang.Object ref = sectName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          sectName_ = b;
-          return b;
+      public Builder setSectInfo(com.leader.game.protobuf.protocol.SectProtocol.SectInfo value) {
+        if (sectInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          sectInfo_ = value;
+          onChanged();
         } else {
-          return (com.google.protobuf.ByteString) ref;
+          sectInfoBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *门派
+       * </pre>
+       *
+       * <code>optional .SectInfo sectInfo = 5;</code>
+       */
+      public Builder setSectInfo(
+          com.leader.game.protobuf.protocol.SectProtocol.SectInfo.Builder builderForValue) {
+        if (sectInfoBuilder_ == null) {
+          sectInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          sectInfoBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *门派
+       * </pre>
+       *
+       * <code>optional .SectInfo sectInfo = 5;</code>
+       */
+      public Builder mergeSectInfo(com.leader.game.protobuf.protocol.SectProtocol.SectInfo value) {
+        if (sectInfoBuilder_ == null) {
+          if (sectInfo_ != null) {
+            sectInfo_ =
+              com.leader.game.protobuf.protocol.SectProtocol.SectInfo.newBuilder(sectInfo_).mergeFrom(value).buildPartial();
+          } else {
+            sectInfo_ = value;
+          }
+          onChanged();
+        } else {
+          sectInfoBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *门派
+       * </pre>
+       *
+       * <code>optional .SectInfo sectInfo = 5;</code>
+       */
+      public Builder clearSectInfo() {
+        if (sectInfoBuilder_ == null) {
+          sectInfo_ = null;
+          onChanged();
+        } else {
+          sectInfo_ = null;
+          sectInfoBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <pre>
+       *门派
+       * </pre>
+       *
+       * <code>optional .SectInfo sectInfo = 5;</code>
+       */
+      public com.leader.game.protobuf.protocol.SectProtocol.SectInfo.Builder getSectInfoBuilder() {
+        
+        onChanged();
+        return getSectInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       *门派
+       * </pre>
+       *
+       * <code>optional .SectInfo sectInfo = 5;</code>
+       */
+      public com.leader.game.protobuf.protocol.SectProtocol.SectInfoOrBuilder getSectInfoOrBuilder() {
+        if (sectInfoBuilder_ != null) {
+          return sectInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return sectInfo_ == null ?
+              com.leader.game.protobuf.protocol.SectProtocol.SectInfo.getDefaultInstance() : sectInfo_;
         }
       }
       /**
        * <pre>
-       *门派名称
+       *门派
        * </pre>
        *
-       * <code>optional string sectName = 6;</code>
+       * <code>optional .SectInfo sectInfo = 5;</code>
        */
-      public Builder setSectName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        sectName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *门派名称
-       * </pre>
-       *
-       * <code>optional string sectName = 6;</code>
-       */
-      public Builder clearSectName() {
-        
-        sectName_ = getDefaultInstance().getSectName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *门派名称
-       * </pre>
-       *
-       * <code>optional string sectName = 6;</code>
-       */
-      public Builder setSectNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        sectName_ = value;
-        onChanged();
-        return this;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.leader.game.protobuf.protocol.SectProtocol.SectInfo, com.leader.game.protobuf.protocol.SectProtocol.SectInfo.Builder, com.leader.game.protobuf.protocol.SectProtocol.SectInfoOrBuilder> 
+          getSectInfoFieldBuilder() {
+        if (sectInfoBuilder_ == null) {
+          sectInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.leader.game.protobuf.protocol.SectProtocol.SectInfo, com.leader.game.protobuf.protocol.SectProtocol.SectInfo.Builder, com.leader.game.protobuf.protocol.SectProtocol.SectInfoOrBuilder>(
+                  getSectInfo(),
+                  getParentForChildren(),
+                  isClean());
+          sectInfo_ = null;
+        }
+        return sectInfoBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3277,28 +3275,10 @@ public final class PlayerProtocol {
 
     /**
      * <pre>
-     *门派名称
-     * </pre>
-     *
-     * <code>optional string sectName = 5;</code>
-     */
-    java.lang.String getSectName();
-    /**
-     * <pre>
-     *门派名称
-     * </pre>
-     *
-     * <code>optional string sectName = 5;</code>
-     */
-    com.google.protobuf.ByteString
-        getSectNameBytes();
-
-    /**
-     * <pre>
      *玩家渠道
      * </pre>
      *
-     * <code>optional int32 channel = 6;</code>
+     * <code>optional int32 channel = 5;</code>
      */
     int getChannel();
 
@@ -3307,7 +3287,7 @@ public final class PlayerProtocol {
      *设备号
      * </pre>
      *
-     * <code>optional string deviceId = 7;</code>
+     * <code>optional string deviceId = 6;</code>
      */
     java.lang.String getDeviceId();
     /**
@@ -3315,7 +3295,7 @@ public final class PlayerProtocol {
      *设备号
      * </pre>
      *
-     * <code>optional string deviceId = 7;</code>
+     * <code>optional string deviceId = 6;</code>
      */
     com.google.protobuf.ByteString
         getDeviceIdBytes();
@@ -3340,7 +3320,6 @@ public final class PlayerProtocol {
       icon_ = "";
       sex_ = 0;
       level_ = 0;
-      sectName_ = "";
       channel_ = 0;
       deviceId_ = "";
     }
@@ -3392,18 +3371,12 @@ public final class PlayerProtocol {
               level_ = input.readInt32();
               break;
             }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              sectName_ = s;
-              break;
-            }
-            case 48: {
+            case 40: {
 
               channel_ = input.readInt32();
               break;
             }
-            case 58: {
+            case 50: {
               java.lang.String s = input.readStringRequireUtf8();
 
               deviceId_ = s;
@@ -3542,69 +3515,27 @@ public final class PlayerProtocol {
       return level_;
     }
 
-    public static final int SECTNAME_FIELD_NUMBER = 5;
-    private volatile java.lang.Object sectName_;
-    /**
-     * <pre>
-     *门派名称
-     * </pre>
-     *
-     * <code>optional string sectName = 5;</code>
-     */
-    public java.lang.String getSectName() {
-      java.lang.Object ref = sectName_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        sectName_ = s;
-        return s;
-      }
-    }
-    /**
-     * <pre>
-     *门派名称
-     * </pre>
-     *
-     * <code>optional string sectName = 5;</code>
-     */
-    public com.google.protobuf.ByteString
-        getSectNameBytes() {
-      java.lang.Object ref = sectName_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        sectName_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int CHANNEL_FIELD_NUMBER = 6;
+    public static final int CHANNEL_FIELD_NUMBER = 5;
     private int channel_;
     /**
      * <pre>
      *玩家渠道
      * </pre>
      *
-     * <code>optional int32 channel = 6;</code>
+     * <code>optional int32 channel = 5;</code>
      */
     public int getChannel() {
       return channel_;
     }
 
-    public static final int DEVICEID_FIELD_NUMBER = 7;
+    public static final int DEVICEID_FIELD_NUMBER = 6;
     private volatile java.lang.Object deviceId_;
     /**
      * <pre>
      *设备号
      * </pre>
      *
-     * <code>optional string deviceId = 7;</code>
+     * <code>optional string deviceId = 6;</code>
      */
     public java.lang.String getDeviceId() {
       java.lang.Object ref = deviceId_;
@@ -3623,7 +3554,7 @@ public final class PlayerProtocol {
      *设备号
      * </pre>
      *
-     * <code>optional string deviceId = 7;</code>
+     * <code>optional string deviceId = 6;</code>
      */
     public com.google.protobuf.ByteString
         getDeviceIdBytes() {
@@ -3663,14 +3594,11 @@ public final class PlayerProtocol {
       if (level_ != 0) {
         output.writeInt32(4, level_);
       }
-      if (!getSectNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, sectName_);
-      }
       if (channel_ != 0) {
-        output.writeInt32(6, channel_);
+        output.writeInt32(5, channel_);
       }
       if (!getDeviceIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, deviceId_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, deviceId_);
       }
     }
 
@@ -3693,15 +3621,12 @@ public final class PlayerProtocol {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, level_);
       }
-      if (!getSectNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, sectName_);
-      }
       if (channel_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, channel_);
+          .computeInt32Size(5, channel_);
       }
       if (!getDeviceIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, deviceId_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, deviceId_);
       }
       memoizedSize = size;
       return size;
@@ -3727,8 +3652,6 @@ public final class PlayerProtocol {
           == other.getSex());
       result = result && (getLevel()
           == other.getLevel());
-      result = result && getSectName()
-          .equals(other.getSectName());
       result = result && (getChannel()
           == other.getChannel());
       result = result && getDeviceId()
@@ -3751,8 +3674,6 @@ public final class PlayerProtocol {
       hash = (53 * hash) + getSex();
       hash = (37 * hash) + LEVEL_FIELD_NUMBER;
       hash = (53 * hash) + getLevel();
-      hash = (37 * hash) + SECTNAME_FIELD_NUMBER;
-      hash = (53 * hash) + getSectName().hashCode();
       hash = (37 * hash) + CHANNEL_FIELD_NUMBER;
       hash = (53 * hash) + getChannel();
       hash = (37 * hash) + DEVICEID_FIELD_NUMBER;
@@ -3887,8 +3808,6 @@ public final class PlayerProtocol {
 
         level_ = 0;
 
-        sectName_ = "";
-
         channel_ = 0;
 
         deviceId_ = "";
@@ -3919,7 +3838,6 @@ public final class PlayerProtocol {
         result.icon_ = icon_;
         result.sex_ = sex_;
         result.level_ = level_;
-        result.sectName_ = sectName_;
         result.channel_ = channel_;
         result.deviceId_ = deviceId_;
         onBuilt();
@@ -3976,10 +3894,6 @@ public final class PlayerProtocol {
         }
         if (other.getLevel() != 0) {
           setLevel(other.getLevel());
-        }
-        if (!other.getSectName().isEmpty()) {
-          sectName_ = other.sectName_;
-          onChanged();
         }
         if (other.getChannel() != 0) {
           setChannel(other.getChannel());
@@ -4268,102 +4182,13 @@ public final class PlayerProtocol {
         return this;
       }
 
-      private java.lang.Object sectName_ = "";
-      /**
-       * <pre>
-       *门派名称
-       * </pre>
-       *
-       * <code>optional string sectName = 5;</code>
-       */
-      public java.lang.String getSectName() {
-        java.lang.Object ref = sectName_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          sectName_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <pre>
-       *门派名称
-       * </pre>
-       *
-       * <code>optional string sectName = 5;</code>
-       */
-      public com.google.protobuf.ByteString
-          getSectNameBytes() {
-        java.lang.Object ref = sectName_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          sectName_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <pre>
-       *门派名称
-       * </pre>
-       *
-       * <code>optional string sectName = 5;</code>
-       */
-      public Builder setSectName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        sectName_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *门派名称
-       * </pre>
-       *
-       * <code>optional string sectName = 5;</code>
-       */
-      public Builder clearSectName() {
-        
-        sectName_ = getDefaultInstance().getSectName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *门派名称
-       * </pre>
-       *
-       * <code>optional string sectName = 5;</code>
-       */
-      public Builder setSectNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        sectName_ = value;
-        onChanged();
-        return this;
-      }
-
       private int channel_ ;
       /**
        * <pre>
        *玩家渠道
        * </pre>
        *
-       * <code>optional int32 channel = 6;</code>
+       * <code>optional int32 channel = 5;</code>
        */
       public int getChannel() {
         return channel_;
@@ -4373,7 +4198,7 @@ public final class PlayerProtocol {
        *玩家渠道
        * </pre>
        *
-       * <code>optional int32 channel = 6;</code>
+       * <code>optional int32 channel = 5;</code>
        */
       public Builder setChannel(int value) {
         
@@ -4386,7 +4211,7 @@ public final class PlayerProtocol {
        *玩家渠道
        * </pre>
        *
-       * <code>optional int32 channel = 6;</code>
+       * <code>optional int32 channel = 5;</code>
        */
       public Builder clearChannel() {
         
@@ -4401,7 +4226,7 @@ public final class PlayerProtocol {
        *设备号
        * </pre>
        *
-       * <code>optional string deviceId = 7;</code>
+       * <code>optional string deviceId = 6;</code>
        */
       public java.lang.String getDeviceId() {
         java.lang.Object ref = deviceId_;
@@ -4420,7 +4245,7 @@ public final class PlayerProtocol {
        *设备号
        * </pre>
        *
-       * <code>optional string deviceId = 7;</code>
+       * <code>optional string deviceId = 6;</code>
        */
       public com.google.protobuf.ByteString
           getDeviceIdBytes() {
@@ -4440,7 +4265,7 @@ public final class PlayerProtocol {
        *设备号
        * </pre>
        *
-       * <code>optional string deviceId = 7;</code>
+       * <code>optional string deviceId = 6;</code>
        */
       public Builder setDeviceId(
           java.lang.String value) {
@@ -4457,7 +4282,7 @@ public final class PlayerProtocol {
        *设备号
        * </pre>
        *
-       * <code>optional string deviceId = 7;</code>
+       * <code>optional string deviceId = 6;</code>
        */
       public Builder clearDeviceId() {
         
@@ -4470,7 +4295,7 @@ public final class PlayerProtocol {
        *设备号
        * </pre>
        *
-       * <code>optional string deviceId = 7;</code>
+       * <code>optional string deviceId = 6;</code>
        */
       public Builder setDeviceIdBytes(
           com.google.protobuf.ByteString value) {
@@ -5747,15 +5572,6 @@ public final class PlayerProtocol {
   public interface ReqRandomNameMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ReqRandomNameMessage)
       com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <pre>
-     *1昵称 2门派名
-     * </pre>
-     *
-     * <code>optional int32 type = 1;</code>
-     */
-    int getType();
   }
   /**
    * <pre>
@@ -5773,7 +5589,6 @@ public final class PlayerProtocol {
       super(builder);
     }
     private ReqRandomNameMessage() {
-      type_ = 0;
     }
 
     @java.lang.Override
@@ -5786,7 +5601,6 @@ public final class PlayerProtocol {
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       this();
-      int mutable_bitField0_ = 0;
       try {
         boolean done = false;
         while (!done) {
@@ -5799,11 +5613,6 @@ public final class PlayerProtocol {
               if (!input.skipField(tag)) {
                 done = true;
               }
-              break;
-            }
-            case 8: {
-
-              type_ = input.readInt32();
               break;
             }
           }
@@ -5829,19 +5638,6 @@ public final class PlayerProtocol {
               com.leader.game.protobuf.protocol.PlayerProtocol.ReqRandomNameMessage.class, com.leader.game.protobuf.protocol.PlayerProtocol.ReqRandomNameMessage.Builder.class);
     }
 
-    public static final int TYPE_FIELD_NUMBER = 1;
-    private int type_;
-    /**
-     * <pre>
-     *1昵称 2门派名
-     * </pre>
-     *
-     * <code>optional int32 type = 1;</code>
-     */
-    public int getType() {
-      return type_;
-    }
-
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -5854,9 +5650,6 @@ public final class PlayerProtocol {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (type_ != 0) {
-        output.writeInt32(1, type_);
-      }
     }
 
     public int getSerializedSize() {
@@ -5864,10 +5657,6 @@ public final class PlayerProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (type_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, type_);
-      }
       memoizedSize = size;
       return size;
     }
@@ -5884,8 +5673,6 @@ public final class PlayerProtocol {
       com.leader.game.protobuf.protocol.PlayerProtocol.ReqRandomNameMessage other = (com.leader.game.protobuf.protocol.PlayerProtocol.ReqRandomNameMessage) obj;
 
       boolean result = true;
-      result = result && (getType()
-          == other.getType());
       return result;
     }
 
@@ -5896,8 +5683,6 @@ public final class PlayerProtocol {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + TYPE_FIELD_NUMBER;
-      hash = (53 * hash) + getType();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -6020,8 +5805,6 @@ public final class PlayerProtocol {
       }
       public Builder clear() {
         super.clear();
-        type_ = 0;
-
         return this;
       }
 
@@ -6044,7 +5827,6 @@ public final class PlayerProtocol {
 
       public com.leader.game.protobuf.protocol.PlayerProtocol.ReqRandomNameMessage buildPartial() {
         com.leader.game.protobuf.protocol.PlayerProtocol.ReqRandomNameMessage result = new com.leader.game.protobuf.protocol.PlayerProtocol.ReqRandomNameMessage(this);
-        result.type_ = type_;
         onBuilt();
         return result;
       }
@@ -6086,9 +5868,6 @@ public final class PlayerProtocol {
 
       public Builder mergeFrom(com.leader.game.protobuf.protocol.PlayerProtocol.ReqRandomNameMessage other) {
         if (other == com.leader.game.protobuf.protocol.PlayerProtocol.ReqRandomNameMessage.getDefaultInstance()) return this;
-        if (other.getType() != 0) {
-          setType(other.getType());
-        }
         onChanged();
         return this;
       }
@@ -6112,44 +5891,6 @@ public final class PlayerProtocol {
             mergeFrom(parsedMessage);
           }
         }
-        return this;
-      }
-
-      private int type_ ;
-      /**
-       * <pre>
-       *1昵称 2门派名
-       * </pre>
-       *
-       * <code>optional int32 type = 1;</code>
-       */
-      public int getType() {
-        return type_;
-      }
-      /**
-       * <pre>
-       *1昵称 2门派名
-       * </pre>
-       *
-       * <code>optional int32 type = 1;</code>
-       */
-      public Builder setType(int value) {
-        
-        type_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <pre>
-       *1昵称 2门派名
-       * </pre>
-       *
-       * <code>optional int32 type = 1;</code>
-       */
-      public Builder clearType() {
-        
-        type_ = 0;
-        onChanged();
         return this;
       }
       public final Builder setUnknownFields(
@@ -6758,24 +6499,24 @@ public final class PlayerProtocol {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024PlayerProtocol.proto\"\025\n\023ReqHeartbeatMe" +
-      "ssage\"U\n\017ReqLoginMessage\022\r\n\005token\030\001 \001(\t\022" +
-      "\020\n\010username\030\002 \001(\t\022\017\n\007channel\030\003 \001(\005\022\020\n\010de" +
-      "viceId\030\004 \001(\t\"@\n\017ResLoginMessage\022\014\n\004code\030" +
-      "\001 \001(\005\022\037\n\nplayerInfo\030\002 \001(\0132\013.PlayerInfo\"g" +
-      "\n\nPlayerInfo\022\013\n\003uid\030\001 \001(\003\022\020\n\010nickname\030\002 " +
-      "\001(\t\022\014\n\004icon\030\003 \001(\t\022\013\n\003sex\030\004 \001(\005\022\r\n\005level\030" +
-      "\005 \001(\005\022\020\n\010sectName\030\006 \001(\t\"\205\001\n\022ReqRegisterM" +
-      "essage\022\020\n\010nickname\030\001 \001(\t\022\014\n\004icon\030\002 \001(\t\022\013" +
-      "\n\003sex\030\003 \001(\005\022\r\n\005level\030\004 \001(\005\022\020\n\010sectName\030\005",
-      " \001(\t\022\017\n\007channel\030\006 \001(\005\022\020\n\010deviceId\030\007 \001(\t\"" +
-      "C\n\022ResRegisterMessage\022\014\n\004code\030\001 \001(\005\022\037\n\np" +
-      "layerInfo\030\002 \001(\0132\013.PlayerInfo\":\n\030ResPrope" +
-      "rtyChangeMessage\022\r\n\005money\030\001 \001(\003\022\017\n\007diamo" +
-      "nd\030\002 \001(\005\"$\n\024ReqRandomNameMessage\022\014\n\004type" +
-      "\030\001 \001(\005\"$\n\024ResRandomNameMessage\022\014\n\004name\030\001" +
-      " \001(\tB3\n!com.leader.game.protobuf.protoco" +
-      "lB\016PlayerProtocolb\006proto3"
+      "\n\024PlayerProtocol.proto\032\022SectProtocol.pro" +
+      "to\"\025\n\023ReqHeartbeatMessage\"U\n\017ReqLoginMes" +
+      "sage\022\r\n\005token\030\001 \001(\t\022\020\n\010username\030\002 \001(\t\022\017\n" +
+      "\007channel\030\003 \001(\005\022\020\n\010deviceId\030\004 \001(\t\"@\n\017ResL" +
+      "oginMessage\022\014\n\004code\030\001 \001(\005\022\037\n\nplayerInfo\030" +
+      "\002 \001(\0132\013.PlayerInfo\"c\n\nPlayerInfo\022\013\n\003uid\030" +
+      "\001 \001(\003\022\020\n\010nickname\030\002 \001(\t\022\013\n\003sex\030\003 \001(\005\022\014\n\004" +
+      "icon\030\004 \001(\t\022\033\n\010sectInfo\030\005 \001(\0132\t.SectInfo\"" +
+      "s\n\022ReqRegisterMessage\022\020\n\010nickname\030\001 \001(\t\022" +
+      "\014\n\004icon\030\002 \001(\t\022\013\n\003sex\030\003 \001(\005\022\r\n\005level\030\004 \001(",
+      "\005\022\017\n\007channel\030\005 \001(\005\022\020\n\010deviceId\030\006 \001(\t\"C\n\022" +
+      "ResRegisterMessage\022\014\n\004code\030\001 \001(\005\022\037\n\nplay" +
+      "erInfo\030\002 \001(\0132\013.PlayerInfo\":\n\030ResProperty" +
+      "ChangeMessage\022\r\n\005money\030\001 \001(\003\022\017\n\007diamond\030" +
+      "\002 \001(\005\"\026\n\024ReqRandomNameMessage\"$\n\024ResRand" +
+      "omNameMessage\022\014\n\004name\030\001 \001(\tB3\n!com.leade" +
+      "r.game.protobuf.protocolB\016PlayerProtocol" +
+      "b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6788,6 +6529,7 @@ public final class PlayerProtocol {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.leader.game.protobuf.protocol.SectProtocol.getDescriptor(),
         }, assigner);
     internal_static_ReqHeartbeatMessage_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -6812,13 +6554,13 @@ public final class PlayerProtocol {
     internal_static_PlayerInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_PlayerInfo_descriptor,
-        new java.lang.String[] { "Uid", "Nickname", "Icon", "Sex", "Level", "SectName", });
+        new java.lang.String[] { "Uid", "Nickname", "Sex", "Icon", "SectInfo", });
     internal_static_ReqRegisterMessage_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_ReqRegisterMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReqRegisterMessage_descriptor,
-        new java.lang.String[] { "Nickname", "Icon", "Sex", "Level", "SectName", "Channel", "DeviceId", });
+        new java.lang.String[] { "Nickname", "Icon", "Sex", "Level", "Channel", "DeviceId", });
     internal_static_ResRegisterMessage_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_ResRegisterMessage_fieldAccessorTable = new
@@ -6836,13 +6578,14 @@ public final class PlayerProtocol {
     internal_static_ReqRandomNameMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReqRandomNameMessage_descriptor,
-        new java.lang.String[] { "Type", });
+        new java.lang.String[] { });
     internal_static_ResRandomNameMessage_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_ResRandomNameMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ResRandomNameMessage_descriptor,
         new java.lang.String[] { "Name", });
+    com.leader.game.protobuf.protocol.SectProtocol.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

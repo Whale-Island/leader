@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="GBK"?>
+<project basedir="." default="jar">
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="buildclass.dir" value="${basedir}/build/classes" />
+	<property name="jarfile" value="D:/package/loginserver.jar" />
+
+	<target name="remove">
+		<echo message="当前运行目录是:${basedir}" />
+		<delete dir="${buildclass.dir}" />
+		<delete file="${jarfile}" />
+	</target>
+	<target name="build" depends="remove">
+		<echo message="开始构建目录" />
+		<mkdir dir="${buildclass.dir}" />
+		<echo message="构建目录结束" />
+		<echo message="开始编译" />
+		<path id="classpath">
+			<fileset dir="${lib.dir}" includes="*.jar" />
+		</path>
+		<javac debug="true" source="1.8" srcdir="${basedir}/src/main/java" destdir="${buildclass.dir}" encoding="UTF-8" includeantruntime="on">
+			<compilerarg value="-Xlint:deprecation" />
+			<classpath refid="classpath" />
+		</javac>
+		<echo message="编译结束" />
+		<copy file="${basedir}/src/main/resources/META-INF/persistence.xml" tofile="${buildclass.dir}/META-INF/persistence.xml" />
+		<copy file="${basedir}/src/main/resources/applicationContext.xml" tofile="${buildclass.dir}/applicationContext.xml" />
+		<copy file="${basedir}/src/main/resources/log4j.properties" tofile="${buildclass.dir}/log4j.properties" />
+	</target>
+	<target name="jar" depends="build">
+		<echo message="开始打包JAR" />
+		<jar destfile="${jarfile}" basedir="${buildclass.dir}">
+			<manifest>
+				<attribute name="Manifest-Version" value="1.0" />
+				<attribute name="Main-Class" value="com/leader/login/Program" />
+				<attribute name="Class-Path" value="${libs.project}" />
+			</manifest>
+		</jar>
+		<echo message="打包结束" />
+		<delete dir="${buildclass.dir}" />
+	</target>
+</project>

@@ -10,7 +10,7 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.leader.core.server.http.HttpServerHandler;
-import com.leader.login.server.GateWayServer;
+import com.leader.login.server.LoginServer;
 import com.leader.login.user.handler.ReqLoginHandler;
 import com.leader.login.user.handler.ReqRegisterUserHandler;
 import com.leader.login.user.handler.ReqServerListHandler;
@@ -44,7 +44,7 @@ public class Program {
 			"/applicationContext.xml");
 
 	public static void main(String[] args) throws CertificateException, SchedulerException, IOException {
-		GateWayServer server = applicationContext.getBean("server", GateWayServer.class);
+		LoginServer server = applicationContext.getBean("server", LoginServer.class);
 		server.startHttpServer(channelHandler);
 		server.run(applicationContext);
 	}

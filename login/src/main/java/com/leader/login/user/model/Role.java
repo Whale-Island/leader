@@ -9,6 +9,9 @@ import javax.persistence.Table;
 
 import com.leader.core.db.GameEntity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name = "role")
 @NamedQueries({ // start
@@ -22,66 +25,18 @@ public class Role implements GameEntity {
 
 	@Id
 	@Column(unique = true, nullable = false)
-	private long id;
+	private @Getter @Setter long id;
 	/** 帐号 */
-	private String username;
+	private @Getter @Setter String username;
 	/** 昵称 */
-	private String nickname;
+	private @Getter @Setter String nickname;
 	/** 性别 */
-	private short sex;
+	private @Getter @Setter short sex;
 	/** 等级 */
-	private int level;
+	private @Getter @Setter int level;
 	/** 所在服务器名称 */
-	private String servername;
+	private @Getter @Setter String servername;
 	/** 所在服务器编号 */
-	private int serverId;
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
-	public short getSex() {
-		return sex;
-	}
-
-	public void setSex(short sex) {
-		this.sex = sex;
-	}
-
-	public int getLevel() {
-		return level;
-	}
-
-	public void setLevel(int level) {
-		this.level = level;
-	}
-
-	public String getServername() {
-		return servername;
-	}
-
-	public void setServername(String servername) {
-		this.servername = servername;
-	}
-
-	public int getServerId() {
-		return serverId;
-	}
-
-	public void setServerId(int serverId) {
-		this.serverId = serverId;
-	}
+	private @Getter @Setter int serverId;
 
 }

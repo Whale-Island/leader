@@ -47,7 +47,7 @@ public class ConnectServerThread extends Thread {
 				@Override
 				public void run() {
 					ReqInternalHeartbeatMessage.Builder builder = ReqInternalHeartbeatMessage.newBuilder();
-					builder.setOnline(GameServer.Intstance.getChannelGroup().size());
+					builder.setOnline(GameServer.getInstance().getChannelGroup().size());
 					channel.writeAndFlush(builder);
 				}
 			}, 10 * 1000, 10 * 1000, TimeUnit.MILLISECONDS);

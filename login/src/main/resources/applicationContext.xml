@@ -12,6 +12,7 @@
 		<property name="locations">
 			<list>
 				<value>file:./config/server_config.properties</value>
+				<value>file:./config/jdbc.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -20,11 +21,11 @@
 	<bean id="dispatcherManager" class="com.leader.core.server.manager.DispatcherManager"
 		factory-method="getInstance" />
 	<bean id="messagePool" class="com.leader.core.server.pool.MessagePool">
-		<property name="packagepath" value="com.leader.gateway.protobuf.protocol"></property>
+		<property name="packagepath" value="com.leader.login.protobuf.protocol"></property>
 	</bean>
-	<bean id="messageType" class="com.leader.gateway.server.model.IMessageType" />
+	<bean id="messageType" class="com.leader.login.server.model.IMessageType" />
 	
-	<bean id="server" class="com.leader.gateway.server.GateWayServer"
+	<bean id="server" class="com.leader.login.server.LoginServer"
 		factory-method="getInstance">
 		<property name="listeners">
 			<list>
@@ -33,6 +34,85 @@
 	</bean>
 
 	<!-- Scan for all of Spring components such as Spring Service -->
-	<context:component-scan base-package="com.leader.gateway" />
+	<context:component-scan base-package="com.leader.login" />
 
+
+	<!-- mysql数据源配置 -->
+	<bean id="gameDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+		<!-- 驱动名称 -->
+		<property name="DriverClassName" value="${jdbc.driverClassName}" />
+		<!-- JDBC连接串 -->
+		<property name="url" value="${jdbc.url}" />
+		<!-- 数据库用户名称 -->
+		<property name="username" value="${jdbc.username}" />
+		<!-- 数据库密码 -->
+		<property name="password" value="${jdbc.password}" />
+		<!-- 连接池最大使用连接数量 -->
+		<property name="maxActive" value="20" />
+		<!-- 初始化大小 -->
+		<property name="initialSize" value="5" />
+		<!-- 获取连接最大等待时间 -->
+		<property name="maxWait" value="60000" />
+		<!-- 连接池最小空闲 -->
+		<property name="minIdle" value="2" />
+		<!-- 连接池最大空闲 -->
+		<!-- <property name="maxIdle" value="20" /> -->
+		<!-- 逐出连接的检测时间间隔 -->
+		<property name="timeBetweenEvictionRunsMillis" value="3000" />
+		<!-- 最小逐出时间 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+		<!-- 测试有效用的SQL Query -->
+		<property name="validationQuery" value="SELECT 'x'" />
+		<!-- 连接空闲时测试是否有效 -->
+		<property name="testWhileIdle" value="true" />
+		<!-- 获取连接时测试是否有效 -->
+		<property name="testOnBorrow" value="false" />
+		<!-- 归还连接时是否测试有效 -->
+		<property name="testOnReturn" value="false" />
+	</bean>
+	
+		<!-- Entity Manager Factory -->
+	<bean id="gameEntityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="gameDataSource" />
+		<property name="packagesToScan">
+			<list>
+				<value>com.leader.login.**.model</value>
+				<value>com.leader.login.db</value>
+			</list>
+		</property>
+		<!-- <property name="persistenceUnitName" value="jpa-persistence" /> -->
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+				<property name="showSql" value="false" />
+				<property name="generateDdl" value="false" />
+			</bean>
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<!--设置外连接抓取树的最大深度 -->
+				<prop key="hibernate.max_fetch_depth">3</prop>
+				<prop key="hibernate.jdbc.fetch_size">18</prop>
+				<prop key="hibernate.jdbc.batch_size">50</prop>
+				<!-- 自动建表类型 validate|create|create-drop|update -->
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<!-- 是否显示SQL -->
+				<prop key="hibernate.show_sql">true</prop>
+				<!-- 显示SQL是否格式化 -->
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- 关闭二级缓存 -->
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.NoCacheProvider</prop>
+				<prop key="hibernate.ejb.entitymanager_factory_name">gameEMF</prop>
+				<!-- 关闭实体字段映射校验 -->
+				<prop key="javax.persistence.validation.mode">none</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Transaction Manager -->
+	<bean id="gameTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="gameEntityManagerFactory" />
+		<qualifier value="gameTM" />
+	</bean>
 </beans>

@@ -8,14 +8,24 @@ import com.leader.core.server.pool.LogicThreadPool;
 import com.leader.core.server.pool.MessagePool;
 
 import io.netty.channel.ChannelHandlerContext;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public enum DispatcherManager {
-	Intstance;
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class DispatcherManager {
 	/** handler_pool */
 	@Autowired
 	private MessagePool messagePool;
+
+	private static class SigletonHolder {
+		static final DispatcherManager INSTANCE = new DispatcherManager();
+	}
+
+	public static DispatcherManager getInstance() {
+		return SigletonHolder.INSTANCE;
+	}
 
 	/**
 	 * 消息分发

@@ -18,13 +18,20 @@ import lombok.NoArgsConstructor;
  * 日志
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public enum LogManager {
-	Intstance;
+public class LogManager {
 
 	@Autowired
 	LogProcessThread logProcessThread;
 	@Autowired
 	ServerConfig serverConfig;
+
+	private static class SigletonHolder {
+		static final LogManager INSTANCE = new LogManager();
+	}
+
+	public static LogManager getInstance() {
+		return SigletonHolder.INSTANCE;
+	}
 
 	/**
 	 * 添加登录日志
@@ -78,7 +85,7 @@ public enum LogManager {
 	public void addOnlineNumberLog(int hour) {
 		OnlineNumberLog numberLog = new OnlineNumberLog();
 		numberLog.setHour(hour);
-		numberLog.setNum(GameServer.Intstance.getChannelGroup().size());
+		numberLog.setNum(GameServer.getInstance().getChannelGroup().size());
 		numberLog.setServerId(serverConfig.getServerId());
 		numberLog.setTodayTime(new Date());
 		numberLog.setId(1L);

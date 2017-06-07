@@ -16,9 +16,6 @@ public class MessageDispatcherHandler extends SimpleChannelInboundHandler<Packag
 	/** log */
 	private static Logger log = LoggerFactory.getLogger(MessageDispatcherHandler.class);
 
-	public MessageDispatcherHandler() {
-	}
-
 	@Override
 	public void channelActive(final ChannelHandlerContext ctx) {
 	}
@@ -31,7 +28,7 @@ public class MessageDispatcherHandler extends SimpleChannelInboundHandler<Packag
 	 */
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, Package pk) throws Exception {
-		DispatcherManager.Intstance.dispatcher(ctx, pk);
+		DispatcherManager.getInstance().dispatcher(ctx, pk);
 	}
 
 	@Override

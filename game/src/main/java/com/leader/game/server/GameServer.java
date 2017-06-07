@@ -33,9 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public enum GameServer {
-	Intstance;
-
+public class GameServer {
 	/** channelgroup */
 	private PlayerChannelGroup channelGroup = new PlayerChannelGroup(GlobalEventExecutor.INSTANCE);
 	/** 关服监听列表 */
@@ -51,6 +49,14 @@ public enum GameServer {
 	private ConnectServerThread gatewayServerThread;
 	/** 充值服线程 */
 	private ConnectServerThread chargeServerThread;
+
+	private static class SigletonHolder {
+		static final GameServer INSTANCE = new GameServer();
+	}
+
+	public static GameServer getInstance() {
+		return SigletonHolder.INSTANCE;
+	}
 
 	private ChannelHandler channelHandler = new ChannelInitializer<SocketChannel>() {
 

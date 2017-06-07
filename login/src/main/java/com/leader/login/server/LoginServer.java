@@ -33,9 +33,9 @@ import io.netty.channel.ChannelHandler;
 import io.netty.util.Attribute;
 import io.netty.util.concurrent.GlobalEventExecutor;
 
-public class GateWayServer {
+public class LoginServer {
 	/** 日志 */
-	private Logger logger = LoggerFactory.getLogger(GateWayServer.class);
+	private Logger logger = LoggerFactory.getLogger(LoginServer.class);
 	private ConcurrentMap<Integer, Server> servers = new ConcurrentHashMap<Integer, Server>();
 	private ServerChannelGroup channelGroup = new ServerChannelGroup(GlobalEventExecutor.INSTANCE);
 	@Value("${server_port}")
@@ -49,14 +49,14 @@ public class GateWayServer {
 	/** http */
 	private HttpServerThread httpServerThread;
 
-	private GateWayServer() {
+	private LoginServer() {
 	}
 
 	private static class SigletonHolder {
-		static final GateWayServer INSTANCE = new GateWayServer();
+		static final LoginServer INSTANCE = new LoginServer();
 	}
 
-	public static GateWayServer getInstance() {
+	public static LoginServer getInstance() {
 		return SigletonHolder.INSTANCE;
 	}
 

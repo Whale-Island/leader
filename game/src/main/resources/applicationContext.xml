@@ -150,7 +150,7 @@
 				<prop key="hibernate.jdbc.fetch_size">18</prop>
 				<prop key="hibernate.jdbc.batch_size">50</prop>
 				<!-- 自动建表类型 validate|create|create-drop|update -->
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				<!-- 是否显示SQL -->
 				<prop key="hibernate.show_sql">true</prop>
 				<!-- 显示SQL是否格式化 -->

@@ -1,7 +1,9 @@
 package com.leader.game.sect.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -63,12 +65,20 @@ public class Sect implements GameEntity {
 	private AtomicLong gold;
 	/** 钻石 */
 	private AtomicInteger diamond;
+	/** 仓库ID */
+	private @Getter @Setter int storageId;
 	/** 弟子们 */
 	private @Getter @Setter @Transient List<Role> roles = new ArrayList<>();
+	/** 弟子们(key=模版id) */
+	private @Getter @Setter @Transient Map<Integer, Role> roleMap = new HashMap<>();
 
 	public Sect() {
 		if (id != 0)
-			roles.addAll(RoleManager.Intstance.findRoles(id));
+			roles.addAll(RoleManager.getInstance().findRoles(id));
+		for (Role role : roles) {
+			roleMap.put(role.getModelId(), role);
+		}
+
 	}
 
 	/** 增加金币 */

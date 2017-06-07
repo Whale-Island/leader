@@ -30,7 +30,8 @@ public class ReqRegisterHandler implements Handler {
 
 		ResRegisterMessage.Builder response = ResRegisterMessage.newBuilder();
 
-		Player player = PlayerManager.Intstance.register(channel, nickname, icon, sex, gameChannel, deviceId, response);
+		Player player = PlayerManager.getInstance().register(channel, nickname, icon, sex, gameChannel, deviceId,
+				response);
 
 		if (player != null) {
 			PlayerInfo.Builder info = response.getPlayerInfoBuilder();
@@ -44,7 +45,7 @@ public class ReqRegisterHandler implements Handler {
 		channel.writeAndFlush(response);
 
 		if (player != null)
-			LogManager.Intstance.addRegisterLog(player.getId(), player.getDeviceId(), player.getNickname(),
+			LogManager.getInstance().addRegisterLog(player.getId(), player.getDeviceId(), player.getNickname(),
 					player.getNickname(), player.getChannel());
 	}
 

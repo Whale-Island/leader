@@ -24,16 +24,16 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "player")
-@NamedQueries({ // start
+@NamedQueries({ // [start]
 		@NamedQuery(name = "Player.findAll", query = "SELECT r FROM Player r"),
 		@NamedQuery(name = "Player.findPlayerById", query = "SELECT r FROM Player r WHERE r.id = ?1"),
-		@NamedQuery(name = "Player.findPlayerByName", query = "SELECT r FROM Player r WHERE r.username = :username") // end
+		@NamedQuery(name = "Player.findPlayerByName", query = "SELECT r FROM Player r WHERE r.username = :username") // [end]
 })
-@NamedNativeQueries({ // start BriefInfo
-		@NamedNativeQuery(name = "Player.getAllNickname", query = "SELECT nickname FROM Player", resultSetMapping = "Player.nickname"), })
-@SqlResultSetMappings({ // start
+@NamedNativeQueries({ // [start] BriefInfo
+		@NamedNativeQuery(name = "Player.getAllNickname", query = "SELECT nickname FROM Player", resultSetMapping = "Player.nickname"), }) // [end]
+@SqlResultSetMappings({ // [start]
 		@SqlResultSetMapping(name = "Player.nickname", columns = {
-				@ColumnResult(name = "nickname", type = String.class) }) // end
+				@ColumnResult(name = "nickname", type = String.class) }) // [end]
 })
 @ToString
 public class Player implements GameEntity {
@@ -76,7 +76,7 @@ public class Player implements GameEntity {
 	public static final int ONLINE = 1, OFFLINE = 2, SAVE = 3;
 
 	public Player() {
-		sect = SectManager.Intstance.findSect(sectId);
+		sect = SectManager.getInstance().findSect(sectId);
 	}
 
 	public final boolean isOnline() {

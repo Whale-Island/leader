@@ -17,7 +17,7 @@ public class ReqRandomNameHandler implements Handler {
 
 	@Override
 	public void action(Channel channel, Message m) throws InvalidProtocolBufferException {
-		String name = PlayerManager.Intstance.randomName();
+		String name = PlayerManager.getInstance().randomName();
 		ResRandomNameMessage.Builder builder = ResRandomNameMessage.newBuilder();
 		builder.setName(name);
 

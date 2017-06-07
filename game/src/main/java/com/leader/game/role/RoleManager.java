@@ -10,8 +10,21 @@ import com.leader.game.protobuf.protocol.RoleProtocol.RoleInfo;
 import com.leader.game.role.dao.RoleDao;
 import com.leader.game.role.model.Role;
 
-public enum RoleManager implements ShutdownListener {
-	Intstance;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class RoleManager implements ShutdownListener {
+	private static class SigletonHolder {
+		static final RoleManager INSTANCE = new RoleManager();
+	}
+
+	public static RoleManager getInstance() {
+		return SigletonHolder.INSTANCE;
+	}
+
 	@Autowired
 	RoleDao dao;
 	@Autowired

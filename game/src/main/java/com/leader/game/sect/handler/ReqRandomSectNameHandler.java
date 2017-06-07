@@ -17,7 +17,7 @@ public class ReqRandomSectNameHandler implements Handler {
 
 	@Override
 	public void action(Channel channel, Message m) throws InvalidProtocolBufferException {
-		String name = SectManager.Intstance.randomName();
+		String name = SectManager.getInstance().randomName();
 		ResRandomSectNameMessage.Builder builder = ResRandomSectNameMessage.newBuilder();
 		builder.setName(name);
 

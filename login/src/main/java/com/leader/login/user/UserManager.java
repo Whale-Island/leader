@@ -13,7 +13,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.leader.core.db.CommonDao;
 import com.leader.core.server.model.ShutdownListener;
 import com.leader.core.util.RandomUtils;
-import com.leader.login.server.GateWayServer;
+import com.leader.login.server.LoginServer;
 import com.leader.login.server.model.Server;
 import com.leader.login.user.dao.UserDao;
 import com.leader.login.user.model.LoginToken;
@@ -142,7 +142,7 @@ public class UserManager implements ShutdownListener {
 			role = new Role();
 			role.setUsername(username);
 			role.setServerId(serverId);
-			Server server = GateWayServer.getInstance().getServers().getOrDefault(serverId, new Server());
+			Server server = LoginServer.getInstance().getServers().getOrDefault(serverId, new Server());
 			role.setServername(server.getName());
 		}
 		role.setNickname(nickname);

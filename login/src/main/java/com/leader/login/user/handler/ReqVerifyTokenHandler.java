@@ -13,7 +13,7 @@ import com.leader.login.user.UserManager;
 import io.netty.channel.Channel;
 
 @Controller
-@Protocol("GatewayProtocol")
+@Protocol("LoginProtocol")
 public class ReqVerifyTokenHandler implements Handler {
 
 	@Override

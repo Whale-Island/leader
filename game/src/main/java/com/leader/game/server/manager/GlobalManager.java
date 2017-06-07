@@ -18,10 +18,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class GlobalManager implements ShutdownListener {
 
-	@Autowired
-	private CommonDao commonDao;
-	private ConcurrentMap<GlobalKey, GlobalVariables> globalVariablesMap = new ConcurrentHashMap<GlobalKey, GlobalVariables>();
-
 	private static class SigletonHolder {
 		static final GlobalManager INSTANCE = new GlobalManager();
 	}
@@ -29,6 +25,10 @@ public class GlobalManager implements ShutdownListener {
 	public static GlobalManager getInstance() {
 		return SigletonHolder.INSTANCE;
 	}
+
+	@Autowired
+	private CommonDao commonDao;
+	private ConcurrentMap<GlobalKey, GlobalVariables> globalVariablesMap = new ConcurrentHashMap<GlobalKey, GlobalVariables>();
 
 	/**
 	 * @return the map

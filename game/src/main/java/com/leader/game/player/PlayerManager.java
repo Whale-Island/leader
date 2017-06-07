@@ -48,8 +48,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public enum PlayerManager implements ShutdownListener {
-	Intstance;
+public class PlayerManager implements ShutdownListener {
+	private static class SigletonHolder {
+		static final PlayerManager INSTANCE = new PlayerManager();
+	}
+
+	public static PlayerManager getInstance() {
+		return SigletonHolder.INSTANCE;
+	}
 
 	/** 角色名表达式 */
 	private static final String regEx = "^[\u4e00-\u9fa5_a-zA-Z0-9]+$";
@@ -203,7 +209,7 @@ public enum PlayerManager implements ShutdownListener {
 			}
 		}
 
-		PlayerChannelGroup channelGroup = GameServer.Intstance.getChannelGroup();
+		PlayerChannelGroup channelGroup = GameServer.getInstance().getChannelGroup();
 		Channel oldChannel = channelGroup.getChannel(player.getId());
 		if (oldChannel != null) {
 			log.info("玩家:" + player.getId() + "被挤下线！原ip:" + oldChannel.remoteAddress() + " ---> 新ip:"
@@ -329,13 +335,13 @@ public enum PlayerManager implements ShutdownListener {
 		long now = System.currentTimeMillis();
 		int onlineTime = (int) (now - preLoginTime);
 
-		PlayerChannelGroup channelGroup = GameServer.Intstance.getChannelGroup();
+		PlayerChannelGroup channelGroup = GameServer.getInstance().getChannelGroup();
 		Channel oldChannel = channelGroup.getChannel(player.getId());
 		if (oldChannel != null) {
 			channelGroup.remove(oldChannel);
 		}
 
-		LogManager.Intstance.addLoginLog(player.getId(), player.getNickname(), player.getUsername(),
+		LogManager.getInstance().addLoginLog(player.getId(), player.getNickname(), player.getUsername(),
 				player.getChannel(), 2, onlineTime);
 	}
 
@@ -359,6 +365,44 @@ public enum PlayerManager implements ShutdownListener {
 	@Override
 	public void shutdown() {
 		commonDao.batchUpdateCollection(players.values());
+	}
+
+	/**
+	 * 接收奖励<br>
+	 * id:number|id:number|id:number<br>
+	 */
+	public void reward(Player player, String rewards) {
+		try {
+			String[] reward = rewards.split("\\|");
+			for (String str : reward) {
+				String[] s = str.split(":");
+				int id = Integer.valueOf(s[0]);
+				int num = Integer.valueOf(s[1]);
+				reward(player, id, num);
+			}
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+		}
+	}
+
+	/***
+	 * 发送奖励
+	 * 
+	 * @param player
+	 * @param itemId
+	 *            物品的模版id
+	 * @param number
+	 *            物品数量
+	 */
+	public void reward(Player player, int itemId, int number) {
+		switch (itemId) {
+		case 1:
+			
+			break;
+
+		default:
+			break;
+		}
 	}
 
 }

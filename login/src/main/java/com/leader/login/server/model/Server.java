@@ -1,119 +1,17 @@
 package com.leader.login.server.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public class Server {
 
-	private int serverId;
-	private String name;
-	private String ip;
-	private int port;
-	private volatile int state;
-	private int online;
-	private volatile boolean isRecommend;
-
-	/**
-	 * @return the serverId
-	 */
-	public final int getServerId() {
-		return serverId;
-	}
-
-	/**
-	 * @param serverId
-	 *            the serverId to set
-	 */
-	public final void setServerId(int serverId) {
-		this.serverId = serverId;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public final String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name
-	 *            the name to set
-	 */
-	public final void setName(String name) {
-		this.name = name;
-	}
-
-	/**
-	 * @return the ip
-	 */
-	public final String getIp() {
-		return ip;
-	}
-
-	/**
-	 * @param ip
-	 *            the ip to set
-	 */
-	public final void setIp(String ip) {
-		this.ip = ip;
-	}
-
-	/**
-	 * @return the port
-	 */
-	public final int getPort() {
-		return port;
-	}
-
-	/**
-	 * @param port
-	 *            the port to set
-	 */
-	public final void setPort(int port) {
-		this.port = port;
-	}
-
-	/**
-	 * @return the state
-	 */
-	public final int getState() {
-		return state;
-	}
-
-	/**
-	 * @param state
-	 *            the state to set
-	 */
-	public final void setState(int state) {
-		this.state = state;
-	}
-
-	/**
-	 * @return the online
-	 */
-	public final int getOnline() {
-		return online;
-	}
-
-	/**
-	 * @param online
-	 *            the online to set
-	 */
-	public final void setOnline(int online) {
-		this.online = online;
-	}
-
-	/**
-	 * @return the isRecommend
-	 */
-	public final boolean isRecommend() {
-		return isRecommend;
-	}
-
-	/**
-	 * @param isRecommend
-	 *            the isRecommend to set
-	 */
-	public final void setRecommend(boolean isRecommend) {
-		this.isRecommend = isRecommend;
-	}
+	private @Getter @Setter int serverId;
+	private @Getter @Setter String name;
+	private @Getter @Setter String ip;
+	private @Getter @Setter int port;
+	private @Getter @Setter volatile int state;
+	private @Getter @Setter int online;
+	private @Getter @Setter volatile boolean isRecommend;
 
 	/*
 	 * (non-Javadoc)

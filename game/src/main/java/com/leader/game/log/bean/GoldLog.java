@@ -37,7 +37,7 @@ public class GoldLog implements LogEntity {
 	/** 变化前的值 */
 	private @Getter @Setter long preNum;
 	/** 变化值 */
-	private @Getter @Setter long change;
+	private @Getter @Setter long value;
 	/** 现在值 */
 	private @Getter @Setter long num;
 }

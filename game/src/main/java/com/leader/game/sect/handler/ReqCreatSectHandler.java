@@ -24,9 +24,9 @@ public class ReqCreatSectHandler implements Handler {
 		String name = message.getName();
 
 		ResCreatSectMessage.Builder response = ResCreatSectMessage.newBuilder();
-		Sect sect = SectManager.Intstance.creatSect(channel, name, response);
+		Sect sect = SectManager.getInstance().creatSect(channel, name, response);
 		if (sect != null) {
-			SectInfo.Builder builder = SectManager.Intstance.packSect(sect);
+			SectInfo.Builder builder = SectManager.getInstance().packSect(sect);
 			response.setInfo(builder);
 		}
 		channel.writeAndFlush(response);

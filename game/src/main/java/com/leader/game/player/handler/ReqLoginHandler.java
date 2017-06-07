@@ -28,7 +28,7 @@ public class ReqLoginHandler implements Handler {
 		String username = message.getUsername();
 		ResLoginMessage.Builder response = ResLoginMessage.newBuilder();
 		String token = message.getToken();
-		Player player = PlayerManager.Intstance.login(username, token, channel, response);
+		Player player = PlayerManager.getInstance().login(username, token, channel, response);
 		if (player != null) {
 			PlayerInfo.Builder info = response.getPlayerInfoBuilder();
 			info.setUid(player.getId());
@@ -37,7 +37,7 @@ public class ReqLoginHandler implements Handler {
 			info.setSex(player.getSex());
 			// 门派
 			Sect sect = player.getSect();
-			SectInfo.Builder sectInfo = SectManager.Intstance.packSect(sect);
+			SectInfo.Builder sectInfo = SectManager.getInstance().packSect(sect);
 			info.setSectInfo(sectInfo);
 			response.setPlayerInfo(info);
 
@@ -45,7 +45,7 @@ public class ReqLoginHandler implements Handler {
 		channel.writeAndFlush(response);
 
 		if (player != null)
-			LogManager.Intstance.addLoginLog(player.getId(), player.getNickname(), player.getUsername(),
+			LogManager.getInstance().addLoginLog(player.getId(), player.getNickname(), player.getUsername(),
 					player.getChannel(), 2, 0);
 	}
 }

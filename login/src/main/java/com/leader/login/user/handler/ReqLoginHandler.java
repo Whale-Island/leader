@@ -7,9 +7,11 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.leader.core.server.http.AbstractChannelHandler;
+import com.leader.core.server.model.Protocol;
 import com.leader.login.user.UserManager;
 
 import io.netty.channel.ChannelHandlerContext;
@@ -21,6 +23,8 @@ import io.netty.handler.codec.http.FullHttpRequest;
  * @author siestacat
  *
  */
+@Controller
+@Protocol("LoginProtocol")
 public class ReqLoginHandler extends AbstractChannelHandler {
 
 	private Logger log = LoggerFactory.getLogger(getClass());

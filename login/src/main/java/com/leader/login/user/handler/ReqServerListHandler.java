@@ -9,11 +9,13 @@ import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.leader.core.server.http.AbstractChannelHandler;
-import com.leader.login.server.GateWayServer;
+import com.leader.core.server.model.Protocol;
+import com.leader.login.server.LoginServer;
 import com.leader.login.server.model.Server;
 
 import io.netty.channel.ChannelHandlerContext;
@@ -25,6 +27,8 @@ import io.netty.handler.codec.http.FullHttpRequest;
  * @author siestacat
  *
  */
+@Controller
+@Protocol("LoginProtocol")
 public class ReqServerListHandler extends AbstractChannelHandler {
 
 	private Logger log = LoggerFactory.getLogger(getClass());
@@ -33,7 +37,7 @@ public class ReqServerListHandler extends AbstractChannelHandler {
 	public void channel(ChannelHandlerContext ctx, FullHttpRequest req, Map<String, String> map) {
 		JSONArray array = new JSONArray();
 		try {
-			Set<Entry<Integer, Server>> set = GateWayServer.getInstance().getServers().entrySet();
+			Set<Entry<Integer, Server>> set = LoginServer.getInstance().getServers().entrySet();
 			for (Entry<Integer, Server> entry : set) {
 				Server server = entry.getValue();
 				JSONObject object = new JSONObject();

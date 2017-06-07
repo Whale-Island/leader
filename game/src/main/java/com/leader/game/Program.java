@@ -19,7 +19,7 @@ public class Program {
 
 	public static void main(String[] args) {
 		try {
-			GameServer.Intstance.run(applicationContext);
+			GameServer.getInstance().run(applicationContext);
 		} catch (CertificateException | IOException e) {
 			logger.error(e.getMessage(), e);
 		}

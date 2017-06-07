@@ -35,8 +35,15 @@ import lombok.extern.slf4j.Slf4j;
 /** 门派管理 */
 @Slf4j
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public enum SectManager implements ShutdownListener {
-	Intstance;
+public class SectManager implements ShutdownListener {
+	private static class SigletonHolder {
+		static final SectManager INSTANCE = new SectManager();
+	}
+
+	public static SectManager getInstance() {
+		return SigletonHolder.INSTANCE;
+	}
+
 	/** 角色名表达式 */
 	private static final String regEx = "^[\u4e00-\u9fa5_a-zA-Z0-9]+$";
 	private static final Pattern pattern = Pattern.compile(regEx);
@@ -75,7 +82,7 @@ public enum SectManager implements ShutdownListener {
 			sect.setPlayerId(player.getId());
 			sect.setName(name);
 
-			List<Role> roles = RoleManager.Intstance.allotRole(player.getNickname(), player.getSex());
+			List<Role> roles = RoleManager.getInstance().allotRole(player.getNickname(), player.getSex());
 			if (roles == null || roles.size() == 0) {
 				response.setCode(2);// 初始化门派失败
 				return null;
@@ -143,7 +150,7 @@ public enum SectManager implements ShutdownListener {
 		Iterator<Role> iterator = sect.getRoles().iterator();
 		while (iterator.hasNext()) {
 			Role role = iterator.next();
-			roles.add(RoleManager.Intstance.packRole(role));
+			roles.add(RoleManager.getInstance().packRole(role));
 		}
 		return builder;
 	}

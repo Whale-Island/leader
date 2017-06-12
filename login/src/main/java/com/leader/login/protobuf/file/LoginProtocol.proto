@@ -21,6 +21,28 @@ message ReqInternalHeartbeatMessage{
 	int32 online = 1; //在线人数
 }
 
+// 玩家登录请求
+message ReqUserLoginMessage{
+		string username = 1;
+		string password = 2;
+}
+
+// 玩家登录响应
+message ResUserLoginMessage{
+		string data = 1;
+}
+
+// 玩家注册请求
+message ReqUserRegisterMessage{
+		string username = 1;
+		string password = 2;
+}
+
+// 玩家注册响应
+message ResUserRegisterMessage{
+		string data = 1;
+}
+
 // 验证玩家登录令牌请求
 message ReqVerifyTokenMessage{
 		string token = 1;

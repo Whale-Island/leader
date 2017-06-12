@@ -18,12 +18,12 @@ public class PackEncoder extends MessageToMessageEncoder<Builder> {
 		try {
 			String name = msg.getDescriptorForType().getFullName();
 			int type = DynamicMessageFactory.getDescriptor(name);
-			byte[] msgType = new byte[4];
+			byte[] msgType = new byte[2];
 			ByteKit.writeInt(type, msgType, 0);
 			byte[] data = msg.build().toByteArray();
-			int msglen = 4 + 4 + data.length;
+			int msglen = 2 + 2 + data.length;
 			ByteBuf buf = Unpooled.buffer(msglen);
-			buf.writeInt(4 + 4 + data.length);
+			buf.writeInt(msglen);
 			buf.writeBytes(msgType);
 			buf.writeBytes(data);
 			out.add(buf);

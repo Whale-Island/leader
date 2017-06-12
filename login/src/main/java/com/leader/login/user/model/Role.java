@@ -26,6 +26,8 @@ public class Role implements GameEntity {
 	@Id
 	@Column(unique = true, nullable = false)
 	private @Getter @Setter long id;
+
+	private @Getter @Setter long uid;
 	/** 帐号 */
 	private @Getter @Setter String username;
 	/** 昵称 */
@@ -34,9 +36,9 @@ public class Role implements GameEntity {
 	private @Getter @Setter short sex;
 	/** 等级 */
 	private @Getter @Setter int level;
-	/** 所在服务器名称 */
-	private @Getter @Setter String servername;
 	/** 所在服务器编号 */
 	private @Getter @Setter int serverId;
+	/** 所在服务器名称 */
+	private @Getter @Setter String servername;
 
 }

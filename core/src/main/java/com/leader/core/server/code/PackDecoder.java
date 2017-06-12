@@ -26,10 +26,9 @@ public class PackDecoder extends ByteToMessageDecoder {
 				msg.resetReaderIndex();
 				return;
 			}
-			int typeIdLen = msg.readInt();
-			byte[] descriptor = new byte[typeIdLen];
+			byte[] descriptor = new byte[2];
 			msg.readBytes(descriptor);
-			byte[] data = new byte[msglen - 4 - typeIdLen];
+			byte[] data = new byte[msglen - 2 - 2];
 			msg.readBytes(data);
 			Package pk = new Package();
 			pk.setDescriptor(ByteKit.readInt(descriptor, 0));

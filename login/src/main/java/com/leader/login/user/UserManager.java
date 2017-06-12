@@ -23,7 +23,7 @@ import com.leader.login.user.model.User;
 import io.netty.util.internal.StringUtil;
 
 public class UserManager implements ShutdownListener {
-	/** 所有角色名 */
+	/** 所有帐号名 */
 	private Set<String> names = new HashSet<String>();
 	/** 登录令牌map */
 	private Map<String, LoginToken> tokenMap = new ConcurrentHashMap<String, LoginToken>();
@@ -44,15 +44,13 @@ public class UserManager implements ShutdownListener {
 	}
 
 	/***
-	 * 注册(http)
+	 * 注册
 	 * 
 	 * @param map
 	 * @param object
 	 * @return
 	 */
-	public int register(Map<String, String> map, JSONObject object) {
-		String username = map.get("username");
-		String password = map.get("password");
+	public int register(String username, String password, JSONObject object) {
 		// 帐号名已存在
 		if (names.contains(username)) {
 			return 1;
@@ -72,15 +70,13 @@ public class UserManager implements ShutdownListener {
 	}
 
 	/***
-	 * 用户登录(http)
+	 * 用户登录
 	 * 
 	 * @param map
 	 * @param object
 	 * @return
 	 */
-	public int login(Map<String, String> map, JSONObject object) {
-		String username = map.get("username");
-		String password = map.get("password");
+	public int login(String username, String password, JSONObject object) {
 		// 帐号或密码不能为空
 		if (StringUtil.isNullOrEmpty(username) || StringUtil.isNullOrEmpty(password)) {
 			return 1;

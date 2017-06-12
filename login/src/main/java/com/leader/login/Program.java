@@ -11,9 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.leader.core.server.http.HttpServerHandler;
 import com.leader.login.server.LoginServer;
-import com.leader.login.user.handler.ReqLoginHandler;
-import com.leader.login.user.handler.ReqRegisterUserHandler;
-import com.leader.login.user.handler.ReqServerListHandler;
+import com.leader.login.server.handler.ReqSetServerHandler;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
@@ -33,9 +31,7 @@ public class Program {
 			pipeline.addLast("codec-http", new HttpServerCodec());
 			pipeline.addLast("aggregator", new HttpObjectAggregator(1024000));
 			HttpServerHandler handler = new HttpServerHandler();
-			handler.registerHandler("/register", new ReqRegisterUserHandler());
-			handler.registerHandler("/register", new ReqLoginHandler());
-			handler.registerHandler("/serverlist", new ReqServerListHandler());
+			handler.registerHandler("/setServer", new ReqSetServerHandler());
 			pipeline.addLast("handler", handler);
 		}
 	};

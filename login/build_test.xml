@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TestBuild" basedir="." default="main"
+	xmlns:artifact="urn:maven-artifact-ant">
+	<property file="build.properties" />
+	<path id="maven-ant-tasks.classpath"
+		path="${M2_REPO}/org/apache/maven/maven-ant-tasks/2.1.3/maven-ant-tasks-2.1.3.jar" />
+	<typedef resource="org/apache/maven/artifact/ant/antlib.xml"
+		uri="antlib:org.apache.maven.artifact.ant" classpathref="maven-ant-tasks.classpath" />
+
+	<property name="src.dir" value="src" />
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="jar.dir" value="${build.dir}/jar" />
+	<property name="main-class" value="com.leader.login.Program" />
+
+
+	<target name="clean">
+		<echo>Initializing ....</echo>
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="compile" depends="mvn-init">
+		<echo>Compling ....</echo>
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.dir}" destdir="${classes.dir}"
+			classpathref="compile.classpath" encoding="UTF-8" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<echo>Building Jar ....</echo>
+		<mkdir dir="${jar.dir}" />
+		<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="run" depends="jar">
+		<echo>Execution ....</echo>
+		<java fork="true" classname="${main-class}">
+			<classpath>
+				<path refid="runtime.classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="mvn-init" unless="compile.classpath"
+		xmlns:artifact="urn:maven-artifact-ant">
+		<path id="maven-ant-tasks.classpath"
+			path="${M2_REPO}/org/apache/maven/maven-ant-tasks/2.1.3/maven-ant-tasks-2.1.3.jar" />
+		<typedef resource="org/apache/maven/artifact/ant/antlib.xml"
+			uri="urn:maven-artifact-ant" classpathref="maven-ant-tasks.classpath" />
+
+		<artifact:pom id="maven.project" file="pom.xml" />
+		<artifact:dependencies pathId="compile.classpath"
+			filesetId="compile.fileset" useScope="compile">
+			<pom refid="maven.project" />
+		</artifact:dependencies>
+		<artifact:dependencies pathId="classpath.build"
+			filesetid="maven.fileset.build">
+		</artifact:dependencies>
+
+		<artifact:dependencies pathId="runtime.classpath"
+			filesetId="maven.fileset.runtime" useScope="runtime">
+			<pom refid="maven.project" />
+		</artifact:dependencies>
+
+	</target>
+
+	<target name="main" depends="clean,run" />
+
+</project>

@@ -102,7 +102,7 @@ public final class TcpServer {
 							pipeline.addLast(new LoggingHandler(LogLevel.DEBUG));
 							pipeline.addLast(new IdleStateHandler(60, 60, 100)); // 关闭空闲连接
 							pipeline.addLast(new IdleStateEventHandler());
-							pipeline.addLast(new LengthFieldBasedFrameDecoder(32 * 1024, 0, 4));
+							pipeline.addLast(new LengthFieldBasedFrameDecoder(32 * 1024, 0, 2));
 							pipeline.addLast(new PackDecoder());
 							pipeline.addLast(new PackEncoder());
 							pipeline.addLast(new MessageDispatcherHandler());

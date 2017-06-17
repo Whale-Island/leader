@@ -23,8 +23,11 @@
 	<bean id="messagePool" class="com.leader.core.server.pool.MessagePool">
 		<property name="packagepath" value="com.leader.login.protobuf.protocol"></property>
 	</bean>
-	<bean id="messageType" class="com.leader.login.server.model.IMessageType" />
-	
+	<bean id="messageType" class="com.leader.login.server.model.MessageType" />
+	<bean id="UserManager" class="com.leader.login.user.UserManager"
+		factory-method="getInstance" />
+
+
 	<bean id="server" class="com.leader.login.server.LoginServer"
 		factory-method="getInstance">
 		<property name="listeners">
@@ -35,6 +38,7 @@
 
 	<!-- Scan for all of Spring components such as Spring Service -->
 	<context:component-scan base-package="com.leader.login" />
+	<context:component-scan base-package="com.leader.core" />
 
 
 	<!-- mysql数据源配置 -->
@@ -70,8 +74,8 @@
 		<!-- 归还连接时是否测试有效 -->
 		<property name="testOnReturn" value="false" />
 	</bean>
-	
-		<!-- Entity Manager Factory -->
+
+	<!-- Entity Manager Factory -->
 	<bean id="gameEntityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="gameDataSource" />
@@ -79,6 +83,7 @@
 			<list>
 				<value>com.leader.login.**.model</value>
 				<value>com.leader.login.db</value>
+				<value>com.leader.core.db</value>
 			</list>
 		</property>
 		<!-- <property name="persistenceUnitName" value="jpa-persistence" /> -->
@@ -109,7 +114,7 @@
 			</props>
 		</property>
 	</bean>
-	
+
 	<!-- Transaction Manager -->
 	<bean id="gameTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="gameEntityManagerFactory" />

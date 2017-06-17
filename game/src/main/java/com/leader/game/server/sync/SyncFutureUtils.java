@@ -74,7 +74,7 @@ public enum SyncFutureUtils {
 	 * 
 	 * @param id
 	 */
-	public void response(int notifyKey, int type, byte[] data) {
+	public void response(int notifyKey, short type, byte[] data) {
 		SyncFuture<Message> future = entrys.get(notifyKey);
 		if (future == null) {
 			log.error("同步响应消息id{}未找到实体！", notifyKey);

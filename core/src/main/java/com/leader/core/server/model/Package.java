@@ -3,7 +3,7 @@ package com.leader.core.server.model;
 public class Package {
 
 	/** descriptor */
-	private int descriptor;
+	private short descriptor;
 
 	/** protobuf data */
 	private byte[] data;
@@ -11,7 +11,7 @@ public class Package {
 	/**
 	 * @return the descriptor
 	 */
-	public final int getDescriptor() {
+	public final short getDescriptor() {
 		return descriptor;
 	}
 
@@ -19,7 +19,7 @@ public class Package {
 	 * @param descriptor
 	 *            the descriptor to set
 	 */
-	public final void setDescriptor(int descriptor) {
+	public final void setDescriptor(short descriptor) {
 		this.descriptor = descriptor;
 	}
 

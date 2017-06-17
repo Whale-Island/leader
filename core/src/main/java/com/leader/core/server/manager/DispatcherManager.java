@@ -34,7 +34,7 @@ public class DispatcherManager {
 	 * @param pk
 	 */
 	public void dispatcher(ChannelHandlerContext ctx, Package pk) {
-		final int descriptor = pk.getDescriptor();
+		final short descriptor = pk.getDescriptor();
 		LogicThreadPool.threadpool.execute(new Runnable() {
 			@Override
 			public void run() {

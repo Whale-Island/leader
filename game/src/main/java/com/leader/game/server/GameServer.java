@@ -46,7 +46,7 @@ public class GameServer {
 	/** http服务线程 */
 	private HttpServerThread httpServerThread;
 	/** 网关线程 */
-	private ConnectServerThread gatewayServerThread;
+	private ConnectServerThread loginServerThread;
 	/** 充值服线程 */
 	private ConnectServerThread chargeServerThread;
 
@@ -72,11 +72,11 @@ public class GameServer {
 	};
 
 	public void run(AbstractApplicationContext applicationContext) throws IOException, CertificateException {
-		// 注册网关服
-		gatewayServerThread = new ConnectServerThread(serverConfig.getGateIp(), serverConfig.getGatePort());
-		gatewayServerThread.getListeners().add(new RegisterServerListener(serverConfig.getServerIp(),
+		// 注册登录服
+		loginServerThread = new ConnectServerThread(serverConfig.getGateIp(), serverConfig.getGatePort());
+		loginServerThread.getListeners().add(new RegisterServerListener(serverConfig.getServerIp(),
 				serverConfig.getServerName(), serverConfig.getServerPort(), serverConfig.getServerId()));
-		gatewayServerThread.start();
+		loginServerThread.start();
 		log.info("gatewayServerThread Is Startup.");
 
 		// 注册充值服
@@ -144,7 +144,7 @@ public class GameServer {
 	 * @param builder
 	 */
 	protected void send_gateway_message(Builder builder) {
-		gatewayServerThread.sendMessage(builder);
+		loginServerThread.sendMessage(builder);
 	}
 
 	/**

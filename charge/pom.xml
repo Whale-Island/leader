@@ -31,25 +31,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-beans -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
-			<version>4.3.6.RELEASE</version>
-		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.springframework/spring-tx -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>4.3.6.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.baidu.disconf</groupId>
-			<artifactId>disconf-client</artifactId>
-			<version>2.6.36</version>
-		</dependency>
 
 	</dependencies>
 </project>

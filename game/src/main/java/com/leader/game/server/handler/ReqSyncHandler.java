@@ -18,7 +18,7 @@ public class ReqSyncHandler implements Handler {
 	@Override
 	public void action(Channel channel, Message m) throws InvalidProtocolBufferException {
 		ReqSyncMessage message = (ReqSyncMessage) m;
-		SyncFutureUtils.Intstance.response(message.getId(), message.getType(), message.getData().toByteArray());
+		SyncFutureUtils.Intstance.response(message.getId(), (short) message.getType(), message.getData().toByteArray());
 	}
 
 }

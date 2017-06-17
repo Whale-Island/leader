@@ -83,7 +83,7 @@ public class UserManager implements ShutdownListener {
 		} else {
 			User user = dao.findPlayerByUserName(username);
 			// 密码不符
-			if (!user.getPassword().equals(password)) {
+			if (user == null || !user.getPassword().equals(password)) {
 				return 2;
 			}
 			String token = addToken(user.getUsername());

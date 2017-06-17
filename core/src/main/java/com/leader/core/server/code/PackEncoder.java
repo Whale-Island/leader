@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.protobuf.Message.Builder;
 import com.leader.core.server.model.DynamicMessageFactory;
-import com.leader.core.util.ByteKit;
+import com.leader.core.util.TextKit;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -17,14 +17,12 @@ public class PackEncoder extends MessageToMessageEncoder<Builder> {
 	protected void encode(ChannelHandlerContext ctx, Builder msg, List<Object> out) throws Exception {
 		try {
 			String name = msg.getDescriptorForType().getFullName();
-			int type = DynamicMessageFactory.getDescriptor(name);
-			byte[] msgType = new byte[2];
-			ByteKit.writeInt(type, msgType, 0);
+			short type = DynamicMessageFactory.getDescriptor(TextKit.replace(name, "Message", ""));
 			byte[] data = msg.build().toByteArray();
-			int msglen = 2 + 2 + data.length;
+			short msglen = (short) (2 + data.length);
 			ByteBuf buf = Unpooled.buffer(msglen);
-			buf.writeInt(msglen);
-			buf.writeBytes(msgType);
+			buf.writeShort(msglen);
+			buf.writeShort(type);
 			buf.writeBytes(data);
 			out.add(buf);
 		} catch (Exception e) {

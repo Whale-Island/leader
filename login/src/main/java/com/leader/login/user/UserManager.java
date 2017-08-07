@@ -21,7 +21,9 @@ import com.leader.login.user.model.Role;
 import com.leader.login.user.model.User;
 
 import io.netty.util.internal.StringUtil;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class UserManager implements ShutdownListener {
 	/** 所有帐号名 */
 	private Set<String> names = new HashSet<String>();
@@ -47,52 +49,64 @@ public class UserManager implements ShutdownListener {
 	 * 注册
 	 * 
 	 * @param map
-	 * @param object
+	 * @param builder
 	 * @return
 	 */
-	public int register(String username, String password, JSONObject object) {
-		// 帐号名已存在
-		if (names.contains(username)) {
-			return 1;
-		}
-		// 新增用户
-		User user = new User();
-		user.setUsername(username);
-		user.setPassword(password);
-		commonDao.store(user);
-		// 记录token用于登录游戏服
-		String token = addToken(user.getUsername());
-		// 记录帐号名
-		names.add(username);
+	public void register(String username, String password, JSONObject json) {
+		try {
+			// 帐号名已存在
+			if (names.contains(username)) {
+				json.put("code", 3);
+				json.put("msg", "The name already exists");
+				return;
+			}
+			// 新增用户
+			User user = new User();
+			user.setUsername(username);
+			user.setPassword(password);
+			commonDao.store(user);
+			// 记录token用于登录游戏服
+			String token = addToken(user.getUsername());
+			// 记录帐号名
+			names.add(username);
 
-		object.put("token", token);
-		return 0;
+			json.put("token", token);
+		} catch (Exception e) {
+			json.put("code", 500);
+			json.put("msg", "Internal Server Error.");
+			log.error(e.getMessage(), e);
+		}
+		return;
 	}
 
 	/***
 	 * 用户登录
 	 * 
 	 * @param map
-	 * @param object
+	 * @param json
 	 * @return
 	 */
-	public int login(String username, String password, JSONObject object) {
+	public void login(String username, String password, JSONObject json) {
 		// 帐号或密码不能为空
 		if (StringUtil.isNullOrEmpty(username) || StringUtil.isNullOrEmpty(password)) {
-			return 1;
+			json.put("code", 1);
+			json.put("msg", "The username or password is empty.");
+			return;
 		} else {
 			User user = dao.findPlayerByUserName(username);
 			// 密码不符
 			if (user == null || !user.getPassword().equals(password)) {
-				return 2;
+				json.put("code", 2);
+				json.put("msg", "The username or password is invalid.");
+				return;
 			}
 			String token = addToken(user.getUsername());
-			List<Role> roles = dao.loadRole(user.getUsername());
+			json.put("token", token);
 
-			object.put("token", token);
-			object.put("roles", roles);
+			List<Role> roles = dao.loadRole(user.getUsername());
+			json.put("roles", roles);
 		}
-		return 0;
+		return;
 	}
 
 	private String addToken(String username) {
@@ -127,18 +141,18 @@ public class UserManager implements ShutdownListener {
 	 * 玩家退出游戏时做更新(在线时长超过10分钟)
 	 * 
 	 * @param username
-	 * @param serverId
+	 * @param serverID
 	 * @param nickname
 	 * @param sex
 	 * @param level
 	 */
-	public void updateRole(String username, int serverId, String nickname, short sex, int level) {
-		Role role = dao.findRole(username, serverId);
+	public void updateRole(String username, int serverID, String nickname, short sex, int level) {
+		Role role = dao.findRole(username, serverID);
 		if (role == null) {
 			role = new Role();
 			role.setUsername(username);
-			role.setServerId(serverId);
-			Server server = LoginServer.getInstance().getServers().getOrDefault(serverId, new Server());
+			role.setServerID(serverID);
+			Server server = LoginServer.getInstance().getServers().getOrDefault(serverID, new Server());
 			role.setServername(server.getName());
 		}
 		role.setNickname(nickname);

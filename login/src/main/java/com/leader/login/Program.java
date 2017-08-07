@@ -12,6 +12,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.leader.core.server.http.HttpServerHandler;
 import com.leader.login.server.LoginServer;
 import com.leader.login.server.handler.ReqSetServerHandler;
+import com.leader.login.user.handler.ReqUserLoginHandler;
+import com.leader.login.user.handler.ReqUserRegisterHandler;
 
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelInitializer;
@@ -32,6 +34,8 @@ public class Program {
 			pipeline.addLast("aggregator", new HttpObjectAggregator(1024000));
 			HttpServerHandler handler = new HttpServerHandler();
 			handler.registerHandler("/setServer", new ReqSetServerHandler());
+			handler.registerHandler("/loGIN", new ReqUserLoginHandler());
+			handler.registerHandler("/rEgIsTER", new ReqUserRegisterHandler());
 			pipeline.addLast("handler", handler);
 		}
 	};

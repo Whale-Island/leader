@@ -5,9 +5,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.net.ssl.SSLException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.leader.core.server.code.PackDecoder;
 import com.leader.core.server.code.PackEncoder;
 import com.leader.core.server.manager.MessageDispatcherHandler;
@@ -35,16 +32,17 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.DefaultThreadFactory;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * TcpServer, received data from a client.
  * 
  * @author
  */
+@Slf4j
 public final class TcpServer {
 
 	private static final boolean SSL = System.getProperty("ssl") != null;
-	private final Logger log = LoggerFactory.getLogger(getClass());
 	private AtomicBoolean state = new AtomicBoolean(); // true is run
 	private EventLoopGroup bossGroup;
 	private EventLoopGroup workerGroup;
@@ -99,7 +97,7 @@ public final class TcpServer {
 							if (sslCtx != null) {
 								pipeline.addLast(sslCtx.newHandler(ch.alloc()));
 							}
-							pipeline.addLast(new LoggingHandler(LogLevel.DEBUG));
+							pipeline.addLast(new LoggingHandler(LogLevel.INFO));
 							pipeline.addLast(new IdleStateHandler(60, 60, 100)); // 关闭空闲连接
 							pipeline.addLast(new IdleStateEventHandler());
 							pipeline.addLast(new LengthFieldBasedFrameDecoder(32 * 1024, 0, 2));

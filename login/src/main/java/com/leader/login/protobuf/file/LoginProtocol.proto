@@ -4,7 +4,7 @@ option java_outer_classname = "LoginProtocol";
 
 //服务器注册消息请求
 message ReqRegisterServerMessage{
-	int32 serverId = 1; //服务器编号
+	int32 serverID = 1; //服务器编号
 	string name = 2;//名字
 	string ip = 3;//外网ip地址
 	int32 port = 4;//端口号
@@ -29,7 +29,18 @@ message ReqUserLoginMessage{
 
 // 玩家登录响应
 message ResUserLoginMessage{
-		string data = 1;
+		int32 code = 1;
+		string msg = 2;
+		string token = 3;
+		repeated	UserRoleMessage roles = 4;
+}
+
+message UserRoleMessage{
+		int64 uid = 1;
+		int32 serverID = 2;
+		string nickname = 3;
+		int32 sex = 4;// 1男2女
+		int32 level = 5;
 }
 
 // 玩家注册请求
@@ -40,7 +51,9 @@ message ReqUserRegisterMessage{
 
 // 玩家注册响应
 message ResUserRegisterMessage{
-		string data = 1;
+		int32 code = 1;
+		string msg = 2;
+		string token = 3;
 }
 
 // 验证玩家登录令牌请求
@@ -52,13 +65,12 @@ message ReqVerifyTokenMessage{
 // 验证玩家登录令牌响应
 message ResVerifyTokenMessage{
 		int32 code = 1;
-		
 }
 
 // 更新玩家角色请求
 message ReqUpdatePlayerMessage{
 		string username = 1;
-		int32 serverId = 2;
+		int32 serverID = 2;
 		string nickname = 3;
 		int32 level = 4;
 		int32 sex = 5;

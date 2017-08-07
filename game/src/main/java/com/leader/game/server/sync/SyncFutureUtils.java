@@ -44,7 +44,7 @@ public enum SyncFutureUtils {
 		builder.setId(notifyKey);
 		builder.setType(type);
 		builder.setData(message.build().toByteString());
-		MessageUtils.send_gateway_message(builder);
+		MessageUtils.send_login_message(builder);
 		// TODO 会不会先响应后执行等待呢。。
 		return request(future, notifyKey);
 	}

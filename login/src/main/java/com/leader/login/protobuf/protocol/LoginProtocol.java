@@ -23,9 +23,9 @@ public final class LoginProtocol {
      *服务器编号
      * </pre>
      *
-     * <code>optional int32 serverId = 1;</code>
+     * <code>optional int32 serverID = 1;</code>
      */
-    int getServerId();
+    int getServerID();
 
     /**
      * <pre>
@@ -88,7 +88,7 @@ public final class LoginProtocol {
       super(builder);
     }
     private ReqRegisterServerMessage() {
-      serverId_ = 0;
+      serverID_ = 0;
       name_ = "";
       ip_ = "";
       port_ = 0;
@@ -121,7 +121,7 @@ public final class LoginProtocol {
             }
             case 8: {
 
-              serverId_ = input.readInt32();
+              serverID_ = input.readInt32();
               break;
             }
             case 18: {
@@ -165,16 +165,16 @@ public final class LoginProtocol {
     }
 
     public static final int SERVERID_FIELD_NUMBER = 1;
-    private int serverId_;
+    private int serverID_;
     /**
      * <pre>
      *服务器编号
      * </pre>
      *
-     * <code>optional int32 serverId = 1;</code>
+     * <code>optional int32 serverID = 1;</code>
      */
-    public int getServerId() {
-      return serverId_;
+    public int getServerID() {
+      return serverID_;
     }
 
     public static final int NAME_FIELD_NUMBER = 2;
@@ -286,8 +286,8 @@ public final class LoginProtocol {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (serverId_ != 0) {
-        output.writeInt32(1, serverId_);
+      if (serverID_ != 0) {
+        output.writeInt32(1, serverID_);
       }
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
@@ -305,9 +305,9 @@ public final class LoginProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (serverId_ != 0) {
+      if (serverID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, serverId_);
+          .computeInt32Size(1, serverID_);
       }
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
@@ -335,8 +335,8 @@ public final class LoginProtocol {
       com.leader.login.protobuf.protocol.LoginProtocol.ReqRegisterServerMessage other = (com.leader.login.protobuf.protocol.LoginProtocol.ReqRegisterServerMessage) obj;
 
       boolean result = true;
-      result = result && (getServerId()
-          == other.getServerId());
+      result = result && (getServerID()
+          == other.getServerID());
       result = result && getName()
           .equals(other.getName());
       result = result && getIp()
@@ -354,7 +354,7 @@ public final class LoginProtocol {
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
       hash = (37 * hash) + SERVERID_FIELD_NUMBER;
-      hash = (53 * hash) + getServerId();
+      hash = (53 * hash) + getServerID();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + IP_FIELD_NUMBER;
@@ -483,7 +483,7 @@ public final class LoginProtocol {
       }
       public Builder clear() {
         super.clear();
-        serverId_ = 0;
+        serverID_ = 0;
 
         name_ = "";
 
@@ -513,7 +513,7 @@ public final class LoginProtocol {
 
       public com.leader.login.protobuf.protocol.LoginProtocol.ReqRegisterServerMessage buildPartial() {
         com.leader.login.protobuf.protocol.LoginProtocol.ReqRegisterServerMessage result = new com.leader.login.protobuf.protocol.LoginProtocol.ReqRegisterServerMessage(this);
-        result.serverId_ = serverId_;
+        result.serverID_ = serverID_;
         result.name_ = name_;
         result.ip_ = ip_;
         result.port_ = port_;
@@ -558,8 +558,8 @@ public final class LoginProtocol {
 
       public Builder mergeFrom(com.leader.login.protobuf.protocol.LoginProtocol.ReqRegisterServerMessage other) {
         if (other == com.leader.login.protobuf.protocol.LoginProtocol.ReqRegisterServerMessage.getDefaultInstance()) return this;
-        if (other.getServerId() != 0) {
-          setServerId(other.getServerId());
+        if (other.getServerID() != 0) {
+          setServerID(other.getServerID());
         }
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
@@ -598,27 +598,27 @@ public final class LoginProtocol {
         return this;
       }
 
-      private int serverId_ ;
+      private int serverID_ ;
       /**
        * <pre>
        *服务器编号
        * </pre>
        *
-       * <code>optional int32 serverId = 1;</code>
+       * <code>optional int32 serverID = 1;</code>
        */
-      public int getServerId() {
-        return serverId_;
+      public int getServerID() {
+        return serverID_;
       }
       /**
        * <pre>
        *服务器编号
        * </pre>
        *
-       * <code>optional int32 serverId = 1;</code>
+       * <code>optional int32 serverID = 1;</code>
        */
-      public Builder setServerId(int value) {
+      public Builder setServerID(int value) {
         
-        serverId_ = value;
+        serverID_ = value;
         onChanged();
         return this;
       }
@@ -627,11 +627,11 @@ public final class LoginProtocol {
        *服务器编号
        * </pre>
        *
-       * <code>optional int32 serverId = 1;</code>
+       * <code>optional int32 serverID = 1;</code>
        */
-      public Builder clearServerId() {
+      public Builder clearServerID() {
         
-        serverId_ = 0;
+        serverID_ = 0;
         onChanged();
         return this;
       }
@@ -2640,14 +2640,53 @@ public final class LoginProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string data = 1;</code>
+     * <code>optional int32 code = 1;</code>
      */
-    java.lang.String getData();
+    int getCode();
+
     /**
-     * <code>optional string data = 1;</code>
+     * <code>optional string msg = 2;</code>
+     */
+    java.lang.String getMsg();
+    /**
+     * <code>optional string msg = 2;</code>
      */
     com.google.protobuf.ByteString
-        getDataBytes();
+        getMsgBytes();
+
+    /**
+     * <code>optional string token = 3;</code>
+     */
+    java.lang.String getToken();
+    /**
+     * <code>optional string token = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getTokenBytes();
+
+    /**
+     * <code>repeated .UserRoleMessage roles = 4;</code>
+     */
+    java.util.List<com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage> 
+        getRolesList();
+    /**
+     * <code>repeated .UserRoleMessage roles = 4;</code>
+     */
+    com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage getRoles(int index);
+    /**
+     * <code>repeated .UserRoleMessage roles = 4;</code>
+     */
+    int getRolesCount();
+    /**
+     * <code>repeated .UserRoleMessage roles = 4;</code>
+     */
+    java.util.List<? extends com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessageOrBuilder> 
+        getRolesOrBuilderList();
+    /**
+     * <code>repeated .UserRoleMessage roles = 4;</code>
+     */
+    com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessageOrBuilder getRolesOrBuilder(
+        int index);
   }
   /**
    * <pre>
@@ -2665,7 +2704,10 @@ public final class LoginProtocol {
       super(builder);
     }
     private ResUserLoginMessage() {
-      data_ = "";
+      code_ = 0;
+      msg_ = "";
+      token_ = "";
+      roles_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -2693,10 +2735,30 @@ public final class LoginProtocol {
               }
               break;
             }
-            case 10: {
+            case 8: {
+
+              code_ = input.readInt32();
+              break;
+            }
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              data_ = s;
+              msg_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              token_ = s;
+              break;
+            }
+            case 34: {
+              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+                roles_ = new java.util.ArrayList<com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage>();
+                mutable_bitField0_ |= 0x00000008;
+              }
+              roles_.add(
+                  input.readMessage(com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.parser(), extensionRegistry));
               break;
             }
           }
@@ -2707,6 +2769,9 @@ public final class LoginProtocol {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+          roles_ = java.util.Collections.unmodifiableList(roles_);
+        }
         makeExtensionsImmutable();
       }
     }
@@ -2722,38 +2787,117 @@ public final class LoginProtocol {
               com.leader.login.protobuf.protocol.LoginProtocol.ResUserLoginMessage.class, com.leader.login.protobuf.protocol.LoginProtocol.ResUserLoginMessage.Builder.class);
     }
 
-    public static final int DATA_FIELD_NUMBER = 1;
-    private volatile java.lang.Object data_;
+    private int bitField0_;
+    public static final int CODE_FIELD_NUMBER = 1;
+    private int code_;
     /**
-     * <code>optional string data = 1;</code>
+     * <code>optional int32 code = 1;</code>
      */
-    public java.lang.String getData() {
-      java.lang.Object ref = data_;
+    public int getCode() {
+      return code_;
+    }
+
+    public static final int MSG_FIELD_NUMBER = 2;
+    private volatile java.lang.Object msg_;
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    public java.lang.String getMsg() {
+      java.lang.Object ref = msg_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        data_ = s;
+        msg_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string data = 1;</code>
+     * <code>optional string msg = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getDataBytes() {
-      java.lang.Object ref = data_;
+        getMsgBytes() {
+      java.lang.Object ref = msg_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        data_ = b;
+        msg_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int TOKEN_FIELD_NUMBER = 3;
+    private volatile java.lang.Object token_;
+    /**
+     * <code>optional string token = 3;</code>
+     */
+    public java.lang.String getToken() {
+      java.lang.Object ref = token_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        token_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string token = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTokenBytes() {
+      java.lang.Object ref = token_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        token_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ROLES_FIELD_NUMBER = 4;
+    private java.util.List<com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage> roles_;
+    /**
+     * <code>repeated .UserRoleMessage roles = 4;</code>
+     */
+    public java.util.List<com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage> getRolesList() {
+      return roles_;
+    }
+    /**
+     * <code>repeated .UserRoleMessage roles = 4;</code>
+     */
+    public java.util.List<? extends com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessageOrBuilder> 
+        getRolesOrBuilderList() {
+      return roles_;
+    }
+    /**
+     * <code>repeated .UserRoleMessage roles = 4;</code>
+     */
+    public int getRolesCount() {
+      return roles_.size();
+    }
+    /**
+     * <code>repeated .UserRoleMessage roles = 4;</code>
+     */
+    public com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage getRoles(int index) {
+      return roles_.get(index);
+    }
+    /**
+     * <code>repeated .UserRoleMessage roles = 4;</code>
+     */
+    public com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessageOrBuilder getRolesOrBuilder(
+        int index) {
+      return roles_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2768,8 +2912,17 @@ public final class LoginProtocol {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getDataBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, data_);
+      if (code_ != 0) {
+        output.writeInt32(1, code_);
+      }
+      if (!getMsgBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, msg_);
+      }
+      if (!getTokenBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, token_);
+      }
+      for (int i = 0; i < roles_.size(); i++) {
+        output.writeMessage(4, roles_.get(i));
       }
     }
 
@@ -2778,8 +2931,19 @@ public final class LoginProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (!getDataBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, data_);
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, code_);
+      }
+      if (!getMsgBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, msg_);
+      }
+      if (!getTokenBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, token_);
+      }
+      for (int i = 0; i < roles_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, roles_.get(i));
       }
       memoizedSize = size;
       return size;
@@ -2797,8 +2961,14 @@ public final class LoginProtocol {
       com.leader.login.protobuf.protocol.LoginProtocol.ResUserLoginMessage other = (com.leader.login.protobuf.protocol.LoginProtocol.ResUserLoginMessage) obj;
 
       boolean result = true;
-      result = result && getData()
-          .equals(other.getData());
+      result = result && (getCode()
+          == other.getCode());
+      result = result && getMsg()
+          .equals(other.getMsg());
+      result = result && getToken()
+          .equals(other.getToken());
+      result = result && getRolesList()
+          .equals(other.getRolesList());
       return result;
     }
 
@@ -2809,8 +2979,16 @@ public final class LoginProtocol {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + DATA_FIELD_NUMBER;
-      hash = (53 * hash) + getData().hashCode();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode();
+      hash = (37 * hash) + MSG_FIELD_NUMBER;
+      hash = (53 * hash) + getMsg().hashCode();
+      hash = (37 * hash) + TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getToken().hashCode();
+      if (getRolesCount() > 0) {
+        hash = (37 * hash) + ROLES_FIELD_NUMBER;
+        hash = (53 * hash) + getRolesList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2929,12 +3107,23 @@ public final class LoginProtocol {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getRolesFieldBuilder();
         }
       }
       public Builder clear() {
         super.clear();
-        data_ = "";
+        code_ = 0;
 
+        msg_ = "";
+
+        token_ = "";
+
+        if (rolesBuilder_ == null) {
+          roles_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          rolesBuilder_.clear();
+        }
         return this;
       }
 
@@ -2957,7 +3146,21 @@ public final class LoginProtocol {
 
       public com.leader.login.protobuf.protocol.LoginProtocol.ResUserLoginMessage buildPartial() {
         com.leader.login.protobuf.protocol.LoginProtocol.ResUserLoginMessage result = new com.leader.login.protobuf.protocol.LoginProtocol.ResUserLoginMessage(this);
-        result.data_ = data_;
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.code_ = code_;
+        result.msg_ = msg_;
+        result.token_ = token_;
+        if (rolesBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            roles_ = java.util.Collections.unmodifiableList(roles_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.roles_ = roles_;
+        } else {
+          result.roles_ = rolesBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -2999,9 +3202,42 @@ public final class LoginProtocol {
 
       public Builder mergeFrom(com.leader.login.protobuf.protocol.LoginProtocol.ResUserLoginMessage other) {
         if (other == com.leader.login.protobuf.protocol.LoginProtocol.ResUserLoginMessage.getDefaultInstance()) return this;
-        if (!other.getData().isEmpty()) {
-          data_ = other.data_;
+        if (other.getCode() != 0) {
+          setCode(other.getCode());
+        }
+        if (!other.getMsg().isEmpty()) {
+          msg_ = other.msg_;
           onChanged();
+        }
+        if (!other.getToken().isEmpty()) {
+          token_ = other.token_;
+          onChanged();
+        }
+        if (rolesBuilder_ == null) {
+          if (!other.roles_.isEmpty()) {
+            if (roles_.isEmpty()) {
+              roles_ = other.roles_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureRolesIsMutable();
+              roles_.addAll(other.roles_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.roles_.isEmpty()) {
+            if (rolesBuilder_.isEmpty()) {
+              rolesBuilder_.dispose();
+              rolesBuilder_ = null;
+              roles_ = other.roles_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              rolesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getRolesFieldBuilder() : null;
+            } else {
+              rolesBuilder_.addAllMessages(other.roles_);
+            }
+          }
         }
         onChanged();
         return this;
@@ -3028,74 +3264,410 @@ public final class LoginProtocol {
         }
         return this;
       }
+      private int bitField0_;
 
-      private java.lang.Object data_ = "";
+      private int code_ ;
       /**
-       * <code>optional string data = 1;</code>
+       * <code>optional int32 code = 1;</code>
        */
-      public java.lang.String getData() {
-        java.lang.Object ref = data_;
+      public int getCode() {
+        return code_;
+      }
+      /**
+       * <code>optional int32 code = 1;</code>
+       */
+      public Builder setCode(int value) {
+        
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 code = 1;</code>
+       */
+      public Builder clearCode() {
+        
+        code_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object msg_ = "";
+      /**
+       * <code>optional string msg = 2;</code>
+       */
+      public java.lang.String getMsg() {
+        java.lang.Object ref = msg_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          data_ = s;
+          msg_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string data = 1;</code>
+       * <code>optional string msg = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getDataBytes() {
-        java.lang.Object ref = data_;
+          getMsgBytes() {
+        java.lang.Object ref = msg_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          data_ = b;
+          msg_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>optional string data = 1;</code>
+       * <code>optional string msg = 2;</code>
        */
-      public Builder setData(
+      public Builder setMsg(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        data_ = value;
+        msg_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string data = 1;</code>
+       * <code>optional string msg = 2;</code>
        */
-      public Builder clearData() {
+      public Builder clearMsg() {
         
-        data_ = getDefaultInstance().getData();
+        msg_ = getDefaultInstance().getMsg();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string data = 1;</code>
+       * <code>optional string msg = 2;</code>
        */
-      public Builder setDataBytes(
+      public Builder setMsgBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        data_ = value;
+        msg_ = value;
         onChanged();
         return this;
+      }
+
+      private java.lang.Object token_ = "";
+      /**
+       * <code>optional string token = 3;</code>
+       */
+      public java.lang.String getToken() {
+        java.lang.Object ref = token_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          token_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string token = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTokenBytes() {
+        java.lang.Object ref = token_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          token_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string token = 3;</code>
+       */
+      public Builder setToken(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        token_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string token = 3;</code>
+       */
+      public Builder clearToken() {
+        
+        token_ = getDefaultInstance().getToken();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string token = 3;</code>
+       */
+      public Builder setTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        token_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage> roles_ =
+        java.util.Collections.emptyList();
+      private void ensureRolesIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          roles_ = new java.util.ArrayList<com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage>(roles_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.Builder, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessageOrBuilder> rolesBuilder_;
+
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public java.util.List<com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage> getRolesList() {
+        if (rolesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(roles_);
+        } else {
+          return rolesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public int getRolesCount() {
+        if (rolesBuilder_ == null) {
+          return roles_.size();
+        } else {
+          return rolesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage getRoles(int index) {
+        if (rolesBuilder_ == null) {
+          return roles_.get(index);
+        } else {
+          return rolesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public Builder setRoles(
+          int index, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage value) {
+        if (rolesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRolesIsMutable();
+          roles_.set(index, value);
+          onChanged();
+        } else {
+          rolesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public Builder setRoles(
+          int index, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.Builder builderForValue) {
+        if (rolesBuilder_ == null) {
+          ensureRolesIsMutable();
+          roles_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          rolesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public Builder addRoles(com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage value) {
+        if (rolesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRolesIsMutable();
+          roles_.add(value);
+          onChanged();
+        } else {
+          rolesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public Builder addRoles(
+          int index, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage value) {
+        if (rolesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRolesIsMutable();
+          roles_.add(index, value);
+          onChanged();
+        } else {
+          rolesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public Builder addRoles(
+          com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.Builder builderForValue) {
+        if (rolesBuilder_ == null) {
+          ensureRolesIsMutable();
+          roles_.add(builderForValue.build());
+          onChanged();
+        } else {
+          rolesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public Builder addRoles(
+          int index, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.Builder builderForValue) {
+        if (rolesBuilder_ == null) {
+          ensureRolesIsMutable();
+          roles_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          rolesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public Builder addAllRoles(
+          java.lang.Iterable<? extends com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage> values) {
+        if (rolesBuilder_ == null) {
+          ensureRolesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, roles_);
+          onChanged();
+        } else {
+          rolesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public Builder clearRoles() {
+        if (rolesBuilder_ == null) {
+          roles_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          rolesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public Builder removeRoles(int index) {
+        if (rolesBuilder_ == null) {
+          ensureRolesIsMutable();
+          roles_.remove(index);
+          onChanged();
+        } else {
+          rolesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.Builder getRolesBuilder(
+          int index) {
+        return getRolesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessageOrBuilder getRolesOrBuilder(
+          int index) {
+        if (rolesBuilder_ == null) {
+          return roles_.get(index);  } else {
+          return rolesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public java.util.List<? extends com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessageOrBuilder> 
+           getRolesOrBuilderList() {
+        if (rolesBuilder_ != null) {
+          return rolesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(roles_);
+        }
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.Builder addRolesBuilder() {
+        return getRolesFieldBuilder().addBuilder(
+            com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.Builder addRolesBuilder(
+          int index) {
+        return getRolesFieldBuilder().addBuilder(
+            index, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .UserRoleMessage roles = 4;</code>
+       */
+      public java.util.List<com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.Builder> 
+           getRolesBuilderList() {
+        return getRolesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.Builder, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessageOrBuilder> 
+          getRolesFieldBuilder() {
+        if (rolesBuilder_ == null) {
+          rolesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.Builder, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessageOrBuilder>(
+                  roles_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          roles_ = null;
+        }
+        return rolesBuilder_;
       }
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -3141,6 +3713,782 @@ public final class LoginProtocol {
     }
 
     public com.leader.login.protobuf.protocol.LoginProtocol.ResUserLoginMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface UserRoleMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:UserRoleMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int64 uid = 1;</code>
+     */
+    long getUid();
+
+    /**
+     * <code>optional int32 serverID = 2;</code>
+     */
+    int getServerID();
+
+    /**
+     * <code>optional string nickname = 3;</code>
+     */
+    java.lang.String getNickname();
+    /**
+     * <code>optional string nickname = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getNicknameBytes();
+
+    /**
+     * <pre>
+     * 1男2女
+     * </pre>
+     *
+     * <code>optional int32 sex = 4;</code>
+     */
+    int getSex();
+
+    /**
+     * <code>optional int32 level = 5;</code>
+     */
+    int getLevel();
+  }
+  /**
+   * Protobuf type {@code UserRoleMessage}
+   */
+  public  static final class UserRoleMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:UserRoleMessage)
+      UserRoleMessageOrBuilder {
+    // Use UserRoleMessage.newBuilder() to construct.
+    private UserRoleMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private UserRoleMessage() {
+      uid_ = 0L;
+      serverID_ = 0;
+      nickname_ = "";
+      sex_ = 0;
+      level_ = 0;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private UserRoleMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              uid_ = input.readInt64();
+              break;
+            }
+            case 16: {
+
+              serverID_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              nickname_ = s;
+              break;
+            }
+            case 32: {
+
+              sex_ = input.readInt32();
+              break;
+            }
+            case 40: {
+
+              level_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.leader.login.protobuf.protocol.LoginProtocol.internal_static_UserRoleMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.leader.login.protobuf.protocol.LoginProtocol.internal_static_UserRoleMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.class, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.Builder.class);
+    }
+
+    public static final int UID_FIELD_NUMBER = 1;
+    private long uid_;
+    /**
+     * <code>optional int64 uid = 1;</code>
+     */
+    public long getUid() {
+      return uid_;
+    }
+
+    public static final int SERVERID_FIELD_NUMBER = 2;
+    private int serverID_;
+    /**
+     * <code>optional int32 serverID = 2;</code>
+     */
+    public int getServerID() {
+      return serverID_;
+    }
+
+    public static final int NICKNAME_FIELD_NUMBER = 3;
+    private volatile java.lang.Object nickname_;
+    /**
+     * <code>optional string nickname = 3;</code>
+     */
+    public java.lang.String getNickname() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        nickname_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string nickname = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNicknameBytes() {
+      java.lang.Object ref = nickname_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        nickname_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SEX_FIELD_NUMBER = 4;
+    private int sex_;
+    /**
+     * <pre>
+     * 1男2女
+     * </pre>
+     *
+     * <code>optional int32 sex = 4;</code>
+     */
+    public int getSex() {
+      return sex_;
+    }
+
+    public static final int LEVEL_FIELD_NUMBER = 5;
+    private int level_;
+    /**
+     * <code>optional int32 level = 5;</code>
+     */
+    public int getLevel() {
+      return level_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (uid_ != 0L) {
+        output.writeInt64(1, uid_);
+      }
+      if (serverID_ != 0) {
+        output.writeInt32(2, serverID_);
+      }
+      if (!getNicknameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, nickname_);
+      }
+      if (sex_ != 0) {
+        output.writeInt32(4, sex_);
+      }
+      if (level_ != 0) {
+        output.writeInt32(5, level_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (uid_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, uid_);
+      }
+      if (serverID_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, serverID_);
+      }
+      if (!getNicknameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, nickname_);
+      }
+      if (sex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, sex_);
+      }
+      if (level_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, level_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage)) {
+        return super.equals(obj);
+      }
+      com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage other = (com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage) obj;
+
+      boolean result = true;
+      result = result && (getUid()
+          == other.getUid());
+      result = result && (getServerID()
+          == other.getServerID());
+      result = result && getNickname()
+          .equals(other.getNickname());
+      result = result && (getSex()
+          == other.getSex());
+      result = result && (getLevel()
+          == other.getLevel());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + UID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUid());
+      hash = (37 * hash) + SERVERID_FIELD_NUMBER;
+      hash = (53 * hash) + getServerID();
+      hash = (37 * hash) + NICKNAME_FIELD_NUMBER;
+      hash = (53 * hash) + getNickname().hashCode();
+      hash = (37 * hash) + SEX_FIELD_NUMBER;
+      hash = (53 * hash) + getSex();
+      hash = (37 * hash) + LEVEL_FIELD_NUMBER;
+      hash = (53 * hash) + getLevel();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code UserRoleMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:UserRoleMessage)
+        com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.leader.login.protobuf.protocol.LoginProtocol.internal_static_UserRoleMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.leader.login.protobuf.protocol.LoginProtocol.internal_static_UserRoleMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.class, com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.Builder.class);
+      }
+
+      // Construct using com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        uid_ = 0L;
+
+        serverID_ = 0;
+
+        nickname_ = "";
+
+        sex_ = 0;
+
+        level_ = 0;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.leader.login.protobuf.protocol.LoginProtocol.internal_static_UserRoleMessage_descriptor;
+      }
+
+      public com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage getDefaultInstanceForType() {
+        return com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.getDefaultInstance();
+      }
+
+      public com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage build() {
+        com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage buildPartial() {
+        com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage result = new com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage(this);
+        result.uid_ = uid_;
+        result.serverID_ = serverID_;
+        result.nickname_ = nickname_;
+        result.sex_ = sex_;
+        result.level_ = level_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage) {
+          return mergeFrom((com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage other) {
+        if (other == com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage.getDefaultInstance()) return this;
+        if (other.getUid() != 0L) {
+          setUid(other.getUid());
+        }
+        if (other.getServerID() != 0) {
+          setServerID(other.getServerID());
+        }
+        if (!other.getNickname().isEmpty()) {
+          nickname_ = other.nickname_;
+          onChanged();
+        }
+        if (other.getSex() != 0) {
+          setSex(other.getSex());
+        }
+        if (other.getLevel() != 0) {
+          setLevel(other.getLevel());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private long uid_ ;
+      /**
+       * <code>optional int64 uid = 1;</code>
+       */
+      public long getUid() {
+        return uid_;
+      }
+      /**
+       * <code>optional int64 uid = 1;</code>
+       */
+      public Builder setUid(long value) {
+        
+        uid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int64 uid = 1;</code>
+       */
+      public Builder clearUid() {
+        
+        uid_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int serverID_ ;
+      /**
+       * <code>optional int32 serverID = 2;</code>
+       */
+      public int getServerID() {
+        return serverID_;
+      }
+      /**
+       * <code>optional int32 serverID = 2;</code>
+       */
+      public Builder setServerID(int value) {
+        
+        serverID_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 serverID = 2;</code>
+       */
+      public Builder clearServerID() {
+        
+        serverID_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object nickname_ = "";
+      /**
+       * <code>optional string nickname = 3;</code>
+       */
+      public java.lang.String getNickname() {
+        java.lang.Object ref = nickname_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nickname_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string nickname = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNicknameBytes() {
+        java.lang.Object ref = nickname_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nickname_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string nickname = 3;</code>
+       */
+      public Builder setNickname(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string nickname = 3;</code>
+       */
+      public Builder clearNickname() {
+        
+        nickname_ = getDefaultInstance().getNickname();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string nickname = 3;</code>
+       */
+      public Builder setNicknameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        nickname_ = value;
+        onChanged();
+        return this;
+      }
+
+      private int sex_ ;
+      /**
+       * <pre>
+       * 1男2女
+       * </pre>
+       *
+       * <code>optional int32 sex = 4;</code>
+       */
+      public int getSex() {
+        return sex_;
+      }
+      /**
+       * <pre>
+       * 1男2女
+       * </pre>
+       *
+       * <code>optional int32 sex = 4;</code>
+       */
+      public Builder setSex(int value) {
+        
+        sex_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * 1男2女
+       * </pre>
+       *
+       * <code>optional int32 sex = 4;</code>
+       */
+      public Builder clearSex() {
+        
+        sex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int level_ ;
+      /**
+       * <code>optional int32 level = 5;</code>
+       */
+      public int getLevel() {
+        return level_;
+      }
+      /**
+       * <code>optional int32 level = 5;</code>
+       */
+      public Builder setLevel(int value) {
+        
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 level = 5;</code>
+       */
+      public Builder clearLevel() {
+        
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:UserRoleMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:UserRoleMessage)
+    private static final com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage();
+    }
+
+    public static com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UserRoleMessage>
+        PARSER = new com.google.protobuf.AbstractParser<UserRoleMessage>() {
+      public UserRoleMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new UserRoleMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<UserRoleMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UserRoleMessage> getParserForType() {
+      return PARSER;
+    }
+
+    public com.leader.login.protobuf.protocol.LoginProtocol.UserRoleMessage getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3799,14 +5147,29 @@ public final class LoginProtocol {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string data = 1;</code>
+     * <code>optional int32 code = 1;</code>
      */
-    java.lang.String getData();
+    int getCode();
+
     /**
-     * <code>optional string data = 1;</code>
+     * <code>optional string msg = 2;</code>
+     */
+    java.lang.String getMsg();
+    /**
+     * <code>optional string msg = 2;</code>
      */
     com.google.protobuf.ByteString
-        getDataBytes();
+        getMsgBytes();
+
+    /**
+     * <code>optional string token = 3;</code>
+     */
+    java.lang.String getToken();
+    /**
+     * <code>optional string token = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getTokenBytes();
   }
   /**
    * <pre>
@@ -3824,7 +5187,9 @@ public final class LoginProtocol {
       super(builder);
     }
     private ResUserRegisterMessage() {
-      data_ = "";
+      code_ = 0;
+      msg_ = "";
+      token_ = "";
     }
 
     @java.lang.Override
@@ -3852,10 +5217,21 @@ public final class LoginProtocol {
               }
               break;
             }
-            case 10: {
+            case 8: {
+
+              code_ = input.readInt32();
+              break;
+            }
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              data_ = s;
+              msg_ = s;
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              token_ = s;
               break;
             }
           }
@@ -3881,34 +5257,77 @@ public final class LoginProtocol {
               com.leader.login.protobuf.protocol.LoginProtocol.ResUserRegisterMessage.class, com.leader.login.protobuf.protocol.LoginProtocol.ResUserRegisterMessage.Builder.class);
     }
 
-    public static final int DATA_FIELD_NUMBER = 1;
-    private volatile java.lang.Object data_;
+    public static final int CODE_FIELD_NUMBER = 1;
+    private int code_;
     /**
-     * <code>optional string data = 1;</code>
+     * <code>optional int32 code = 1;</code>
      */
-    public java.lang.String getData() {
-      java.lang.Object ref = data_;
+    public int getCode() {
+      return code_;
+    }
+
+    public static final int MSG_FIELD_NUMBER = 2;
+    private volatile java.lang.Object msg_;
+    /**
+     * <code>optional string msg = 2;</code>
+     */
+    public java.lang.String getMsg() {
+      java.lang.Object ref = msg_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        data_ = s;
+        msg_ = s;
         return s;
       }
     }
     /**
-     * <code>optional string data = 1;</code>
+     * <code>optional string msg = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getDataBytes() {
-      java.lang.Object ref = data_;
+        getMsgBytes() {
+      java.lang.Object ref = msg_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        data_ = b;
+        msg_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TOKEN_FIELD_NUMBER = 3;
+    private volatile java.lang.Object token_;
+    /**
+     * <code>optional string token = 3;</code>
+     */
+    public java.lang.String getToken() {
+      java.lang.Object ref = token_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        token_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string token = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getTokenBytes() {
+      java.lang.Object ref = token_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        token_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -3927,8 +5346,14 @@ public final class LoginProtocol {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getDataBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, data_);
+      if (code_ != 0) {
+        output.writeInt32(1, code_);
+      }
+      if (!getMsgBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, msg_);
+      }
+      if (!getTokenBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, token_);
       }
     }
 
@@ -3937,8 +5362,15 @@ public final class LoginProtocol {
       if (size != -1) return size;
 
       size = 0;
-      if (!getDataBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, data_);
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, code_);
+      }
+      if (!getMsgBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, msg_);
+      }
+      if (!getTokenBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, token_);
       }
       memoizedSize = size;
       return size;
@@ -3956,8 +5388,12 @@ public final class LoginProtocol {
       com.leader.login.protobuf.protocol.LoginProtocol.ResUserRegisterMessage other = (com.leader.login.protobuf.protocol.LoginProtocol.ResUserRegisterMessage) obj;
 
       boolean result = true;
-      result = result && getData()
-          .equals(other.getData());
+      result = result && (getCode()
+          == other.getCode());
+      result = result && getMsg()
+          .equals(other.getMsg());
+      result = result && getToken()
+          .equals(other.getToken());
       return result;
     }
 
@@ -3968,8 +5404,12 @@ public final class LoginProtocol {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptorForType().hashCode();
-      hash = (37 * hash) + DATA_FIELD_NUMBER;
-      hash = (53 * hash) + getData().hashCode();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode();
+      hash = (37 * hash) + MSG_FIELD_NUMBER;
+      hash = (53 * hash) + getMsg().hashCode();
+      hash = (37 * hash) + TOKEN_FIELD_NUMBER;
+      hash = (53 * hash) + getToken().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -4092,7 +5532,11 @@ public final class LoginProtocol {
       }
       public Builder clear() {
         super.clear();
-        data_ = "";
+        code_ = 0;
+
+        msg_ = "";
+
+        token_ = "";
 
         return this;
       }
@@ -4116,7 +5560,9 @@ public final class LoginProtocol {
 
       public com.leader.login.protobuf.protocol.LoginProtocol.ResUserRegisterMessage buildPartial() {
         com.leader.login.protobuf.protocol.LoginProtocol.ResUserRegisterMessage result = new com.leader.login.protobuf.protocol.LoginProtocol.ResUserRegisterMessage(this);
-        result.data_ = data_;
+        result.code_ = code_;
+        result.msg_ = msg_;
+        result.token_ = token_;
         onBuilt();
         return result;
       }
@@ -4158,8 +5604,15 @@ public final class LoginProtocol {
 
       public Builder mergeFrom(com.leader.login.protobuf.protocol.LoginProtocol.ResUserRegisterMessage other) {
         if (other == com.leader.login.protobuf.protocol.LoginProtocol.ResUserRegisterMessage.getDefaultInstance()) return this;
-        if (!other.getData().isEmpty()) {
-          data_ = other.data_;
+        if (other.getCode() != 0) {
+          setCode(other.getCode());
+        }
+        if (!other.getMsg().isEmpty()) {
+          msg_ = other.msg_;
+          onChanged();
+        }
+        if (!other.getToken().isEmpty()) {
+          token_ = other.token_;
           onChanged();
         }
         onChanged();
@@ -4188,71 +5641,166 @@ public final class LoginProtocol {
         return this;
       }
 
-      private java.lang.Object data_ = "";
+      private int code_ ;
       /**
-       * <code>optional string data = 1;</code>
+       * <code>optional int32 code = 1;</code>
        */
-      public java.lang.String getData() {
-        java.lang.Object ref = data_;
+      public int getCode() {
+        return code_;
+      }
+      /**
+       * <code>optional int32 code = 1;</code>
+       */
+      public Builder setCode(int value) {
+        
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 code = 1;</code>
+       */
+      public Builder clearCode() {
+        
+        code_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object msg_ = "";
+      /**
+       * <code>optional string msg = 2;</code>
+       */
+      public java.lang.String getMsg() {
+        java.lang.Object ref = msg_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          data_ = s;
+          msg_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>optional string data = 1;</code>
+       * <code>optional string msg = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getDataBytes() {
-        java.lang.Object ref = data_;
+          getMsgBytes() {
+        java.lang.Object ref = msg_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          data_ = b;
+          msg_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>optional string data = 1;</code>
+       * <code>optional string msg = 2;</code>
        */
-      public Builder setData(
+      public Builder setMsg(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        data_ = value;
+        msg_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional string data = 1;</code>
+       * <code>optional string msg = 2;</code>
        */
-      public Builder clearData() {
+      public Builder clearMsg() {
         
-        data_ = getDefaultInstance().getData();
+        msg_ = getDefaultInstance().getMsg();
         onChanged();
         return this;
       }
       /**
-       * <code>optional string data = 1;</code>
+       * <code>optional string msg = 2;</code>
        */
-      public Builder setDataBytes(
+      public Builder setMsgBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        data_ = value;
+        msg_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object token_ = "";
+      /**
+       * <code>optional string token = 3;</code>
+       */
+      public java.lang.String getToken() {
+        java.lang.Object ref = token_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          token_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string token = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getTokenBytes() {
+        java.lang.Object ref = token_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          token_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string token = 3;</code>
+       */
+      public Builder setToken(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        token_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string token = 3;</code>
+       */
+      public Builder clearToken() {
+        
+        token_ = getDefaultInstance().getToken();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string token = 3;</code>
+       */
+      public Builder setTokenBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        token_ = value;
         onChanged();
         return this;
       }
@@ -5405,9 +6953,9 @@ public final class LoginProtocol {
         getUsernameBytes();
 
     /**
-     * <code>optional int32 serverId = 2;</code>
+     * <code>optional int32 serverID = 2;</code>
      */
-    int getServerId();
+    int getServerID();
 
     /**
      * <code>optional string nickname = 3;</code>
@@ -5446,7 +6994,7 @@ public final class LoginProtocol {
     }
     private ReqUpdatePlayerMessage() {
       username_ = "";
-      serverId_ = 0;
+      serverID_ = 0;
       nickname_ = "";
       level_ = 0;
       sex_ = 0;
@@ -5485,7 +7033,7 @@ public final class LoginProtocol {
             }
             case 16: {
 
-              serverId_ = input.readInt32();
+              serverID_ = input.readInt32();
               break;
             }
             case 26: {
@@ -5562,12 +7110,12 @@ public final class LoginProtocol {
     }
 
     public static final int SERVERID_FIELD_NUMBER = 2;
-    private int serverId_;
+    private int serverID_;
     /**
-     * <code>optional int32 serverId = 2;</code>
+     * <code>optional int32 serverID = 2;</code>
      */
-    public int getServerId() {
-      return serverId_;
+    public int getServerID() {
+      return serverID_;
     }
 
     public static final int NICKNAME_FIELD_NUMBER = 3;
@@ -5637,8 +7185,8 @@ public final class LoginProtocol {
       if (!getUsernameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, username_);
       }
-      if (serverId_ != 0) {
-        output.writeInt32(2, serverId_);
+      if (serverID_ != 0) {
+        output.writeInt32(2, serverID_);
       }
       if (!getNicknameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, nickname_);
@@ -5659,9 +7207,9 @@ public final class LoginProtocol {
       if (!getUsernameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, username_);
       }
-      if (serverId_ != 0) {
+      if (serverID_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, serverId_);
+          .computeInt32Size(2, serverID_);
       }
       if (!getNicknameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, nickname_);
@@ -5692,8 +7240,8 @@ public final class LoginProtocol {
       boolean result = true;
       result = result && getUsername()
           .equals(other.getUsername());
-      result = result && (getServerId()
-          == other.getServerId());
+      result = result && (getServerID()
+          == other.getServerID());
       result = result && getNickname()
           .equals(other.getNickname());
       result = result && (getLevel()
@@ -5713,7 +7261,7 @@ public final class LoginProtocol {
       hash = (37 * hash) + USERNAME_FIELD_NUMBER;
       hash = (53 * hash) + getUsername().hashCode();
       hash = (37 * hash) + SERVERID_FIELD_NUMBER;
-      hash = (53 * hash) + getServerId();
+      hash = (53 * hash) + getServerID();
       hash = (37 * hash) + NICKNAME_FIELD_NUMBER;
       hash = (53 * hash) + getNickname().hashCode();
       hash = (37 * hash) + LEVEL_FIELD_NUMBER;
@@ -5844,7 +7392,7 @@ public final class LoginProtocol {
         super.clear();
         username_ = "";
 
-        serverId_ = 0;
+        serverID_ = 0;
 
         nickname_ = "";
 
@@ -5875,7 +7423,7 @@ public final class LoginProtocol {
       public com.leader.login.protobuf.protocol.LoginProtocol.ReqUpdatePlayerMessage buildPartial() {
         com.leader.login.protobuf.protocol.LoginProtocol.ReqUpdatePlayerMessage result = new com.leader.login.protobuf.protocol.LoginProtocol.ReqUpdatePlayerMessage(this);
         result.username_ = username_;
-        result.serverId_ = serverId_;
+        result.serverID_ = serverID_;
         result.nickname_ = nickname_;
         result.level_ = level_;
         result.sex_ = sex_;
@@ -5924,8 +7472,8 @@ public final class LoginProtocol {
           username_ = other.username_;
           onChanged();
         }
-        if (other.getServerId() != 0) {
-          setServerId(other.getServerId());
+        if (other.getServerID() != 0) {
+          setServerID(other.getServerID());
         }
         if (!other.getNickname().isEmpty()) {
           nickname_ = other.nickname_;
@@ -6032,28 +7580,28 @@ public final class LoginProtocol {
         return this;
       }
 
-      private int serverId_ ;
+      private int serverID_ ;
       /**
-       * <code>optional int32 serverId = 2;</code>
+       * <code>optional int32 serverID = 2;</code>
        */
-      public int getServerId() {
-        return serverId_;
+      public int getServerID() {
+        return serverID_;
       }
       /**
-       * <code>optional int32 serverId = 2;</code>
+       * <code>optional int32 serverID = 2;</code>
        */
-      public Builder setServerId(int value) {
+      public Builder setServerID(int value) {
         
-        serverId_ = value;
+        serverID_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional int32 serverId = 2;</code>
+       * <code>optional int32 serverID = 2;</code>
        */
-      public Builder clearServerId() {
+      public Builder clearServerID() {
         
-        serverId_ = 0;
+        serverID_ = 0;
         onChanged();
         return this;
       }
@@ -6253,6 +7801,11 @@ public final class LoginProtocol {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ResUserLoginMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_UserRoleMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_UserRoleMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ReqUserRegisterMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -6287,22 +7840,27 @@ public final class LoginProtocol {
   static {
     java.lang.String[] descriptorData = {
       "\n\023LoginProtocol.proto\"T\n\030ReqRegisterServ" +
-      "erMessage\022\020\n\010serverId\030\001 \001(\005\022\014\n\004name\030\002 \001(" +
+      "erMessage\022\020\n\010serverID\030\001 \001(\005\022\014\n\004name\030\002 \001(" +
       "\t\022\n\n\002ip\030\003 \001(\t\022\014\n\004port\030\004 \001(\005\"<\n\030ResRegist" +
       "erServerMessage\022\014\n\004code\030\001 \001(\005\022\022\n\nserverN" +
       "ame\030\002 \001(\t\"-\n\033ReqInternalHeartbeatMessage" +
       "\022\016\n\006online\030\001 \001(\005\"9\n\023ReqUserLoginMessage\022" +
-      "\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"#\n\023R" +
-      "esUserLoginMessage\022\014\n\004data\030\001 \001(\t\"<\n\026ReqU" +
-      "serRegisterMessage\022\020\n\010username\030\001 \001(\t\022\020\n\010" +
-      "password\030\002 \001(\t\"&\n\026ResUserRegisterMessage",
-      "\022\014\n\004data\030\001 \001(\t\"8\n\025ReqVerifyTokenMessage\022" +
-      "\r\n\005token\030\001 \001(\t\022\020\n\010username\030\002 \001(\t\"%\n\025ResV" +
-      "erifyTokenMessage\022\014\n\004code\030\001 \001(\005\"j\n\026ReqUp" +
-      "datePlayerMessage\022\020\n\010username\030\001 \001(\t\022\020\n\010s" +
-      "erverId\030\002 \001(\005\022\020\n\010nickname\030\003 \001(\t\022\r\n\005level" +
-      "\030\004 \001(\005\022\013\n\003sex\030\005 \001(\005B3\n\"com.leader.login." +
-      "protobuf.protocolB\rLoginProtocolb\006proto3"
+      "\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"`\n\023R" +
+      "esUserLoginMessage\022\014\n\004code\030\001 \001(\005\022\013\n\003msg\030" +
+      "\002 \001(\t\022\r\n\005token\030\003 \001(\t\022\037\n\005roles\030\004 \003(\0132\020.Us" +
+      "erRoleMessage\"^\n\017UserRoleMessage\022\013\n\003uid\030",
+      "\001 \001(\003\022\020\n\010serverID\030\002 \001(\005\022\020\n\010nickname\030\003 \001(" +
+      "\t\022\013\n\003sex\030\004 \001(\005\022\r\n\005level\030\005 \001(\005\"<\n\026ReqUser" +
+      "RegisterMessage\022\020\n\010username\030\001 \001(\t\022\020\n\010pas" +
+      "sword\030\002 \001(\t\"B\n\026ResUserRegisterMessage\022\014\n" +
+      "\004code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\022\r\n\005token\030\003 \001(\t\"" +
+      "8\n\025ReqVerifyTokenMessage\022\r\n\005token\030\001 \001(\t\022" +
+      "\020\n\010username\030\002 \001(\t\"%\n\025ResVerifyTokenMessa" +
+      "ge\022\014\n\004code\030\001 \001(\005\"j\n\026ReqUpdatePlayerMessa" +
+      "ge\022\020\n\010username\030\001 \001(\t\022\020\n\010serverID\030\002 \001(\005\022\020" +
+      "\n\010nickname\030\003 \001(\t\022\r\n\005level\030\004 \001(\005\022\013\n\003sex\030\005",
+      " \001(\005B3\n\"com.leader.login.protobuf.protoc" +
+      "olB\rLoginProtocolb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6321,7 +7879,7 @@ public final class LoginProtocol {
     internal_static_ReqRegisterServerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReqRegisterServerMessage_descriptor,
-        new java.lang.String[] { "ServerId", "Name", "Ip", "Port", });
+        new java.lang.String[] { "ServerID", "Name", "Ip", "Port", });
     internal_static_ResRegisterServerMessage_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_ResRegisterServerMessage_fieldAccessorTable = new
@@ -6345,37 +7903,43 @@ public final class LoginProtocol {
     internal_static_ResUserLoginMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ResUserLoginMessage_descriptor,
-        new java.lang.String[] { "Data", });
-    internal_static_ReqUserRegisterMessage_descriptor =
+        new java.lang.String[] { "Code", "Msg", "Token", "Roles", });
+    internal_static_UserRoleMessage_descriptor =
       getDescriptor().getMessageTypes().get(5);
+    internal_static_UserRoleMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_UserRoleMessage_descriptor,
+        new java.lang.String[] { "Uid", "ServerID", "Nickname", "Sex", "Level", });
+    internal_static_ReqUserRegisterMessage_descriptor =
+      getDescriptor().getMessageTypes().get(6);
     internal_static_ReqUserRegisterMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReqUserRegisterMessage_descriptor,
         new java.lang.String[] { "Username", "Password", });
     internal_static_ResUserRegisterMessage_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_ResUserRegisterMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ResUserRegisterMessage_descriptor,
-        new java.lang.String[] { "Data", });
+        new java.lang.String[] { "Code", "Msg", "Token", });
     internal_static_ReqVerifyTokenMessage_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_ReqVerifyTokenMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReqVerifyTokenMessage_descriptor,
         new java.lang.String[] { "Token", "Username", });
     internal_static_ResVerifyTokenMessage_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_ResVerifyTokenMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ResVerifyTokenMessage_descriptor,
         new java.lang.String[] { "Code", });
     internal_static_ReqUpdatePlayerMessage_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_ReqUpdatePlayerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReqUpdatePlayerMessage_descriptor,
-        new java.lang.String[] { "Username", "ServerId", "Nickname", "Level", "Sex", });
+        new java.lang.String[] { "Username", "ServerID", "Nickname", "Level", "Sex", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

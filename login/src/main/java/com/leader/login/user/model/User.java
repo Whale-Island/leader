@@ -16,7 +16,7 @@ import lombok.Setter;
 @Table(name = "user")
 @NamedQueries({ // start
 		@NamedQuery(name = "User.findAll", query = "SELECT r FROM User r"),
-		@NamedQuery(name = "User.findUserById", query = "SELECT r FROM User r WHERE r.id = ?1"),
+		@NamedQuery(name = "User.findUserByID", query = "SELECT r FROM User r WHERE r.id = ?1"),
 		@NamedQuery(name = "User.findUserByName", query = "SELECT r FROM User r WHERE r.username = :username") // end
 })
 public class User implements GameEntity {

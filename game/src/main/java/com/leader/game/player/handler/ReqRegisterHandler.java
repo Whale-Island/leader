@@ -45,7 +45,7 @@ public class ReqRegisterHandler implements Handler {
 		channel.writeAndFlush(response);
 
 		if (player != null)
-			LogManager.getInstance().addRegisterLog(player.getId(), player.getDeviceId(), player.getNickname(),
+			LogManager.getInstance().addRegisterLog(player.getId(), player.getDeviceID(), player.getNickname(),
 					player.getNickname(), player.getChannel());
 	}
 

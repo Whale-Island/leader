@@ -69,7 +69,7 @@ public class Sect implements GameEntity {
 	private @Getter @Setter int storageId;
 	/** 弟子们 */
 	private @Getter @Setter @Transient List<Role> roles = new ArrayList<>();
-	/** 弟子们(key=模版id) */
+	/** 弟子们(key=模版ID) */
 	private @Getter @Setter @Transient Map<Integer, Role> roleMap = new HashMap<>();
 
 	public Sect() {

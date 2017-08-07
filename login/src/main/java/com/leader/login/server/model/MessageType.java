@@ -3,7 +3,7 @@ package com.leader.login.server.model;
 import com.leader.core.server.model.IMessageType;
 
 /***
- * 网关服消息协议
+ * 登录服消息协议
  */
 public class MessageType implements IMessageType {
 	// [start] ServerInternalProtocol

@@ -87,7 +87,7 @@ public class TcpClient {
 							pipeline.addLast(new IdleStateHandler(30, 30, 0));
 							pipeline.addLast(new IdleStateEventHandler());
 							pipeline.addLast(new LoggingHandler(LogLevel.DEBUG));
-							pipeline.addLast(new LengthFieldBasedFrameDecoder(32 * 1024, 0, 4));
+							pipeline.addLast(new LengthFieldBasedFrameDecoder(32 * 1024, 0, 2));
 							pipeline.addLast(new PackDecoder());
 							pipeline.addLast(new PackEncoder());
 							pipeline.addLast(new MessageDispatcherHandler());

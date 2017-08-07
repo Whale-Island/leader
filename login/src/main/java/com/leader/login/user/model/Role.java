@@ -16,9 +16,9 @@ import lombok.Setter;
 @Table(name = "role")
 @NamedQueries({ // start
 		@NamedQuery(name = "Role.findRoleByName", query = "SELECT r FROM Role r WHERE "
-				+ "r.username = :username order by serverId,level"),
+				+ "r.username = :username order by serverID,level"),
 		@NamedQuery(name = "Role.findRole", query = "SELECT r FROM Role r WHERE "
-				+ "r.username = :username and r.serverId = :serverId") // end
+				+ "r.username = :username and r.serverID = :serverID") // end
 })
 public class Role implements GameEntity {
 	private static final long serialVersionUID = -980826933743988382L;
@@ -37,8 +37,8 @@ public class Role implements GameEntity {
 	/** 等级 */
 	private @Getter @Setter int level;
 	/** 所在服务器编号 */
-	private @Getter @Setter int serverId;
-	/** 所在服务器名称 */
+	private @Getter @Setter int serverID;
+	/** 所在服务器名称(冗余) */
 	private @Getter @Setter String servername;
 
 }

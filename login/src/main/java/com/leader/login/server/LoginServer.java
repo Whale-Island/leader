@@ -8,8 +8,6 @@ import java.util.concurrent.ConcurrentMap;
 
 import javax.net.ssl.SSLException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
@@ -32,10 +30,10 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler;
 import io.netty.util.Attribute;
 import io.netty.util.concurrent.GlobalEventExecutor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class LoginServer {
-	/** 日志 */
-	private Logger logger = LoggerFactory.getLogger(LoginServer.class);
 	private ConcurrentMap<Integer, Server> servers = new ConcurrentHashMap<Integer, Server>();
 	private ServerChannelGroup channelGroup = new ServerChannelGroup(GlobalEventExecutor.INSTANCE);
 	@Value("${server_port}")
@@ -71,7 +69,7 @@ public class LoginServer {
 				ip = address.toString();
 				ip = TextKit.replaceAll(ip, "/", "");
 			}
-			logger.info("remote host " + ip + " is closed.");
+			log.info("remote host " + ip + " is closed.");
 			Attribute<Integer> attribute = channel.attr(AttributeKeys.SERVER_ID);
 			Integer serverId = attribute.get();
 			if (serverId == null) {
@@ -104,37 +102,37 @@ public class LoginServer {
 						scheduler.shutdown();
 					}
 				} catch (Exception e) {
-					logger.error(e.getMessage(), e);
+					log.error(e.getMessage(), e);
 				}
 				try {
 					if (httpServerThread != null) {
 						httpServerThread.stop0();
 					}
 				} catch (Exception e) {
-					logger.error(e.getMessage(), e);
+					log.error(e.getMessage(), e);
 				}
 				try {
 					tcpServer.stop();
 				} catch (Exception e) {
-					logger.error(e.getMessage(), e);
+					log.error(e.getMessage(), e);
 				}
 				stop();
 				try {
 					applicationContext.close();
 				} catch (Exception e) {
-					logger.error(e.getMessage(), e);
+					log.error(e.getMessage(), e);
 				}
-				logger.info(serverName + " stoped.");
+				log.info(serverName + " stoped.");
 			}
 		}));
-		logger.info(serverName + " started.");
+		log.info(serverName + " started.");
 		tcpServer.start();
 	}
 
 	/** 游戏服务器注册 */
 	public void register(Channel channel, ReqRegisterServerMessage message) {
-		int serverId = message.getServerId();
-		Channel oldChannel = channelGroup.getChannel(serverId);
+		int serverID = message.getServerID();
+		Channel oldChannel = channelGroup.getChannel(serverID);
 		if (oldChannel != null) {
 			ChannelFuture future = oldChannel.close();
 			int times = 5;
@@ -147,39 +145,41 @@ public class LoginServer {
 			}
 		}
 		Server server = null;
-		if (servers.containsKey(serverId)) {
-			server = servers.get(serverId);
+		if (servers.containsKey(serverID)) {
+			server = servers.get(serverID);
 			server.setIp(message.getIp());
 			server.setName(message.getName());
 			server.setPort(message.getPort());
-			server.setServerId(serverId);
+			server.setServerId(serverID);
 			server.setState(ServerState.RUN);
 		} else {
 			server = new Server();
 			server.setIp(message.getIp());
 			server.setName(message.getName());
 			server.setPort(message.getPort());
-			server.setServerId(serverId);
+			server.setServerId(serverID);
 			server.setState(ServerState.RUN);
-			servers.put(serverId, server);
+			servers.put(serverID, server);
 		}
 		channel.closeFuture().addListener(channelCloseListener);
-		channel.attr(AttributeKeys.SERVER_ID).set(serverId);
+		channel.attr(AttributeKeys.SERVER_ID).set(serverID);
 		channelGroup.add(channel);
 		ResRegisterServerMessage.Builder builder = ResRegisterServerMessage.newBuilder();
 		builder.setCode(0);
 		builder.setServerName(serverName == null ? "server name is null" : serverName);
 		channel.writeAndFlush(builder);
+
+		log.info("服务器{}注册成功！", serverID);
 	}
 
 	/** 心跳 */
-	public void heartbeat(int size, Channel channel) {
+	public void heartbeat(int online, Channel channel) {
 		Integer serverId = channel.attr(AttributeKeys.SERVER_ID).get();
 		if (serverId == null) {
 			return;
 		}
 		Server server = servers.get(serverId);
-		server.setOnline(size);
+		server.setOnline(online);
 	}
 
 	/**
@@ -204,7 +204,7 @@ public class LoginServer {
 				try {
 					serverListener.shutdown();
 				} catch (Exception e) {
-					logger.error(e.getMessage(), e);
+					log.error(e.getMessage(), e);
 				}
 			}
 		}

@@ -23,7 +23,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@Table(name = "player")
+@Table(name = "Player")
 @NamedQueries({ // [start]
 		@NamedQuery(name = "Player.findAll", query = "SELECT r FROM Player r"),
 		@NamedQuery(name = "Player.findPlayerById", query = "SELECT r FROM Player r WHERE r.id = ?1"),
@@ -45,7 +45,7 @@ public class Player implements GameEntity {
 	/** 帐号(冗余字段) */
 	private @Getter @Setter String username;
 	/** 角色id */
-	private @Getter @Setter long roleId;
+	private @Getter @Setter long roleID;
 	/** 头像 */
 	private @Getter @Setter String icon;
 	/** 性别 1男2女 */
@@ -56,7 +56,7 @@ public class Player implements GameEntity {
 	/** 挂载的角色 */
 	private @Getter @Setter @Transient Role role;
 	/** 门派id */
-	private @Getter @Setter long sectId;
+	private @Getter @Setter long sectID;
 	/** 门派名 */
 	@Column(unique = true, nullable = false)
 	private @Getter @Setter String sectName;
@@ -69,14 +69,14 @@ public class Player implements GameEntity {
 	/** 平台渠道 */
 	private @Getter @Setter int channel;
 	/** 设备号 */
-	private @Getter @Setter String deviceId;
+	private @Getter @Setter String deviceID;
 	/** 状态 */
 	private @Getter @Setter @Transient volatile int state;
 	/** 1.在线 2.离线 */
 	public static final int ONLINE = 1, OFFLINE = 2, SAVE = 3;
 
 	public Player() {
-		sect = SectManager.getInstance().findSect(sectId);
+		sect = SectManager.getInstance().findSect(sectID);
 	}
 
 	public final boolean isOnline() {

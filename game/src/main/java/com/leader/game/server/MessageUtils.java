@@ -36,7 +36,7 @@ public class MessageUtils {
 	 * 
 	 * @param message
 	 */
-	public static void send_gateway_message(Builder message) {
+	public static void send_login_message(Builder message) {
 		GameServer.getInstance().send_gateway_message(message);
 	}
 

@@ -52,10 +52,10 @@ public class UserDao extends JpaDaoSupport {
 
 	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED, readOnly = true)
 	@SuppressWarnings("unchecked")
-	public Role findRole(String username, int serverId) {
+	public Role findRole(String username, int serverID) {
 		Query query = entityManager.createNamedQuery("Role.findRole");
 		query.setParameter("username", username);
-		query.setParameter("serverId", serverId);
+		query.setParameter("serverID", serverID);
 		List<Role> roles = query.getResultList();
 		if (roles == null || roles.isEmpty()) {
 			return null;

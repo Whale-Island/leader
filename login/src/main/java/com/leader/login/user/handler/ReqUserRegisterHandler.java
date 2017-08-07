@@ -1,19 +1,21 @@
 package com.leader.login.user.handler;
 
+import static io.netty.handler.codec.http.HttpResponseStatus.OK;
+import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
+
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Message;
-import com.leader.core.server.handler.Handler;
+import com.leader.core.server.http.AbstractChannelHandler;
 import com.leader.core.server.model.Protocol;
-import com.leader.login.protobuf.protocol.LoginProtocol.ReqUserRegisterMessage;
-import com.leader.login.protobuf.protocol.LoginProtocol.ResUserRegisterMessage;
 import com.leader.login.user.UserManager;
 
-import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.http.FullHttpRequest;
 
 /***
  * 注册用户请求
@@ -23,29 +25,23 @@ import io.netty.channel.Channel;
  */
 @Controller
 @Protocol("LoginProtocol")
-public class ReqUserRegisterHandler implements Handler {
+public class ReqUserRegisterHandler extends AbstractChannelHandler {
 
 	private Logger log = LoggerFactory.getLogger(getClass());
 
 	@Override
-	public void action(Channel channel, Message m) throws InvalidProtocolBufferException {
+	public void channel(ChannelHandlerContext ctx, FullHttpRequest req, Map<String, String> map) {
+		JSONObject object = new JSONObject();
 		try {
-			ReqUserRegisterMessage message = (ReqUserRegisterMessage) m;
-
-			JSONObject object = new JSONObject();
-			String username = message.getUsername();
-			String password = message.getPassword();
-			int result = UserManager.getInstance().register(username, password, object);
-			object.put("result", result);
-
-			ResUserRegisterMessage.Builder response = ResUserRegisterMessage.newBuilder();
-			response.setData(object.toJSONString());
-			channel.writeAndFlush(response);
+			String username = map.get("USerNAmE");
+			String password = map.get("PAsSWoRD");
+			UserManager.getInstance().register(username, password, object);
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 		} finally {
-
+			sendHttpResponse(ctx, req, HTTP_1_1, OK, object.toJSONString());
 		}
+
 	}
 
 }

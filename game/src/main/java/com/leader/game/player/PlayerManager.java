@@ -150,7 +150,7 @@ public class PlayerManager implements ShutdownListener {
 			player.setSex((short) sex);
 			player.setLastOnlineTime(System.currentTimeMillis());
 			player.setChannel(gameChannel);
-			player.setDeviceId(deviceId);
+			player.setDeviceID(deviceId);
 			// 保存
 			commonDao.store(player);
 
@@ -197,7 +197,7 @@ public class PlayerManager implements ShutdownListener {
 			if (state == Player.SAVE) {
 				respone.setCode(2);// 玩家数据保存中
 				return null;
-			} else if (player.getSectId() == 0) {
+			} else if (player.getSectID() == 0) {
 				respone.setCode(4);// 未建立门派
 				return null;
 			}
@@ -397,7 +397,7 @@ public class PlayerManager implements ShutdownListener {
 	public void reward(Player player, int itemId, int number) {
 		switch (itemId) {
 		case 1:
-			
+
 			break;
 
 		default:

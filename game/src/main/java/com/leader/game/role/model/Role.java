@@ -24,7 +24,7 @@ import lombok.ToString;
  *
  */
 @Entity
-@Table(name = "role")
+@Table(name = "Role")
 @NamedQueries({ // [start]
 		@NamedQuery(name = "Role.findBySectId", query = "SELECT r FROM Role r WHERE r.sectId = ?1"),
 		@NamedQuery(name = "Role.findById", query = "SELECT r FROM Role r WHERE r.id = ?1") // [end]
@@ -52,7 +52,7 @@ public class Role implements GameEntity {
 	/** 性格 */
 	private @Getter @Setter int nature;
 	/** 体力 */
-	private @Getter @Setter int strength;
+	private @Getter @Setter int stamina;
 
 	/** 关系表 业务层操作 (key->modelId) */
 	private @Getter @Transient Map<Integer, Integer> relationMap = new HashMap<>();
@@ -67,7 +67,7 @@ public class Role implements GameEntity {
 	/** 神 */
 	private @Getter @Setter int spirit;
 
-	/** 职业(仅显示) */
+	/** 职业名称 */
 	private @Getter @Setter String profession;
 	/** 资质(id) */
 	private @Getter @Setter int aptitude;

@@ -13,9 +13,13 @@ public class MessageType implements IMessageType {
 	public static final short ReqRegisterServer = 101;
 	/** 更新玩家角色请求 */
 	public static final short ReqUpdatePlayer = 102;
+	/** 验证玩家登录令牌请求 */
+	public static final short ReqVerifyToken = 103;
 
 	/** 网关服注册响应消息 */
 	public static final short ResRegisterServer = 201;
+	/** 验证玩家登录令牌响应 */
+	public static final short ResVerifyToken = 203;
 	// [end]
 
 	// [start] SyncProtocol

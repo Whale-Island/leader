@@ -3,6 +3,8 @@ package com.leader.game.player.model;
 import javax.persistence.Column;
 import javax.persistence.ColumnResult;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
@@ -41,6 +43,7 @@ public class Player implements GameEntity {
 
 	@Id
 	@Column(unique = true, nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private @Getter @Setter long id;
 	/** 帐号(冗余字段) */
 	private @Getter @Setter String username;
@@ -75,7 +78,7 @@ public class Player implements GameEntity {
 	/** 1.在线 2.离线 */
 	public static final int ONLINE = 1, OFFLINE = 2, SAVE = 3;
 
-	public Player() {
+	public void load() {
 		sect = SectManager.getInstance().findSect(sectID);
 	}
 

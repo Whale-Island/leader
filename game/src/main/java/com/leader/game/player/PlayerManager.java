@@ -15,6 +15,7 @@ import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.leader.core.db.CommonDao;
 import com.leader.core.db.GameEntity;
 import com.leader.core.server.model.ShutdownListener;
@@ -167,8 +168,13 @@ public class PlayerManager implements ShutdownListener {
 		return null;
 	}
 
-	/** 登录 */
-	public Player login(String username, String token, Channel channel, ResLoginMessage.Builder respone) {
+	/**
+	 * 登录
+	 * 
+	 * @throws InvalidProtocolBufferException
+	 */
+	public Player login(String username, String token, Channel channel, ResLoginMessage.Builder respone)
+			throws InvalidProtocolBufferException {
 
 		LoginToken loginToken = tokenMap.get(username);
 		if (loginToken == null || !loginToken.getToken().equals(token)) {
@@ -176,9 +182,10 @@ public class PlayerManager implements ShutdownListener {
 			ReqVerifyTokenMessage.Builder builder = ReqVerifyTokenMessage.newBuilder();
 			builder.setToken(token);
 			builder.setUsername(username);
-			ResVerifyTokenMessage message = (ResVerifyTokenMessage) SyncFutureUtils.Intstance.request(builder);
+			byte[] data = SyncFutureUtils.Intstance.request(builder);
+			ResVerifyTokenMessage message = ResVerifyTokenMessage.parseFrom(data);
 			// 如果token再次匹配正确，就正常登录
-			if (message.getCode() != 0 || !token.equals(message.getToken())) {
+			if (message.getCode() != 1 || !token.equals(message.getToken())) {
 				respone.setCode(1);// token失效，请重新登录
 				return null;
 			}

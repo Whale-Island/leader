@@ -5853,6 +5853,572 @@ public final class LoginProtocol {
 
   }
 
+  public interface ReqSyncMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ReqSyncMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    int getId();
+
+    /**
+     * <code>optional int32 type = 2;</code>
+     */
+    int getType();
+
+    /**
+     * <code>optional bytes data = 3;</code>
+     */
+    com.google.protobuf.ByteString getData();
+  }
+  /**
+   * <pre>
+   * 同步请求 
+   * </pre>
+   *
+   * Protobuf type {@code ReqSyncMessage}
+   */
+  public  static final class ReqSyncMessage extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:ReqSyncMessage)
+      ReqSyncMessageOrBuilder {
+    // Use ReqSyncMessage.newBuilder() to construct.
+    private ReqSyncMessage(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private ReqSyncMessage() {
+      id_ = 0;
+      type_ = 0;
+      data_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return com.google.protobuf.UnknownFieldSet.getDefaultInstance();
+    }
+    private ReqSyncMessage(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      int mutable_bitField0_ = 0;
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!input.skipField(tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+
+              id_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              type_ = input.readInt32();
+              break;
+            }
+            case 26: {
+
+              data_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.leader.login.protobuf.protocol.LoginProtocol.internal_static_ReqSyncMessage_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.leader.login.protobuf.protocol.LoginProtocol.internal_static_ReqSyncMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage.class, com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>optional int32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    public static final int TYPE_FIELD_NUMBER = 2;
+    private int type_;
+    /**
+     * <code>optional int32 type = 2;</code>
+     */
+    public int getType() {
+      return type_;
+    }
+
+    public static final int DATA_FIELD_NUMBER = 3;
+    private com.google.protobuf.ByteString data_;
+    /**
+     * <code>optional bytes data = 3;</code>
+     */
+    public com.google.protobuf.ByteString getData() {
+      return data_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (id_ != 0) {
+        output.writeInt32(1, id_);
+      }
+      if (type_ != 0) {
+        output.writeInt32(2, type_);
+      }
+      if (!data_.isEmpty()) {
+        output.writeBytes(3, data_);
+      }
+    }
+
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (id_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
+      if (type_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, type_);
+      }
+      if (!data_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, data_);
+      }
+      memoizedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage)) {
+        return super.equals(obj);
+      }
+      com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage other = (com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage) obj;
+
+      boolean result = true;
+      result = result && (getId()
+          == other.getId());
+      result = result && (getType()
+          == other.getType());
+      result = result && getData()
+          .equals(other.getData());
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
+      hash = (37 * hash) + TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getType();
+      hash = (37 * hash) + DATA_FIELD_NUMBER;
+      hash = (53 * hash) + getData().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 同步请求 
+     * </pre>
+     *
+     * Protobuf type {@code ReqSyncMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ReqSyncMessage)
+        com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.leader.login.protobuf.protocol.LoginProtocol.internal_static_ReqSyncMessage_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.leader.login.protobuf.protocol.LoginProtocol.internal_static_ReqSyncMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage.class, com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage.Builder.class);
+      }
+
+      // Construct using com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+
+        type_ = 0;
+
+        data_ = com.google.protobuf.ByteString.EMPTY;
+
+        return this;
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.leader.login.protobuf.protocol.LoginProtocol.internal_static_ReqSyncMessage_descriptor;
+      }
+
+      public com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage getDefaultInstanceForType() {
+        return com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage.getDefaultInstance();
+      }
+
+      public com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage build() {
+        com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage buildPartial() {
+        com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage result = new com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage(this);
+        result.id_ = id_;
+        result.type_ = type_;
+        result.data_ = data_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage) {
+          return mergeFrom((com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage other) {
+        if (other == com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage.getDefaultInstance()) return this;
+        if (other.getId() != 0) {
+          setId(other.getId());
+        }
+        if (other.getType() != 0) {
+          setType(other.getType());
+        }
+        if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
+          setData(other.getData());
+        }
+        onChanged();
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int id_ ;
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public Builder setId(int value) {
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int type_ ;
+      /**
+       * <code>optional int32 type = 2;</code>
+       */
+      public int getType() {
+        return type_;
+      }
+      /**
+       * <code>optional int32 type = 2;</code>
+       */
+      public Builder setType(int value) {
+        
+        type_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 type = 2;</code>
+       */
+      public Builder clearType() {
+        
+        type_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString data_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes data = 3;</code>
+       */
+      public com.google.protobuf.ByteString getData() {
+        return data_;
+      }
+      /**
+       * <code>optional bytes data = 3;</code>
+       */
+      public Builder setData(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        data_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes data = 3;</code>
+       */
+      public Builder clearData() {
+        
+        data_ = getDefaultInstance().getData();
+        onChanged();
+        return this;
+      }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return this;
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:ReqSyncMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:ReqSyncMessage)
+    private static final com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage();
+    }
+
+    public static com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ReqSyncMessage>
+        PARSER = new com.google.protobuf.AbstractParser<ReqSyncMessage>() {
+      public ReqSyncMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new ReqSyncMessage(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<ReqSyncMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ReqSyncMessage> getParserForType() {
+      return PARSER;
+    }
+
+    public com.leader.login.protobuf.protocol.LoginProtocol.ReqSyncMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ReqVerifyTokenMessageOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ReqVerifyTokenMessage)
       com.google.protobuf.MessageOrBuilder {
@@ -7816,6 +8382,11 @@ public final class LoginProtocol {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ResUserRegisterMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ReqSyncMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ReqSyncMessage_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ReqVerifyTokenMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -7854,13 +8425,15 @@ public final class LoginProtocol {
       "RegisterMessage\022\020\n\010username\030\001 \001(\t\022\020\n\010pas" +
       "sword\030\002 \001(\t\"B\n\026ResUserRegisterMessage\022\014\n" +
       "\004code\030\001 \001(\005\022\013\n\003msg\030\002 \001(\t\022\r\n\005token\030\003 \001(\t\"" +
-      "8\n\025ReqVerifyTokenMessage\022\r\n\005token\030\001 \001(\t\022" +
-      "\020\n\010username\030\002 \001(\t\"%\n\025ResVerifyTokenMessa" +
-      "ge\022\014\n\004code\030\001 \001(\005\"j\n\026ReqUpdatePlayerMessa" +
-      "ge\022\020\n\010username\030\001 \001(\t\022\020\n\010serverID\030\002 \001(\005\022\020" +
-      "\n\010nickname\030\003 \001(\t\022\r\n\005level\030\004 \001(\005\022\013\n\003sex\030\005",
-      " \001(\005B3\n\"com.leader.login.protobuf.protoc" +
-      "olB\rLoginProtocolb\006proto3"
+      "8\n\016ReqSyncMessage\022\n\n\002id\030\001 \001(\005\022\014\n\004type\030\002 " +
+      "\001(\005\022\014\n\004data\030\003 \001(\014\"8\n\025ReqVerifyTokenMessa" +
+      "ge\022\r\n\005token\030\001 \001(\t\022\020\n\010username\030\002 \001(\t\"%\n\025R" +
+      "esVerifyTokenMessage\022\014\n\004code\030\001 \001(\005\"j\n\026Re" +
+      "qUpdatePlayerMessage\022\020\n\010username\030\001 \001(\t\022\020",
+      "\n\010serverID\030\002 \001(\005\022\020\n\010nickname\030\003 \001(\t\022\r\n\005le" +
+      "vel\030\004 \001(\005\022\013\n\003sex\030\005 \001(\005B3\n\"com.leader.log" +
+      "in.protobuf.protocolB\rLoginProtocolb\006pro" +
+      "to3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -7922,20 +8495,26 @@ public final class LoginProtocol {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ResUserRegisterMessage_descriptor,
         new java.lang.String[] { "Code", "Msg", "Token", });
-    internal_static_ReqVerifyTokenMessage_descriptor =
+    internal_static_ReqSyncMessage_descriptor =
       getDescriptor().getMessageTypes().get(8);
+    internal_static_ReqSyncMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ReqSyncMessage_descriptor,
+        new java.lang.String[] { "Id", "Type", "Data", });
+    internal_static_ReqVerifyTokenMessage_descriptor =
+      getDescriptor().getMessageTypes().get(9);
     internal_static_ReqVerifyTokenMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReqVerifyTokenMessage_descriptor,
         new java.lang.String[] { "Token", "Username", });
     internal_static_ResVerifyTokenMessage_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_ResVerifyTokenMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ResVerifyTokenMessage_descriptor,
         new java.lang.String[] { "Code", });
     internal_static_ReqUpdatePlayerMessage_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_ReqUpdatePlayerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ReqUpdatePlayerMessage_descriptor,

@@ -111,6 +111,8 @@ public class MessagePool {
 	 * @return
 	 */
 	public Parser<? extends Message> getParser(short descriptor) {
+		if (!parsers.containsKey(descriptor))
+			log.error("未找到消息{}对应的解析器!", descriptor);
 		return parsers.get(descriptor);
 	}
 

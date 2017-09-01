@@ -22,6 +22,11 @@ public class MessageType implements IMessageType {
 	public static final short ResVerifyToken = 203;
 	// [end]
 
+	// [start] SyncProtocol
+	/** 同步请求 */
+	public static final short ReqSync = 999;
+	// [end]
+
 	// [start] UserProtocol
 	/** 用户登录请求消息 */
 	public static final short ReqUserLogin = 110;

@@ -5,12 +5,14 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.leader.core.db.JpaDaoSupport;
 import com.leader.game.sect.model.Sect;
 
+@Repository
 public class SectDao extends JpaDaoSupport {
 
 	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED, readOnly = true)

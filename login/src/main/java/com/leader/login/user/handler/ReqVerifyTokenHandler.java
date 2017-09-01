@@ -4,27 +4,28 @@ import org.springframework.stereotype.Controller;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.Message;
-import com.leader.core.server.handler.Handler;
+import com.google.protobuf.Message.Builder;
 import com.leader.core.server.model.Protocol;
 import com.leader.login.protobuf.protocol.LoginProtocol.ReqVerifyTokenMessage;
 import com.leader.login.protobuf.protocol.LoginProtocol.ResVerifyTokenMessage;
+import com.leader.login.sync.model.SyncHandler;
 import com.leader.login.user.UserManager;
 
 import io.netty.channel.Channel;
 
 @Controller
 @Protocol("LoginProtocol")
-public class ReqVerifyTokenHandler implements Handler {
+public class ReqVerifyTokenHandler implements SyncHandler {
 
 	@Override
-	public void action(Channel channel, Message m) throws InvalidProtocolBufferException {
+	public Builder action(Channel channel, Message m) throws InvalidProtocolBufferException {
 		ReqVerifyTokenMessage message = (ReqVerifyTokenMessage) m;
 
 		int result = UserManager.getInstance().verifyToken(message.getUsername(), message.getToken());
 
 		ResVerifyTokenMessage.Builder builder = ResVerifyTokenMessage.newBuilder();
 		builder.setCode(result);
-		channel.writeAndFlush(builder);
+		return builder;
 	}
 
 }

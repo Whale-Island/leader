@@ -1,17 +1,18 @@
 package com.leader.login.user;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.commons.codec.digest.Md5Crypt;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSONObject;
 import com.leader.core.db.CommonDao;
 import com.leader.core.server.model.ShutdownListener;
+import com.leader.core.util.MD5Utils;
 import com.leader.core.util.RandomUtils;
 import com.leader.login.server.LoginServer;
 import com.leader.login.server.model.Server;
@@ -54,6 +55,7 @@ public class UserManager implements ShutdownListener {
 	 */
 	public void register(String username, String password, JSONObject json) {
 		try {
+			json.put("code", 0);
 			// 帐号名已存在
 			if (names.contains(username)) {
 				json.put("code", 3);
@@ -69,14 +71,13 @@ public class UserManager implements ShutdownListener {
 			String token = addToken(user.getUsername());
 			// 记录帐号名
 			names.add(username);
-
+			json.put("roles", Collections.EMPTY_LIST);
 			json.put("token", token);
 		} catch (Exception e) {
 			json.put("code", 500);
 			json.put("msg", "Internal Server Error.");
 			log.error(e.getMessage(), e);
 		}
-		return;
 	}
 
 	/***
@@ -87,31 +88,30 @@ public class UserManager implements ShutdownListener {
 	 * @return
 	 */
 	public void login(String username, String password, JSONObject json) {
+		json.put("code", 0);
 		// 帐号或密码不能为空
 		if (StringUtil.isNullOrEmpty(username) || StringUtil.isNullOrEmpty(password)) {
 			json.put("code", 1);
 			json.put("msg", "The username or password is empty.");
 			return;
-		} else {
-			User user = dao.findPlayerByUserName(username);
-			// 密码不符
-			if (user == null || !user.getPassword().equals(password)) {
-				json.put("code", 2);
-				json.put("msg", "The username or password is invalid.");
-				return;
-			}
-			String token = addToken(user.getUsername());
-			json.put("token", token);
-
-			List<Role> roles = dao.loadRole(user.getUsername());
-			json.put("roles", roles);
 		}
-		return;
+		User user = dao.findPlayerByUserName(username);
+		// 密码不符
+		if (user == null || !user.getPassword().equals(password)) {
+			json.put("code", 2);
+			json.put("msg", "The username or password is invalid.");
+			return;
+		}
+		String token = addToken(user.getUsername());
+		json.put("token", token);
+
+		List<Role> roles = dao.loadRole(user.getUsername());
+		json.put("roles", roles);
 	}
 
 	private String addToken(String username) {
 		// 生成token
-		String token = Md5Crypt.apr1Crypt(username + RandomUtils.random(10000));
+		String token = MD5Utils.getPwd(username + RandomUtils.random(10000));
 
 		// 保存token
 		LoginToken loginToken = new LoginToken();
@@ -131,8 +131,8 @@ public class UserManager implements ShutdownListener {
 	public int verifyToken(String username, String token) {
 		LoginToken loginToken = tokenMap.get(username);
 		if (loginToken != null && loginToken.getToken().equals(token)) {
-			tokenMap.remove(username);// 使用一次即销毁
-			return 0;
+			// tokenMap.remove(username);// 使用一次即销毁
+			return 1;
 		}
 		return -1;
 	}

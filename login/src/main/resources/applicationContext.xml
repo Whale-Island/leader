@@ -120,4 +120,7 @@
 		<property name="entityManagerFactory" ref="gameEntityManagerFactory" />
 		<qualifier value="gameTM" />
 	</bean>
+	
+	<!-- Detect @Transactional -->
+	<tx:annotation-driven transaction-manager="gameTransactionManager" />
 </beans>

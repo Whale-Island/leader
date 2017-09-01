@@ -16,6 +16,12 @@ public class CommonDao extends JpaDaoSupport {
 
 	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED)
 	public <T> void store(T entity) {
+		entityManager.persist(entity);
+	}
+
+	@Override
+	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED)
+	public <T> void update(T entity) {
 		entityManager.merge(entity);
 	}
 
@@ -32,6 +38,7 @@ public class CommonDao extends JpaDaoSupport {
 		return query.getResultList();
 	}
 
+	@Override
 	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED)
 	public <T> void delete(T entity) {
 		entityManager.remove(entityManager.merge(entity));
@@ -50,10 +57,11 @@ public class CommonDao extends JpaDaoSupport {
 
 	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED, readOnly = true)
 	public <T> T find(Serializable id, Class<T> entityClass) {
-		T t = (T) entityManager.find(entityClass, id);
+		T t = entityManager.find(entityClass, id);
 		return t;
 	}
 
+	@Override
 	@Transactional(value = "gameTM", isolation = Isolation.READ_COMMITTED, readOnly = true)
 	public <T> List<T> listEntityByRoleId(String sql, Class<T> classType, long roleId) {
 		TypedQuery<T> query = entityManager.createNamedQuery(sql, classType);

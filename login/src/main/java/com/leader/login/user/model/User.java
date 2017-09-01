@@ -2,6 +2,8 @@ package com.leader.login.user.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -24,6 +26,7 @@ public class User implements GameEntity {
 
 	@Id
 	@Column(unique = true, nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private @Getter @Setter long id;
 	private @Getter @Setter String username;
 	private @Getter @Setter String password;

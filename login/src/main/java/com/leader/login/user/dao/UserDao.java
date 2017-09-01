@@ -1,5 +1,6 @@
 package com.leader.login.user.dao;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -45,7 +46,7 @@ public class UserDao extends JpaDaoSupport {
 		query.setParameter("username", username);
 		List<Role> roles = query.getResultList();
 		if (roles == null || roles.isEmpty()) {
-			return null;
+			return Collections.EMPTY_LIST;
 		}
 		return roles;
 	}

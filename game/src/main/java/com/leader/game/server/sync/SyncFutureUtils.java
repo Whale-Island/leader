@@ -7,13 +7,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Message;
 import com.google.protobuf.Message.Builder;
 import com.leader.core.server.model.DynamicMessageFactory;
-import com.leader.core.server.pool.MessagePool;
 import com.leader.game.protobuf.protocol.SyncProtocol.ReqSyncMessage;
 import com.leader.game.server.MessageUtils;
 
@@ -22,13 +17,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public enum SyncFutureUtils {
 	Intstance;
-	private ConcurrentMap<Integer, SyncFuture<Message>> entrys = new ConcurrentHashMap<Integer, SyncFuture<Message>>();
+	private ConcurrentMap<Integer, SyncFuture<byte[]>> entrys = new ConcurrentHashMap<Integer, SyncFuture<byte[]>>();
 	private AtomicInteger count = new AtomicInteger();
-	@Autowired
-	private MessagePool messagePool;
 
 	/** 请求方法 */
-	public Message request(Builder message) {
+	public byte[] request(Builder message) {
 		// 获取请求message的描述符
 		String name = message.getDescriptorForType().getFullName();
 		int type = DynamicMessageFactory.getDescriptor(name);
@@ -40,7 +33,7 @@ public enum SyncFutureUtils {
 
 		// 装载同步请求消息
 		ReqSyncMessage.Builder builder = ReqSyncMessage.newBuilder();
-		SyncFuture<Message> future = new SyncFuture<Message>();
+		SyncFuture<byte[]> future = new SyncFuture<byte[]>();
 		builder.setId(notifyKey);
 		builder.setType(type);
 		builder.setData(message.build().toByteString());
@@ -49,7 +42,7 @@ public enum SyncFutureUtils {
 		return request(future, notifyKey);
 	}
 
-	private Message request(SyncFuture<Message> future, int notifyKey) {
+	private byte[] request(SyncFuture<byte[]> future, int notifyKey) {
 		entrys.put(notifyKey, future);
 		try {
 			try {
@@ -75,16 +68,12 @@ public enum SyncFutureUtils {
 	 * @param id
 	 */
 	public void response(int notifyKey, short type, byte[] data) {
-		SyncFuture<Message> future = entrys.get(notifyKey);
+		SyncFuture<byte[]> future = entrys.get(notifyKey);
 		if (future == null) {
 			log.error("同步响应消息id{}未找到实体！", notifyKey);
 			return;
 		}
-		try {
-			future.setResponse(messagePool.getParser(type).parseFrom(data));
-		} catch (InvalidProtocolBufferException e) {
-			log.error(e.getMessage(), e);
-		}
+		future.setResponse(data);
 		synchronized (future) {
 			future.notifyAll();
 		}

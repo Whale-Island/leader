@@ -56,6 +56,14 @@ message ResUserRegisterMessage{
 		string token = 3;
 }
 
+// 同步请求 
+message ReqSyncMessage{
+		int32 id = 1;
+		int32 type = 2;
+		bytes data = 3;
+}
+
+
 // 验证玩家登录令牌请求
 message ReqVerifyTokenMessage{
 		string token = 1;

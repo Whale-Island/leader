@@ -97,7 +97,7 @@ public final class TcpServer {
 							if (sslCtx != null) {
 								pipeline.addLast(sslCtx.newHandler(ch.alloc()));
 							}
-							pipeline.addLast(new LoggingHandler(LogLevel.INFO));
+							pipeline.addLast(new LoggingHandler(LogLevel.TRACE));
 							pipeline.addLast(new IdleStateHandler(60, 60, 100)); // 关闭空闲连接
 							pipeline.addLast(new IdleStateEventHandler());
 							pipeline.addLast(new LengthFieldBasedFrameDecoder(32 * 1024, 0, 2));

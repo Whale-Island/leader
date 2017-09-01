@@ -18,7 +18,7 @@
 		</property>
 	</bean>
 
-	<bean id="messagePool" class="com.leader.core.server.pool.MessagePool" >
+	<bean id="messagePool" class="com.leader.core.server.pool.MessagePool">
 		<property name="packagepath" value="com.leader.game.protobuf.protocol"></property>
 	</bean>
 	<bean id="messageType" class="com.leader.game.server.model.MessageType" />
@@ -34,11 +34,13 @@
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
 
 	<!-- sigleton -->
-	<bean id="dispatcherManager" class="com.leader.core.server.manager.DispatcherManager" factory-method="getInstance" />
+	<bean id="dispatcherManager" class="com.leader.core.server.manager.DispatcherManager"
+		factory-method="getInstance" />
 	<bean id="globalManager" class="com.leader.game.server.manager.GlobalManager"
 		factory-method="getInstance" init-method="init" />
-	<bean id="logManager" class="com.leader.game.log.manager.LogManager" factory-method="getInstance" />
-		
+	<bean id="logManager" class="com.leader.game.log.manager.LogManager"
+		factory-method="getInstance" />
+
 	<bean id="gameServer" class="com.leader.game.server.GameServer"
 		factory-method="getInstance">
 		<property name="listeners">
@@ -48,13 +50,18 @@
 			</list>
 		</property>
 	</bean>
-	<bean id="playerManager" class="com.leader.game.player.PlayerManager" factory-method="getInstance" init-method="init">
+	<bean id="playerManager" class="com.leader.game.player.PlayerManager"
+		factory-method="getInstance" init-method="init">
 		<property name="logoutListeners">
 			<list>
 			</list>
 		</property>
 	</bean>
 
+
+	<bean id="sectManager" class="com.leader.game.sect.SectManager"
+		factory-method="getInstance" init-method="init">
+	</bean>
 
 	<!-- mysql数据源配置 -->
 	<bean id="gameDataSource" class="com.alibaba.druid.pool.DruidDataSource">
@@ -169,6 +176,9 @@
 		<property name="entityManagerFactory" ref="gameEntityManagerFactory" />
 		<qualifier value="gameTM" />
 	</bean>
+
+	<!-- Detect @Transactional -->
+	<tx:annotation-driven transaction-manager="gameTransactionManager" />
 
 	<!-- Entity Manager Factory -->
 	<bean id="logEntityManagerFactory"
